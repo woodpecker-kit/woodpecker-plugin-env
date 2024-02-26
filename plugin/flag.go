@@ -1,0 +1,83 @@
+package plugin
+
+import (
+	"github.com/urfave/cli/v2"
+	"github.com/woodpecker-kit/woodpecker-tools/wd_flag"
+	"github.com/woodpecker-kit/woodpecker-tools/wd_info"
+	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
+)
+
+const (
+	CliNamePrinterPrintKeys = "config.env_printer_print_keys"
+	EnvPrinterPrintKeys     = "PLUGIN_ENV_PRINTER_PRINT_KEYS"
+
+	CliNamePrinterPaddingLeftMax = "config.env_printer_padding_left_max"
+	EnvPrinterPaddingLeftMax     = "PLUGIN_ENV_PRINTER_PADDING_LEFT_MAX"
+)
+
+// GlobalFlag
+// Other modules also have flags
+func GlobalFlag() []cli.Flag {
+	return []cli.Flag{
+		// new flag string template if no use, please replace this
+		&cli.StringSliceFlag{
+			Name:    CliNamePrinterPrintKeys,
+			Usage:   "if use this args, will print env by keys",
+			EnvVars: []string{EnvPrinterPrintKeys},
+		},
+		&cli.IntFlag{
+			Name:    CliNamePrinterPaddingLeftMax,
+			Usage:   "set env printer padding left max count, minimum 24, default 32",
+			EnvVars: []string{EnvPrinterPaddingLeftMax},
+			Value:   32,
+		},
+		// env_printer_plugin end
+		//&cli.StringFlag{
+		//	Name:    "config.new_arg,new_arg",
+		//	Usage:   "",
+		//	EnvVars: []string{"PLUGIN_new_arg"},
+		//},
+	}
+}
+
+func HideGlobalFlag() []cli.Flag {
+	return []cli.Flag{}
+}
+
+func BindCliFlags(c *cli.Context, cliName, cliVersion string, wdInfo *wd_info.WoodpeckerInfo) (*Plugin, error) {
+	debug := isBuildDebugOpen(c)
+
+	config := Config{
+		Debug:         debug,
+		TimeoutSecond: c.Uint(wd_flag.NameCliPluginTimeoutSecond),
+
+		EnvPrintKeys:   c.StringSlice(CliNamePrinterPrintKeys),
+		PaddingLeftMax: c.Int(CliNamePrinterPaddingLeftMax),
+	}
+
+	// set default TimeoutSecond
+	if config.TimeoutSecond == 0 {
+		config.TimeoutSecond = 10
+	}
+	// set default PaddingLeftMax
+	if config.PaddingLeftMax < 24 {
+		config.PaddingLeftMax = 24
+	}
+
+	wd_log.Debugf("args %s: %v", wd_flag.NameCliPluginTimeoutSecond, config.TimeoutSecond)
+
+	p := Plugin{
+		Name:           cliName,
+		Version:        cliVersion,
+		WoodpeckerInfo: wdInfo,
+		Config:         config,
+	}
+
+	return &p, nil
+}
+
+// isBuildDebugOpen
+// when config or drone build open debug will open debug
+func isBuildDebugOpen(c *cli.Context) bool {
+	return c.Bool(wd_flag.NameCliPluginDebug)
+}
