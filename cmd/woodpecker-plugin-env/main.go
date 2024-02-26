@@ -11,10 +11,6 @@ import (
 	os "os"
 )
 
-const (
-	exitCodeCmdArgs = 2
-)
-
 func main() {
 	pkgJson.InitPkgJsonContent(woodpecker_plugin_env.PackageJson)
 
