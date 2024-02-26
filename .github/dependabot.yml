@@ -11,6 +11,10 @@ updates:
       interval: "monthly"
       day: "sunday"
     open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: golangci/golangci-lint-action
+        versions:
+          - "v3"
   - package-ecosystem: "gomod"
     directory: "/"
     schedule:
