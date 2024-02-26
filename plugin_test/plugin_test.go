@@ -24,6 +24,11 @@ func TestPlugin(t *testing.T) {
 
 	// use env:ENV_DEBUG
 	p.Config.Debug = envDebug
+	p.Config.TimeoutSecond = envTimeoutSecond
+
+	p.Config.PaddingLeftMax = envPaddingLeftMax
+	p.Config.EnvPrintKeys = envPrinterPrintKeys
+
 	// mock woodpecker info
 	woodpeckerInfo := wd_mock.NewWoodpeckerInfo(
 		wd_mock.WithCurrentPipelineStatus(wd_info.BuildStatusCreated),

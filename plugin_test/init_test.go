@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/sinlov-go/unittest-kit/env_kit"
 	"github.com/sinlov-go/unittest-kit/unittest_file_kit"
+	"github.com/woodpecker-kit/woodpecker-plugin-env/plugin"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_flag"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
 	"os"
@@ -28,10 +29,10 @@ var (
 	testBaseFolderPath = ""
 	testGoldenKit      *unittest_file_kit.TestGoldenKit
 
-	envDebug  = false
-	envCiNum  = 0
-	envCiKey  = ""
-	envCiKeys []string
+	envDebug            = false
+	envTimeoutSecond    uint
+	envPaddingLeftMax   = 0
+	envPrinterPrintKeys []string
 
 	// mustSetInCiEnvList
 	//  for check set in CI env not empty
@@ -45,9 +46,11 @@ func init() {
 	testBaseFolderPath, _ = getCurrentFolderPath()
 
 	envDebug = env_kit.FetchOsEnvBool(keyEnvDebug, false)
-	envCiNum = env_kit.FetchOsEnvInt(keyEnvCiNum, 0)
-	envCiKey = env_kit.FetchOsEnvStr(keyEnvCiKey, "")
-	envCiKeys = env_kit.FetchOsEnvArray(keyEnvCiKeys)
+
+	envTimeoutSecond = uint(env_kit.FetchOsEnvInt(wd_flag.EnvKeyPluginTimeoutSecond, 10))
+
+	envPaddingLeftMax = env_kit.FetchOsEnvInt(plugin.EnvPrinterPaddingLeftMax, 24)
+	envPrinterPrintKeys = env_kit.FetchOsEnvArray(plugin.EnvPrinterPrintKeys)
 
 	testGoldenKit = unittest_file_kit.NewTestGoldenKit(testBaseFolderPath)
 }

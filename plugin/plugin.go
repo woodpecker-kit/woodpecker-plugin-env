@@ -17,12 +17,33 @@ type (
 		Version        string
 		WoodpeckerInfo *wd_info.WoodpeckerInfo
 		Config         Config
+
+		FuncPlugin FuncPlugin
 	}
 )
 
-func (p *Plugin) Exec() error {
-	// replace this code with your plugin implementation
+type FuncPlugin interface {
+	Exec() error
+}
 
+func (p *Plugin) Exec() error {
+	err := p.doBiz()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// doBiz
+//
+//	replace this code with your plugin implementation
+func (p *Plugin) doBiz() error {
+
+	printBasicEnv(p)
+	return nil
+}
+
+func printBasicEnv(p *Plugin) {
 	var sb strings.Builder
 	_, _ = fmt.Fprint(&sb, "-> just print basic env:\n")
 	paddingMax := strconv.Itoa(p.Config.PaddingLeftMax)
@@ -81,7 +102,6 @@ func (p *Plugin) Exec() error {
 	}
 
 	wd_log.Verbosef("%s", sb.String())
-	return nil
 }
 
 func appendStrBuilderNewLine(sb *strings.Builder) {
