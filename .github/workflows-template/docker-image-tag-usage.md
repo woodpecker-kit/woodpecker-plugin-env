@@ -23,8 +23,8 @@ jobs:
     secrets: inherit
     with:
       # push_remote_flag: false
-      docker_hub_user: '${{ secrets.DOCKERHUB_OWNER }}'
-      docker_image_name: '${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}'
+      docker_hub_user: ${{ secrets.DOCKERHUB_OWNER }}
+      docker_image_name: ${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}
 ```
 
 - `push_remote_flag` default is `true`

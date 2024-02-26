@@ -22,8 +22,8 @@ jobs:
     if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || ( github.base_ref == 'main' && github.event.pull_request.merged == true ) }}
     secrets: inherit
     with:
-      docker_hub_user: '${{ secrets.DOCKERHUB_OWNER }}'
-      docker_image_name: '${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}'
+      docker_hub_user: ${{ secrets.DOCKERHUB_OWNER }}
+      docker_image_name: ${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}
       # push_remote_flag: ${{ github.event.pull_request.merged == true }}
       # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
 ```
