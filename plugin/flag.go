@@ -44,12 +44,14 @@ func HideGlobalFlag() []cli.Flag {
 	return []cli.Flag{}
 }
 
-func BindCliFlags(c *cli.Context, cliName, cliVersion string, wdInfo *wd_info.WoodpeckerInfo) (*Plugin, error) {
+func BindCliFlags(c *cli.Context, cliName, cliVersion string, wdInfo *wd_info.WoodpeckerInfo, rootPath, stepsTransferPath string) (*Plugin, error) {
 	debug := isBuildDebugOpen(c)
 
 	config := Config{
-		Debug:         debug,
-		TimeoutSecond: c.Uint(wd_flag.NameCliPluginTimeoutSecond),
+		Debug:             debug,
+		TimeoutSecond:     c.Uint(wd_flag.NameCliPluginTimeoutSecond),
+		RootPath:          rootPath,
+		StepsTransferPath: stepsTransferPath,
 
 		EnvPrintKeys:   c.StringSlice(CliNamePrinterPrintKeys),
 		PaddingLeftMax: c.Int(CliNamePrinterPaddingLeftMax),

@@ -3,6 +3,22 @@ package constant
 import (
 	"github.com/urfave/cli/v2"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_flag"
+	"github.com/woodpecker-kit/woodpecker-tools/wd_steps_transfer"
+)
+
+const (
+	// NameCliPluginStepsTransferFilePath
+	//  @Description: Steps transfer file path
+	//  @Usage: Steps transfer file path
+	//  @Default: wd_steps_transfer.DefaultKitStepsFileName as `.woodpecker_kit.steps.transfer`
+	//  @EnvKey: WOODPECKER_KIT_STEPS_TRANSFER_FILE_PATH
+	NameCliPluginStepsTransferFilePath = "config.woodpecker_kit_steps_transfer_file_path"
+
+	// EnvKeyPluginStepsTransferFilePath
+	//  @Description: Steps transfer file path
+	//  @Usage: Steps transfer file path
+	//  @Default: wd_steps_transfer.DefaultKitStepsFileName as `.woodpecker_kit.steps.transfer`
+	EnvKeyPluginStepsTransferFilePath = "PLUGIN_WOODPECKER_KIT_STEPS_TRANSFER_FILE_PATH"
 )
 
 // CommonFlag
@@ -25,6 +41,14 @@ func HideCommonGlobalFlag() []cli.Flag {
 			Hidden:  true,
 			Value:   10,
 			EnvVars: []string{wd_flag.EnvKeyPluginTimeoutSecond},
+		},
+
+		&cli.StringFlag{
+			Name:    NameCliPluginStepsTransferFilePath,
+			Usage:   "Steps transfer file path",
+			Hidden:  true,
+			Value:   wd_steps_transfer.DefaultKitStepsFileName,
+			EnvVars: []string{EnvKeyPluginStepsTransferFilePath},
 		},
 	}
 }

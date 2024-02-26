@@ -10,8 +10,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
-github.com/sinlov-go/unittest-kit v1.0.0 h1:38d82yUsE2UvCNoI1/YJBONimdXhniar1W3wCiqkMZ0=
-github.com/sinlov-go/unittest-kit v1.0.0/go.mod h1:2Xkvyl6VpSXAZ6lyrb4q52Dk4oAD+Yio5KQsd1ZhxOc=
+github.com/sinlov-go/unittest-kit v1.1.0 h1:mT3cnhe+LAlvOoxkAggi4xQDOT58Q3az4XKV3R5cdJM=
+github.com/sinlov-go/unittest-kit v1.1.0/go.mod h1:2Xkvyl6VpSXAZ6lyrb4q52Dk4oAD+Yio5KQsd1ZhxOc=
 github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 github.com/urfave/cli/v2 v2.27.1 h1:8xSQ6szndafKVRmfyeUMxkNUJQMjL1F2zmsZ+qHpfho=

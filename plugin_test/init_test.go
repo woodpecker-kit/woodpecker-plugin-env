@@ -50,7 +50,7 @@ func init() {
 	envTimeoutSecond = uint(env_kit.FetchOsEnvInt(wd_flag.EnvKeyPluginTimeoutSecond, 10))
 
 	envPaddingLeftMax = env_kit.FetchOsEnvInt(plugin.EnvPrinterPaddingLeftMax, 24)
-	envPrinterPrintKeys = env_kit.FetchOsEnvArray(plugin.EnvPrinterPrintKeys)
+	envPrinterPrintKeys = env_kit.FetchOsEnvStringSlice(plugin.EnvPrinterPrintKeys)
 
 	testGoldenKit = unittest_file_kit.NewTestGoldenKit(testBaseFolderPath)
 }

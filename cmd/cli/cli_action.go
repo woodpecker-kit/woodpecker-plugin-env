@@ -12,6 +12,7 @@ import (
 	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_urfave_cli_v2"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_urfave_cli_v2/cli_exit_urfave"
+	"os"
 )
 
 var wdPlugin *plugin.Plugin
@@ -25,7 +26,6 @@ func GlobalBeforeAction(c *cli.Context) error {
 		allEnvPrintStr := env_kit.FindAllEnv4PrintAsSortJust(36)
 		wd_log.Debugf("==> plugin start with all env:\n%s", allEnvPrintStr)
 	}
-
 	namePlugin := pkgJson.GetPackageJsonName()
 	cliVersion := pkgJson.GetPackageJsonVersionGoStyle(true)
 
@@ -53,7 +53,13 @@ func GlobalBeforeAction(c *cli.Context) error {
 	wd_log.Debugf("cli version is %s\n", cliVersion)
 	wd_log.Debugf("load woodpecker finish at repo link: %v\n", woodpeckerInfo.RepositoryInfo.CIRepoURL)
 
-	pluginBind, errBindPlugin := plugin.BindCliFlags(c, namePlugin, cliVersion, &woodpeckerInfo)
+	rootPath, errRootPath := os.Getwd()
+	if errRootPath != nil {
+		return cli_exit_urfave.Err(errRootPath)
+	}
+	stepsTransferFilePath := c.String(constant.NameCliPluginStepsTransferFilePath)
+
+	pluginBind, errBindPlugin := plugin.BindCliFlags(c, namePlugin, cliVersion, &woodpeckerInfo, rootPath, stepsTransferFilePath)
 	if errBindPlugin != nil {
 		return cli_exit_urfave.Err(errBindPlugin)
 	}

@@ -5,6 +5,7 @@ import (
 	"github.com/woodpecker-kit/woodpecker-tools/wd_flag"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_info"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
+	"github.com/woodpecker-kit/woodpecker-tools/wd_steps_transfer"
 	"os"
 	"strconv"
 	"strings"
@@ -24,12 +25,37 @@ type (
 
 type FuncPlugin interface {
 	Exec() error
+
+	loadStepsTransfer() error
+	saveStepsTransfer() error
 }
 
 func (p *Plugin) Exec() error {
+	errLoadStepsTransfer := p.loadStepsTransfer()
+	if errLoadStepsTransfer != nil {
+		return errLoadStepsTransfer
+	}
+
 	err := p.doBiz()
 	if err != nil {
 		return err
+	}
+	errSaveStepsTransfer := p.saveStepsTransfer()
+	if errSaveStepsTransfer != nil {
+		return errSaveStepsTransfer
+	}
+
+	return nil
+}
+
+func (p *Plugin) loadStepsTransfer() error {
+	if p.Config.Debug {
+		var readConfigData Config
+		errLoad := wd_steps_transfer.In(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, "config", &readConfigData)
+		if errLoad != nil {
+			return nil
+		}
+		wd_log.DebugJsonf(readConfigData, "load steps transfer config mark [ %s ]", "config")
 	}
 	return nil
 }
@@ -40,6 +66,17 @@ func (p *Plugin) Exec() error {
 func (p *Plugin) doBiz() error {
 
 	printBasicEnv(p)
+	return nil
+}
+
+func (p *Plugin) saveStepsTransfer() error {
+	if p.Config.Debug {
+		transferAppendObj, errSave := wd_steps_transfer.Out(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, "config", p.Config)
+		if errSave != nil {
+			return errSave
+		}
+		wd_log.DebugJsonf(transferAppendObj, "save steps transfer config mark [ %s ]", "config")
+	}
 	return nil
 }
 

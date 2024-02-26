@@ -5,8 +5,10 @@ const ()
 type (
 	// Config plugin private config
 	Config struct {
-		Debug         bool
-		TimeoutSecond uint
+		Debug             bool
+		TimeoutSecond     uint
+		RootPath          string
+		StepsTransferPath string
 
 		EnvPrintKeys   []string
 		PaddingLeftMax int

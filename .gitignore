@@ -2,6 +2,7 @@
 
 *.log
 logs/
+.woodpecker_kit.steps.transfer
 
 ### build temple
 build/
