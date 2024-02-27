@@ -23,8 +23,6 @@ jobs:
         go:
           - '^1.19'
     runs-on: ubuntu-latest
-    secrets:
-      CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
     steps:
       - uses: actions/checkout@v3
       - name: Set up Go SDK
@@ -49,6 +47,7 @@ jobs:
       - name: Codecov
         uses: codecov/codecov-action@v3.1.4
         if: ${{ env.CODECOV_TOKEN != null }}
+        secrets: inherit
         with:
           token:  ${{ env.CODECOV_TOKEN }}
           files: coverage.txt
