@@ -2,11 +2,18 @@ name: golang-codecov
 
 on:
   push:
+    paths-ignore:
+      - '**/README.md'
+    branches:
+      - 'main'
     tags:
       - '*' # Push events to matching *, i.e. 1.0.0 v1.0, v20.15.10
 
 permissions:
   contents: write
+
+env:
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
 jobs:
   golang-codecov:
@@ -16,6 +23,8 @@ jobs:
         go:
           - '^1.19'
     runs-on: ubuntu-latest
+    secrets:
+      CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
     steps:
       - uses: actions/checkout@v3
       - name: Set up Go SDK
@@ -39,8 +48,8 @@ jobs:
 
       - name: Codecov
         uses: codecov/codecov-action@v3.1.4
-        if: ${{ secrets.CODECOV_TOKEN != null }}
+        if: ${{ env.CODECOV_TOKEN != null }}
         with:
-          token: ${{secrets.CODECOV_TOKEN}}
+          token:  ${{ env.CODECOV_TOKEN }}
           files: coverage.txt
 #          verbose: true
