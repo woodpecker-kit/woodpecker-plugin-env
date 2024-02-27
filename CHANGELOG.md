@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.0.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.0.0...v1.0.1) (2024-02-28)
+
+### 🐛 Bug Fixes
+
+* fix golang-codecov at github aciton build ([4c18f8b0](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/4c18f8b0dcca96cf29a1ef2c0996b76b00e5491a))
+
+### 📝 Documentation
+
+* remove docker hub badges ([b86cca60](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/b86cca60e95b6e72db5926dc5afea53678ffcdfa))
+
 ## 1.0.0 (2024-02-28)
 
 ### ✨ Features
