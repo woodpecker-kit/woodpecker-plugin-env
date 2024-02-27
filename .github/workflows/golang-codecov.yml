@@ -12,9 +12,6 @@ on:
 permissions:
   contents: write
 
-env:
-  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
 jobs:
   golang-codecov:
     name: golang-codecov
@@ -46,8 +43,7 @@ jobs:
 
       - name: Codecov
         uses: codecov/codecov-action@v3.1.4
-        if: ${{ env.CODECOV_TOKEN != null }}
         with:
-          token:  ${{ env.CODECOV_TOKEN }}
+          token: ${{secrets.CODECOV_TOKEN}}
           files: coverage.txt
 #          verbose: true
