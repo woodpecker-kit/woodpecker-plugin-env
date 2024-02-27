@@ -1,7 +1,3 @@
-[![docker hub version semver](https://img.shields.io/docker/v/sinlov/woodpecker-plugin-env?sort=semver)](https://hub.docker.com/r/sinlov/woodpecker-plugin-env/tags?page=1&ordering=last_updated)
-[![docker hub image size](https://img.shields.io/docker/image-size/sinlov/woodpecker-plugin-env)](https://hub.docker.com/r/sinlov/woodpecker-plugin-env)
-[![docker hub image pulls](https://img.shields.io/docker/pulls/sinlov/woodpecker-plugin-env)](https://hub.docker.com/r/sinlov/woodpecker-plugin-env/tags?page=1&ordering=last_updated)
-
 [![ci](https://github.com/woodpecker-kit/woodpecker-plugin-env/workflows/ci/badge.svg?)](https://github.com/woodpecker-kit/woodpecker-plugin-env/actions/workflows/ci.yml)
 
 [![go mod version](https://img.shields.io/github/go-mod/go-version/woodpecker-kit/woodpecker-plugin-env?label=go.mod)](https://github.com/woodpecker-kit/woodpecker-plugin-env)
