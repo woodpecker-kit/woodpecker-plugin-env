@@ -47,7 +47,6 @@ jobs:
       - name: Codecov
         uses: codecov/codecov-action@v3.1.4
         if: ${{ env.CODECOV_TOKEN != null }}
-        secrets: inherit
         with:
           token:  ${{ env.CODECOV_TOKEN }}
           files: coverage.txt
