@@ -10,7 +10,8 @@ type (
 		RootPath          string
 		StepsTransferPath string
 
-		EnvPrintKeys   []string
-		PaddingLeftMax int
+		EnvPrintKeys      []string
+		PaddingLeftMax    int
+		StepsTransferDemo bool
 	}
 )

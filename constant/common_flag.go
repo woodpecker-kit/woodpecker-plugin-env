@@ -12,7 +12,7 @@ const (
 	//  @Usage: Steps transfer file path
 	//  @Default: wd_steps_transfer.DefaultKitStepsFileName as `.woodpecker_kit.steps.transfer`
 	//  @EnvKey: WOODPECKER_KIT_STEPS_TRANSFER_FILE_PATH
-	NameCliPluginStepsTransferFilePath = "config.woodpecker_kit_steps_transfer_file_path"
+	NameCliPluginStepsTransferFilePath = "settings.woodpecker_kit_steps_transfer_file_path"
 
 	// EnvKeyPluginStepsTransferFilePath
 	//  @Description: Steps transfer file path

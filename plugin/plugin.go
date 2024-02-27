@@ -49,13 +49,13 @@ func (p *Plugin) Exec() error {
 }
 
 func (p *Plugin) loadStepsTransfer() error {
-	if p.Config.Debug {
+	if p.Config.StepsTransferDemo {
 		var readConfigData Config
 		errLoad := wd_steps_transfer.In(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, "config", &readConfigData)
 		if errLoad != nil {
 			return nil
 		}
-		wd_log.DebugJsonf(readConfigData, "load steps transfer config mark [ %s ]", "config")
+		wd_log.VerboseJsonf(readConfigData, "load steps transfer config mark [ %s ]", "config")
 	}
 	return nil
 }
@@ -70,12 +70,12 @@ func (p *Plugin) doBiz() error {
 }
 
 func (p *Plugin) saveStepsTransfer() error {
-	if p.Config.Debug {
+	if p.Config.StepsTransferDemo {
 		transferAppendObj, errSave := wd_steps_transfer.Out(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, "config", p.Config)
 		if errSave != nil {
 			return errSave
 		}
-		wd_log.DebugJsonf(transferAppendObj, "save steps transfer config mark [ %s ]", "config")
+		wd_log.VerboseJsonf(transferAppendObj, "save steps transfer config mark [ %s ]", "config")
 	}
 	return nil
 }

@@ -8,11 +8,14 @@ import (
 )
 
 const (
-	CliNamePrinterPrintKeys = "config.env_printer_print_keys"
+	CliNamePrinterPrintKeys = "settings.env_printer_print_keys"
 	EnvPrinterPrintKeys     = "PLUGIN_ENV_PRINTER_PRINT_KEYS"
 
-	CliNamePrinterPaddingLeftMax = "config.env_printer_padding_left_max"
+	CliNamePrinterPaddingLeftMax = "settings.env_printer_padding_left_max"
 	EnvPrinterPaddingLeftMax     = "PLUGIN_ENV_PRINTER_PADDING_LEFT_MAX"
+
+	CliNameStepsTransferDemo = "settings.steps_transfer_demo"
+	EnvStepsTransferDemo     = "PLUGIN_STEPS_TRANSFER_DEMO"
 )
 
 // GlobalFlag
@@ -31,9 +34,14 @@ func GlobalFlag() []cli.Flag {
 			EnvVars: []string{EnvPrinterPaddingLeftMax},
 			Value:   32,
 		},
+		&cli.BoolFlag{
+			Name:    CliNameStepsTransferDemo,
+			Usage:   "if use this args, will print steps transfer demo",
+			EnvVars: []string{EnvStepsTransferDemo},
+		},
 		// env_printer_plugin end
 		//&cli.StringFlag{
-		//	Name:    "config.new_arg,new_arg",
+		//	Name:    "settings.new_arg",
 		//	Usage:   "",
 		//	EnvVars: []string{"PLUGIN_new_arg"},
 		//},
@@ -53,8 +61,9 @@ func BindCliFlags(c *cli.Context, cliName, cliVersion string, wdInfo *wd_info.Wo
 		RootPath:          rootPath,
 		StepsTransferPath: stepsTransferPath,
 
-		EnvPrintKeys:   c.StringSlice(CliNamePrinterPrintKeys),
-		PaddingLeftMax: c.Int(CliNamePrinterPaddingLeftMax),
+		EnvPrintKeys:      c.StringSlice(CliNamePrinterPrintKeys),
+		PaddingLeftMax:    c.Int(CliNamePrinterPaddingLeftMax),
+		StepsTransferDemo: c.Bool(CliNameStepsTransferDemo),
 	}
 
 	// set default TimeoutSecond

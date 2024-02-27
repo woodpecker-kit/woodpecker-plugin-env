@@ -58,6 +58,7 @@ steps:
         - GOPRIVATE
         - GOBIN
       env_printer_padding_left_max: 36 # padding left max
+      steps_transfer_demo: false # open this show steps transfer demo
 ```
 
 - workflow with backend `local`, must install at local and effective at evn `PATH`
@@ -82,6 +83,7 @@ steps:
         - GOPRIVATE
         - GOBIN
       env_printer_padding_left_max: 36 # padding left max
+      steps_transfer_demo: false # open this show steps transfer demo
 ```
 
 ---
