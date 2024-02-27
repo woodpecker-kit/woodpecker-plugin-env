@@ -40,6 +40,13 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
     - `woodpecker-kit` to your owner name
     - `woodpecker-plugin-env` to your project name
 
+- use github action for this workflow push to docker hub, must add at github secrets 
+    - `DOCKERHUB_OWNER` user of docker hub
+    - `DOCKERHUB_REPO_NAME` repo name of docker hub
+    - `DOCKERHUB_TOKEN` token of docker hub user
+
+- if use `wd_steps_transfer` just add `.woodpecker_kit.steps.transfer` at git ignore
+
 ### workflow usage
 
 - workflow with backend `docker`

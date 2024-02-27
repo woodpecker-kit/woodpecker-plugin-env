@@ -39,13 +39,17 @@ jobs:
           go version
 
       - name: Run go build
-        run: go build -v ./...
+        run: go build -v -tags test ./...
 
       - name: Run test coverage
-        run: go test -cover -coverprofile coverage.txt -covermode count -coverpkg ./... -tags test -v ./...
+        run: go test -cover -tags test -coverprofile coverage.txt -covermode count -coverpkg ./... -v ./...
+
+      - name: show coverage
+        run: go tool cover -func coverage.txt
 
       - name: Codecov
         uses: codecov/codecov-action@v3.1.4
+        if: ${{ secrets.CODECOV_TOKEN != null }}
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           files: coverage.txt
