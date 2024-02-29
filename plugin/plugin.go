@@ -49,6 +49,7 @@ func (p *Plugin) Exec() error {
 }
 
 func (p *Plugin) loadStepsTransfer() error {
+	// remove or change this code
 	if p.Config.StepsTransferDemo {
 		var readConfigData Config
 		errLoad := wd_steps_transfer.In(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, "config", &readConfigData)
@@ -65,11 +66,13 @@ func (p *Plugin) loadStepsTransfer() error {
 //	replace this code with your plugin implementation
 func (p *Plugin) doBiz() error {
 
+	// remove or change this code
 	printBasicEnv(p)
 	return nil
 }
 
 func (p *Plugin) saveStepsTransfer() error {
+	// remove or change this code
 	if p.Config.StepsTransferDemo {
 		transferAppendObj, errSave := wd_steps_transfer.Out(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, "config", p.Config)
 		if errSave != nil {

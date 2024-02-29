@@ -26,6 +26,7 @@ func TestPlugin(t *testing.T) {
 	p.Config.Debug = envDebug
 	p.Config.TimeoutSecond = envTimeoutSecond
 
+	// remove or change this code
 	p.Config.PaddingLeftMax = envPaddingLeftMax
 	p.Config.EnvPrintKeys = envPrinterPrintKeys
 

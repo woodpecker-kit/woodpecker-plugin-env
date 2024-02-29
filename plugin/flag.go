@@ -8,6 +8,8 @@ import (
 )
 
 const (
+	// remove or change this code
+
 	CliNamePrinterPrintKeys = "settings.env_printer_print_keys"
 	EnvPrinterPrintKeys     = "PLUGIN_ENV_PRINTER_PRINT_KEYS"
 
@@ -58,9 +60,10 @@ func BindCliFlags(c *cli.Context, cliName, cliVersion string, wdInfo *wd_info.Wo
 	config := Config{
 		Debug:             debug,
 		TimeoutSecond:     c.Uint(wd_flag.NameCliPluginTimeoutSecond),
-		RootPath:          rootPath,
 		StepsTransferPath: stepsTransferPath,
+		RootPath:          rootPath,
 
+		// remove or change this code
 		EnvPrintKeys:      c.StringSlice(CliNamePrinterPrintKeys),
 		PaddingLeftMax:    c.Int(CliNamePrinterPaddingLeftMax),
 		StepsTransferDemo: c.Bool(CliNameStepsTransferDemo),

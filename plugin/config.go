@@ -7,9 +7,10 @@ type (
 	Config struct {
 		Debug             bool
 		TimeoutSecond     uint
-		RootPath          string
 		StepsTransferPath string
+		RootPath          string
 
+		// remove or change this config
 		EnvPrintKeys      []string
 		PaddingLeftMax    int
 		StepsTransferDemo bool

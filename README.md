@@ -1,4 +1,4 @@
-[![ci](https://github.com/woodpecker-kit/woodpecker-plugin-env/workflows/ci/badge.svg?)](https://github.com/woodpecker-kit/woodpecker-plugin-env/actions/workflows/ci.yml)
+[![ci](https://github.com/woodpecker-kit/woodpecker-plugin-env/workflows/ci/badge.svg)](https://github.com/woodpecker-kit/woodpecker-plugin-env/actions/workflows/ci.yml)
 
 [![go mod version](https://img.shields.io/github/go-mod/go-version/woodpecker-kit/woodpecker-plugin-env?label=go.mod)](https://github.com/woodpecker-kit/woodpecker-plugin-env)
 [![GoDoc](https://godoc.org/github.com/woodpecker-kit/woodpecker-plugin-env?status.png)](https://godoc.org/github.com/woodpecker-kit/woodpecker-plugin-env)

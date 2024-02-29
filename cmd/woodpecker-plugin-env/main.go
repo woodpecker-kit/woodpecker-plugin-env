@@ -12,9 +12,11 @@ import (
 )
 
 func main() {
+	wd_log.SetLogLineDeep(wd_log.DefaultExtLogLineMaxDeep)
 	pkgJson.InitPkgJsonContent(woodpecker_plugin_env.PackageJson)
 
-	wd_log.SetLogLineDeep(wd_log.DefaultExtLogLineMaxDeep)
+	// register helpers once
+	//wd_template.RegisterSettings(wd_template.DefaultHelpers)
 
 	app := cli.NewCliApp()
 
