@@ -6,9 +6,9 @@ require (
 	github.com/Masterminds/semver/v3 v3.2.1
 	github.com/gookit/color v1.5.4
 	github.com/sinlov-go/unittest-kit v1.1.0
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	github.com/urfave/cli/v2 v2.27.1
-	github.com/woodpecker-kit/woodpecker-tools v1.7.0
+	github.com/woodpecker-kit/woodpecker-tools v1.8.0
 )
 
 require (

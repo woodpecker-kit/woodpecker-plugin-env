@@ -12,12 +12,12 @@ github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
 github.com/sinlov-go/unittest-kit v1.1.0 h1:mT3cnhe+LAlvOoxkAggi4xQDOT58Q3az4XKV3R5cdJM=
 github.com/sinlov-go/unittest-kit v1.1.0/go.mod h1:2Xkvyl6VpSXAZ6lyrb4q52Dk4oAD+Yio5KQsd1ZhxOc=
-github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
-github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
+github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsTg=
+github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/urfave/cli/v2 v2.27.1 h1:8xSQ6szndafKVRmfyeUMxkNUJQMjL1F2zmsZ+qHpfho=
 github.com/urfave/cli/v2 v2.27.1/go.mod h1:8qnjx1vcq5s2/wpsqoZFndg2CE5tNFyrTvS6SinrnYQ=
-github.com/woodpecker-kit/woodpecker-tools v1.7.0 h1:SkCSlg3ZtcdBCrbqeJ3igDnJqkPmOzzNLX2H1qcING8=
-github.com/woodpecker-kit/woodpecker-tools v1.7.0/go.mod h1:RzBgpAarU/fHItO5X0uDoQjlJbHdbydFoShrtFx5xTs=
+github.com/woodpecker-kit/woodpecker-tools v1.8.0 h1:CoIGJwM889xXfDIE698ufoiwI0Zoq6/d9gwdzKuidAo=
+github.com/woodpecker-kit/woodpecker-tools v1.8.0/go.mod h1:2uJZoCI4nzaL5dEByS+9XZDwwalUowPVfQhLPhqLRYY=
 github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778 h1:QldyIu/L63oPpyvQmHgvgickp1Yw510KJOqX7H24mg8=
 github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778/go.mod h1:2MuV+tbUrU1zIOPMxZ5EncGwgmMJsa+9ucAQZXxsObs=
 github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 h1:bAn7/zixMGCfxrRTfdpNzjtPYqr8smhKouy9mxVdGPU=
