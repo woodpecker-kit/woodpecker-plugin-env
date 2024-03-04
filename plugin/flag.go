@@ -91,7 +91,7 @@ func BindCliFlags(c *cli.Context, cliName, cliVersion string, wdInfo *wd_info.Wo
 }
 
 // isBuildDebugOpen
-// when config or drone build open debug will open debug
+// when config or build open debug will open debug
 func isBuildDebugOpen(c *cli.Context) bool {
 	return c.Bool(wd_flag.NameCliPluginDebug)
 }

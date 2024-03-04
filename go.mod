@@ -8,7 +8,7 @@ require (
 	github.com/sinlov-go/unittest-kit v1.1.0
 	github.com/stretchr/testify v1.9.0
 	github.com/urfave/cli/v2 v2.27.1
-	github.com/woodpecker-kit/woodpecker-tools v1.8.0
+	github.com/woodpecker-kit/woodpecker-tools v1.11.0
 )
 
 require (

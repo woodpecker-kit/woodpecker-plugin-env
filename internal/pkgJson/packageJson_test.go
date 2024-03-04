@@ -11,9 +11,9 @@ const (
   "version": "1.2.3",
   "name": "mock",
   "author": {
-    "name": "drone-zoo",
-    "email": "drone-zoogmppt@gmail.com",
-    "url": "https://gitea.sinlov.cn/drone-zoo/template-gitea-sinlov-cn-golang-cli"
+    "name": "foo-code",
+    "email": "foo-codegmppt@gmail.com",
+    "url": "https://gitea.sinlov.cn/foo-code/template-gitea-sinlov-cn-golang-cli"
   }
 }
 `
@@ -22,12 +22,12 @@ const (
   "version": "v1.2.3",
   "name": "mock go style",
   "author": {
-    "name": "drone-zoo",
-    "email": "drone-zoogmppt@gmail.com",
-    "url": "https://gitea.sinlov.cn/drone-zoo/template-gitea-sinlov-cn-golang-cli"
+    "name": "foo-code",
+    "email": "foo-codegmppt@gmail.com",
+    "url": "https://gitea.sinlov.cn/foo-code/template-gitea-sinlov-cn-golang-cli"
   },
   "description": "mock go style",
-  "homepage": "https://gitea.sinlov.cn/drone-zoo/template-gitea-sinlov-cn-golang-cli#readme"
+  "homepage": "https://gitea.sinlov.cn/foo-code/template-gitea-sinlov-cn-golang-cli#readme"
 }
 `
 )
@@ -168,8 +168,8 @@ func TestGetPackageJsonAuthor(t *testing.T) {
 	// do GetPackageJsonAuthorName
 
 	// verify GetPackageJsonAuthorName
-	assert.Equal(t, "drone-zoo", GetPackageJsonAuthor().Name)
-	assert.Equal(t, "drone-zoogmppt@gmail.com", GetPackageJsonAuthor().Email)
+	assert.Equal(t, "foo-code", GetPackageJsonAuthor().Name)
+	assert.Equal(t, "foo-codegmppt@gmail.com", GetPackageJsonAuthor().Email)
 }
 func TestGetPackageJsonDescription(t *testing.T) {
 	t.Logf("~> mock GetPackageJsonDescription")
@@ -198,5 +198,5 @@ func TestGetPackageJsonHomepage(t *testing.T) {
 	assert.Equal(t, "", GetPackageJsonHomepage())
 
 	InitPkgJsonContent(jsonInfoGoStyle)
-	assert.Equal(t, "https://gitea.sinlov.cn/drone-zoo/template-gitea-sinlov-cn-golang-cli#readme", GetPackageJsonHomepage())
+	assert.Equal(t, "https://gitea.sinlov.cn/foo-code/template-gitea-sinlov-cn-golang-cli#readme", GetPackageJsonHomepage())
 }
