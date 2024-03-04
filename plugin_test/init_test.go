@@ -40,6 +40,10 @@ var (
 		wd_flag.EnvKeyCiSystemPlatform,
 		wd_flag.EnvKeyCiSystemVersion,
 	}
+	// mustSetArgsAsEnvList
+	mustSetArgsAsEnvList = []string{
+		//plugin.EnvStepsTransferDemo,
+	}
 )
 
 func init() {
@@ -76,8 +80,8 @@ func envCheck(t *testing.T) bool {
 	}
 
 	// most CI system will set env CI to true
-	envCI := env_kit.FetchOsEnvBool("CI", false)
-	if !envCI {
+	envCI := env_kit.FetchOsEnvStr("CI", "")
+	if envCI == "" {
 		t.Logf("not in CI system, skip envCheck")
 		return false
 	}
@@ -88,6 +92,15 @@ func envCheck(t *testing.T) bool {
 			return true
 		}
 	}
+	return false
+}
 
+func envMustArgsCheck(t *testing.T) bool {
+	for _, item := range mustSetArgsAsEnvList {
+		if os.Getenv(item) == "" {
+			t.Logf("plasee set env: %s, than run test\nfull need set env %v", item, mustSetArgsAsEnvList)
+			return true
+		}
+	}
 	return false
 }

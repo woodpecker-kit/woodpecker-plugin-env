@@ -19,6 +19,9 @@ func TestPlugin(t *testing.T) {
 	if envCheck(t) {
 		return
 	}
+	if envMustArgsCheck(t) {
+		return
+	}
 
 	t.Log("mock woodpecker info")
 

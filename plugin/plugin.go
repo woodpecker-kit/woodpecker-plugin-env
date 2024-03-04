@@ -27,6 +27,7 @@ type FuncPlugin interface {
 	Exec() error
 
 	loadStepsTransfer() error
+	checkArgs() error
 	saveStepsTransfer() error
 }
 
@@ -34,6 +35,11 @@ func (p *Plugin) Exec() error {
 	errLoadStepsTransfer := p.loadStepsTransfer()
 	if errLoadStepsTransfer != nil {
 		return errLoadStepsTransfer
+	}
+
+	errCheckArgs := p.checkArgs()
+	if errCheckArgs != nil {
+		return fmt.Errorf("check args err: %v", errCheckArgs)
 	}
 
 	err := p.doBiz()
@@ -58,6 +64,10 @@ func (p *Plugin) loadStepsTransfer() error {
 		}
 		wd_log.VerboseJsonf(readConfigData, "load steps transfer config mark [ %s ]", "config")
 	}
+	return nil
+}
+
+func (p *Plugin) checkArgs() error {
 	return nil
 }
 
