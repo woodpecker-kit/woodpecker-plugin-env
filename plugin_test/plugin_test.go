@@ -3,6 +3,7 @@ package plugin_test
 import (
 	"github.com/woodpecker-kit/woodpecker-plugin-env/plugin"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_info"
+	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_mock"
 	"testing"
 )
@@ -19,14 +20,15 @@ func TestPlugin(t *testing.T) {
 	if envCheck(t) {
 		return
 	}
+	wd_log.VerboseJsonf(p, "print plugin info")
 	if envMustArgsCheck(t) {
 		return
 	}
 
 	t.Log("mock woodpecker info")
 
-	// use env:ENV_DEBUG
-	p.Config.Debug = envDebug
+	// use env:PLUGIN_DEBUG
+	p.Config.Debug = valEnvPluginDebug
 	p.Config.TimeoutSecond = envTimeoutSecond
 
 	// remove or change this code

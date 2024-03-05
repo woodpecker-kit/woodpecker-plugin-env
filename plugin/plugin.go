@@ -19,7 +19,7 @@ type (
 		WoodpeckerInfo *wd_info.WoodpeckerInfo
 		Config         Config
 
-		FuncPlugin FuncPlugin
+		FuncPlugin FuncPlugin `json:"-"`
 	}
 )
 

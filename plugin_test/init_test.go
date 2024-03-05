@@ -29,7 +29,6 @@ var (
 	testBaseFolderPath = ""
 	testGoldenKit      *unittest_file_kit.TestGoldenKit
 
-	envDebug            = false
 	envTimeoutSecond    uint
 	envPaddingLeftMax   = 0
 	envPrinterPrintKeys []string
@@ -44,12 +43,13 @@ var (
 	mustSetArgsAsEnvList = []string{
 		//plugin.EnvStepsTransferDemo,
 	}
+
+	valEnvPluginDebug = false
 )
 
 func init() {
 	testBaseFolderPath, _ = getCurrentFolderPath()
-
-	envDebug = env_kit.FetchOsEnvBool(keyEnvDebug, false)
+	wd_log.SetLogLineDeep(2)
 
 	envTimeoutSecond = uint(env_kit.FetchOsEnvInt(wd_flag.EnvKeyPluginTimeoutSecond, 10))
 
@@ -57,6 +57,8 @@ func init() {
 	envPrinterPrintKeys = env_kit.FetchOsEnvStringSlice(plugin.EnvPrinterPrintKeys)
 
 	testGoldenKit = unittest_file_kit.NewTestGoldenKit(testBaseFolderPath)
+
+	valEnvPluginDebug = env_kit.FetchOsEnvBool(wd_flag.EnvKeyPluginDebug, false)
 }
 
 // test case basic tools start
@@ -75,7 +77,7 @@ func getCurrentFolderPath() (string, error) {
 
 func envCheck(t *testing.T) bool {
 
-	if envDebug {
+	if valEnvPluginDebug {
 		wd_log.OpenDebug()
 	}
 
