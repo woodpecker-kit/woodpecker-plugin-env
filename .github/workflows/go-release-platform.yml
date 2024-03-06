@@ -71,13 +71,15 @@ jobs:
           go mod tidy -v
           go mod vendor
 
-          echo ${GOPATH}
+          echo "try show GOPATH"
+          go env GOPATH
+          ls $(go env GOPATH)
           # generate go file by zymosis
           go install -v github.com/convention-change/zymosis/cmd/zymosis@latest
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            ${GOPATH}\bin\zymosis -g go
+            $(go env GOPATH)\bin\zymosis -g go
           else
-            ${GOPATH}/bin/zymosis -g go
+            $(go env GOPATH)/bin/zymosis -g go
           fi
 
           # Replace with the name of your binary
