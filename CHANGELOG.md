@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.1.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.1.0...v1.1.1) (2024-03-06)
+
+### 👷‍ Build System
+
+* update temp-woodpecker-golang-plugin ([c5352119](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/c5352119692836a4d7a0c8b6484ce73c5a939684))
+
+* github.com/woodpecker-kit/woodpecker-tools v1.13.0 ([81933a7d](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/81933a7d6cbee229f33193f49ad32781635a54f1))
+
 ## [1.1.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.0.1...v1.1.0) (2024-03-06)
 
 ### ✨ Features
