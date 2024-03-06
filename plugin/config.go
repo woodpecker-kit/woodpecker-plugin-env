@@ -1,6 +1,10 @@
 package plugin
 
-const ()
+const (
+	// StepsTransferMarkDemoConfig
+	// steps transfer key
+	StepsTransferMarkDemoConfig = "demo_config"
+)
 
 type (
 	// Config plugin private config

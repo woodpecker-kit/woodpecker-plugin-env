@@ -58,11 +58,11 @@ func (p *Plugin) loadStepsTransfer() error {
 	// remove or change this code
 	if p.Config.StepsTransferDemo {
 		var readConfigData Config
-		errLoad := wd_steps_transfer.In(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, "config", &readConfigData)
+		errLoad := wd_steps_transfer.In(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, StepsTransferMarkDemoConfig, &readConfigData)
 		if errLoad != nil {
 			return nil
 		}
-		wd_log.VerboseJsonf(readConfigData, "load steps transfer config mark [ %s ]", "config")
+		wd_log.VerboseJsonf(readConfigData, "load steps transfer config mark [ %s ]", StepsTransferMarkDemoConfig)
 	}
 	return nil
 }
@@ -84,11 +84,11 @@ func (p *Plugin) doBiz() error {
 func (p *Plugin) saveStepsTransfer() error {
 	// remove or change this code
 	if p.Config.StepsTransferDemo {
-		transferAppendObj, errSave := wd_steps_transfer.Out(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, "config", p.Config)
+		transferAppendObj, errSave := wd_steps_transfer.Out(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, StepsTransferMarkDemoConfig, p.Config)
 		if errSave != nil {
 			return errSave
 		}
-		wd_log.VerboseJsonf(transferAppendObj, "save steps transfer config mark [ %s ]", "config")
+		wd_log.VerboseJsonf(transferAppendObj, "save steps transfer config mark [ %s ]", StepsTransferMarkDemoConfig)
 	}
 	return nil
 }
