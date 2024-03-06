@@ -74,12 +74,12 @@ jobs:
           # generate go file by zymosis
           go install -v github.com/convention-change/zymosis/cmd/zymosis@latest
           echo "try set show for install go tools"
-          ls $(go env GOPATH)/bin
-          if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            $(go env GOPATH)\bin\zymosis -g go
-          else
-            $(go env GOPATH)/bin/zymosis -g go
-          fi
+          ls $(go env GOPATH)/bin/$(go env GOOS)_$(go env GOARCH)
+          #if [ "${{ matrix.os }}" = "windows-latest" ]; then
+          #  $(go env GOPATH)\bin\zymosis -g go
+          #else
+          #  $(go env GOPATH)/bin/zymosis -g go
+          #fi
 
           # Replace with the name of your binary
           binary_name=${{ env.DIST_BINARY_NAME }}
