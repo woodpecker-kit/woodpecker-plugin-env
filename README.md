@@ -65,12 +65,16 @@ steps:
 ```
 
 - workflow with backend `local`, must install at local and effective at evn `PATH`
+- install at ${GOPATH}/bin, latest
 
 ```bash
-# install at ${GOPATH}/bin
-$ go install -v github.com/woodpecker-kit/woodpecker-plugin-env/cmd/woodpecker-plugin-env@latest
-# install version v1.0.0
-$ go install -v github.com/woodpecker-kit/woodpecker-plugin-env/cmd/woodpecker-plugin-env@v1.0.0
+go install -a github.com/woodpecker-kit/woodpecker-plugin-env/cmd/woodpecker-plugin-env@latest
+```
+
+- install at ${GOPATH}/bin, v1.0.0
+
+```bash
+go install -v github.com/woodpecker-kit/woodpecker-plugin-env/cmd/woodpecker-plugin-env@v1.0.0
 ```
 
 ```yml
