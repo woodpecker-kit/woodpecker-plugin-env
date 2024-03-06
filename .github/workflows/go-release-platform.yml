@@ -63,6 +63,9 @@ jobs:
         with:
           go-version: '^1.19'
           cache: false
+        run: |
+          go install -v github.com/convention-change/zymosis/cmd/zymosis@latest
+          which -a zymosis
 
       - name: Build Release binary
         run: |
@@ -72,10 +75,10 @@ jobs:
           go mod vendor
 
           # generate go file by zymosis
-          go install -v github.com/convention-change/zymosis/cmd/zymosis@latest
-          echo "try set show for install go tools or env GOBIN"
-          echo $GOBIN
+          # go install -v github.com/convention-change/zymosis/cmd/zymosis@latest
+          echo "try set show for install go tools"
           ls $(go env GOPATH)/bin/
+          which -a zymosis
           #ls $(go env GOPATH)/bin/$(go env GOOS)_$(go env GOARCH)
           #if [ "${{ matrix.os }}" = "windows-latest" ]; then
           #  $(go env GOPATH)\bin\zymosis -g go
