@@ -70,8 +70,16 @@ jobs:
           go mod download -x
           go mod tidy -v
           go mod vendor
+
+          echo ${GOPATH}
+          # generate go file by zymosis
           go install -v github.com/convention-change/zymosis/cmd/zymosis@latest
-          zymosis -g go
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            ${GOPATH}\bin\zymosis -g go
+          else
+            ${GOPATH}/bin/zymosis -g go
+          fi
+
           # Replace with the name of your binary
           binary_name=${{ env.DIST_BINARY_NAME }}
 
