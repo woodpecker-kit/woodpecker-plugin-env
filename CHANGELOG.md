@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.1.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.0.1...v1.1.0) (2024-03-06)
+
+### ✨ Features
+
+* add plugin_test template for test StepTransfer ([929f2f4c](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/929f2f4ccde2e49175adac2ea22d330cc0099b93))
+
+* add zymosis kit for auto build ([9844deb2](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/9844deb2387c720e695e970367b1555270d1f9a5))
+
+* add plugin test case use env PLUGIN_DEBUG ([8777c71d](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/8777c71d00b35a686001fa94cdd28966d535a870))
+
+* add plugin_test has envMustArgsCheck() ([e6d79d12](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/e6d79d12bf7775b940d831a0b819491fd1eb8da4))
+
+* update depends ([a2145e5f](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a2145e5f0875761c8e9030d23f8a7da0cc63ac2a))
+
+* update github.com/woodpecker-kit/woodpecker-tools v1.7.0 and add annotation for fast ([d4e8ecd5](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/d4e8ecd55edb9600df475512a93deba38e6e7ce7))
+
+### 👷‍ Build System
+
+* update temp-woodpecker-golang-plugin version for build ([6c8c7b97](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/6c8c7b977416ddbcc8577c4d2d8de292975414b2))
+
+* action ([efa9eeee](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/efa9eeee0abc42d880ed10dd6858933f030ebbe5))
+
+* github.com/woodpecker-kit/woodpecker-tools v1.11.0 ([54130037](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/541300374bfbae7f74812c434640ce6468055ddf))
+
 ## [1.0.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.0.0...v1.0.1) (2024-02-28)
 
 ### 🐛 Bug Fixes
