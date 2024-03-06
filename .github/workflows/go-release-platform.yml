@@ -71,10 +71,9 @@ jobs:
           go mod tidy -v
           go mod vendor
 
-          echo "try set GOBIN for install go tools"
-          export GOBIN=$(go env GOPATH)/bin
           # generate go file by zymosis
           go install -v github.com/convention-change/zymosis/cmd/zymosis@latest
+          echo "try set show for install go tools"
           ls $(go env GOPATH)/bin
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
             $(go env GOPATH)\bin\zymosis -g go
