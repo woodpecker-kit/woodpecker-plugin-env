@@ -73,8 +73,10 @@ jobs:
 
           # generate go file by zymosis
           go install -v github.com/convention-change/zymosis/cmd/zymosis@latest
-          echo "try set show for install go tools"
-          ls $(go env GOPATH)/bin/$(go env GOOS)_$(go env GOARCH)
+          echo "try set show for install go tools or env GOBIN"
+          echo $GOBIN
+          ls $(go env GOPATH)/bin/
+          #ls $(go env GOPATH)/bin/$(go env GOOS)_$(go env GOARCH)
           #if [ "${{ matrix.os }}" = "windows-latest" ]; then
           #  $(go env GOPATH)\bin\zymosis -g go
           #else
