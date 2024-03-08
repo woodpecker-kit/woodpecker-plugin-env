@@ -51,7 +51,7 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 labels:
   backend: docker
 steps:
-  env:
+  woodpecker-plugin-env:
     image: sinlov/woodpecker-plugin-env:latest
     pull: false
     settings:
@@ -81,7 +81,7 @@ go install -v github.com/woodpecker-kit/woodpecker-plugin-env/cmd/woodpecker-plu
 labels:
   backend: local
 steps:
-  env:
+  woodpecker-plugin-env:
     image: woodpecker-plugin-env
     settings:
       # debug: false

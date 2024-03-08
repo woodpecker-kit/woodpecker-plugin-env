@@ -26,28 +26,31 @@ func TestCheckArgsPlugin(t *testing.T) {
 	)
 
 	tests := []struct {
-		name           string
-		p              plugin.Plugin
-		isDryRun       bool
-		workRoot       string
-		wantArgFlagErr bool
+		name              string
+		p                 plugin.Plugin
+		isDryRun          bool
+		workRoot          string
+		wantArgFlagNotErr bool
 	}{
 		{
-			name: "statusSuccess",
-			p:    statusSuccess,
+			name:              "statusSuccess",
+			p:                 statusSuccess,
+			wantArgFlagNotErr: true,
 		},
 		{
-			name:           "statusNotSupport",
-			p:              statusNotSupport,
-			wantArgFlagErr: true,
+			name: "statusNotSupport",
+			p:    statusNotSupport,
 		},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			err := tc.p.Exec()
-			if (err != nil) != tc.wantArgFlagErr {
-				wd_log.VerboseJsonf(tc.p, "print plugin info")
-				t.Fatalf("FeishuPlugin.Exec() error = %v, wantErr %v", err, tc.wantArgFlagErr)
+			errPluginRun := tc.p.Exec()
+			if !tc.wantArgFlagNotErr {
+				t.Logf("check args error: %v", errPluginRun)
+			}
+			if (errPluginRun != nil) == tc.wantArgFlagNotErr {
+				wd_log.VerboseJsonf(tc.p.Config, "print Config")
+				t.Fatalf("Exec() error = %v, wantErr %v", errPluginRun, tc.wantArgFlagNotErr)
 				return
 			}
 		})
@@ -142,6 +145,8 @@ func mockPluginWithStatus(t *testing.T, status string) plugin.Plugin {
 		wd_mock.WithCurrentPipelineStatus(status),
 	)
 	p.WoodpeckerInfo = woodpeckerInfo
+
+	// mock all config at here
 
 	return p
 }
