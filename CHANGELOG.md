@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.3.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.2.0...v1.3.0) (2024-03-08)
+
+### ✨ Features
+
+* add TestCheckArgsPlugin template for args test ([f3196c78](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/f3196c78001e196b7dc88c4b4efe9961710534e7))
+
+* add github.com/sinlov-go/go-common-lib v1.7.0 ([7698d6f2](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/7698d6f2133198e30e7e814a97e8aab743c805f8))
+
 ## [1.2.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.1.1...v1.2.0) (2024-03-06)
 
 ### ✨ Features
