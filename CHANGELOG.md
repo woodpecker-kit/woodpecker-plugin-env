@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.4.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.3.0...v1.4.0) (2024-03-08)
+
+### ✨ Features
+
+* github.com/woodpecker-kit/woodpecker-tools v1.15.0 ([a1f37c65](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a1f37c655b74a59231621e934bf9fd755cf67f02))
+
 ## [1.3.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.2.0...v1.3.0) (2024-03-08)
 
 ### ✨ Features
