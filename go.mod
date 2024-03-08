@@ -9,10 +9,11 @@ require (
 	github.com/sinlov-go/unittest-kit v1.1.0
 	github.com/stretchr/testify v1.9.0
 	github.com/urfave/cli/v2 v2.27.1
-	github.com/woodpecker-kit/woodpecker-tools v1.14.0
+	github.com/woodpecker-kit/woodpecker-tools v1.15.0
 )
 
 require (
+	github.com/chainguard-dev/git-urls v1.0.2 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect

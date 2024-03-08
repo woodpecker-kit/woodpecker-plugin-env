@@ -50,6 +50,8 @@ var (
 func init() {
 	testBaseFolderPath, _ = getCurrentFolderPath()
 	wd_log.SetLogLineDeep(2)
+	// if open wd_template please open this
+	//wd_template.RegisterSettings(wd_template.DefaultHelpers)
 
 	envTimeoutSecond = uint(env_kit.FetchOsEnvInt(wd_flag.EnvKeyPluginTimeoutSecond, 10))
 
