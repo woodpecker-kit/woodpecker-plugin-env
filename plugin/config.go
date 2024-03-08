@@ -28,6 +28,8 @@ type (
 		StepsTransferPath string
 		RootPath          string
 
+		DryRun bool
+
 		// remove or change this config
 		EnvPrintKeys      []string
 		PaddingLeftMax    int

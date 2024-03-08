@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/plugin"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_info"
+	"github.com/woodpecker-kit/woodpecker-tools/wd_info_shot"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_mock"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_steps_transfer"
@@ -45,13 +46,19 @@ func TestCheckArgsPlugin(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			errPluginRun := tc.p.Exec()
-			if !tc.wantArgFlagNotErr {
+			if tc.wantArgFlagNotErr {
+				if errPluginRun != nil {
+					wdShotInfo := wd_info_shot.ParseWoodpeckerInfo2Shot(*tc.p.WoodpeckerInfo)
+					wd_log.VerboseJsonf(wdShotInfo, "print WoodpeckerInfoShort")
+					wd_log.VerboseJsonf(tc.p.Config, "print Config")
+					t.Fatalf("wantArgFlagNotErr %v\np.Exec() error:\n%v", tc.wantArgFlagNotErr, errPluginRun)
+					return
+				}
+			} else {
+				if errPluginRun == nil {
+					t.Fatalf("test case [ %s ], wantArgFlagNotErr %v, but p.Exec() not error", tc.name, tc.wantArgFlagNotErr)
+				}
 				t.Logf("check args error: %v", errPluginRun)
-			}
-			if (errPluginRun != nil) == tc.wantArgFlagNotErr {
-				wd_log.VerboseJsonf(tc.p.Config, "print Config")
-				t.Fatalf("Exec() error = %v, wantErr %v", errPluginRun, tc.wantArgFlagNotErr)
-				return
 			}
 		})
 	}
@@ -86,6 +93,20 @@ func TestPlugin(t *testing.T) {
 		wd_mock.WithCurrentPipelineStatus(wd_info.BuildStatusFailure),
 	)
 
+	// tagPipeline
+	var tagPipeline plugin.Plugin
+	deepCopyByPlugin(&p, &tagPipeline)
+	tagPipeline.WoodpeckerInfo = wd_mock.NewWoodpeckerInfo(
+		wd_mock.WithFastMockTag("v1.0.0", "new tag"),
+	)
+
+	// pullRequestPipeline
+	var pullRequestPipeline plugin.Plugin
+	deepCopyByPlugin(&p, &pullRequestPipeline)
+	pullRequestPipeline.WoodpeckerInfo = wd_mock.NewWoodpeckerInfo(
+		wd_mock.WithFastMockPullRequest("1", "new pr", "feature-support", "main", "main"),
+	)
+
 	tests := []struct {
 		name            string
 		p               plugin.Plugin
@@ -96,18 +117,28 @@ func TestPlugin(t *testing.T) {
 		wantErr         bool
 	}{
 		{
-			name:     "statusSuccess",
-			p:        statusSuccess,
-			isDryRun: true,
+			name: "statusSuccess",
+			p:    statusSuccess,
 		},
 		{
 			name:     "statusFailure",
 			p:        statusFailure,
 			isDryRun: true,
 		},
+		{
+			name:     "tagPipeline",
+			p:        tagPipeline,
+			isDryRun: true,
+		},
+		{
+			name:     "pullRequestPipeline",
+			p:        pullRequestPipeline,
+			isDryRun: true,
+		},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
+			tc.p.Config.DryRun = tc.isDryRun
 			if tc.workRoot != "" {
 				tc.p.Config.RootPath = tc.workRoot
 				errGenTransferData := generateTransferStepsOut(

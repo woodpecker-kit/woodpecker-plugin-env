@@ -90,6 +90,11 @@ func argCheckInArr(mark string, target string, checkArr []string) error {
 //	replace this code with your plugin implementation
 func (p *Plugin) doBiz() error {
 
+	if p.Config.DryRun {
+		wd_log.Verbosef("dry run, skip some biz code, more info can open debug by flag [ %s ]", wd_flag.EnvKeyPluginDebug)
+		return nil
+	}
+
 	// remove or change this code
 	printBasicEnv(p)
 	return nil
