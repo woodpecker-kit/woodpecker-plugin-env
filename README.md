@@ -60,7 +60,9 @@ steps:
         - GOPATH
         - GOPRIVATE
         - GOBIN
-      env_printer_padding_left_max: 36 # padding left max
+      # env_printer_padding_left_max: # padding left max
+        ## https://woodpecker-ci.org/docs/usage/secrets
+        # from_secret: secret_printer_padding_left_max
       steps_transfer_demo: false # open this show steps transfer demo
 ```
 
