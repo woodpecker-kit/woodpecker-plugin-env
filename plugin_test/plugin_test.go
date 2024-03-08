@@ -10,40 +10,67 @@ import (
 	"testing"
 )
 
-func TestPlugin(t *testing.T) {
+func TestCheckArgsPlugin(t *testing.T) {
 	t.Log("mock Plugin")
+	p := mockPluginWithStatus(t, wd_info.BuildStatusSuccess)
 
-	p := plugin.Plugin{
-		Name:    mockName,
-		Version: mockVersion,
+	// statusSuccess
+	var statusSuccess plugin.Plugin
+	deepCopyByPlugin(&p, &statusSuccess)
+
+	// statusNotSupport
+	var statusNotSupport plugin.Plugin
+	deepCopyByPlugin(&p, &statusNotSupport)
+	statusNotSupport.WoodpeckerInfo = wd_mock.NewWoodpeckerInfo(
+		wd_mock.WithCurrentPipelineStatus("not_support"),
+	)
+
+	tests := []struct {
+		name           string
+		p              plugin.Plugin
+		isDryRun       bool
+		workRoot       string
+		wantArgFlagErr bool
+	}{
+		{
+			name: "statusSuccess",
+			p:    statusSuccess,
+		},
+		{
+			name:           "statusNotSupport",
+			p:              statusNotSupport,
+			wantArgFlagErr: true,
+		},
 	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			err := tc.p.Exec()
+			if (err != nil) != tc.wantArgFlagErr {
+				wd_log.VerboseJsonf(tc.p, "print plugin info")
+				t.Fatalf("FeishuPlugin.Exec() error = %v, wantErr %v", err, tc.wantArgFlagErr)
+				return
+			}
+		})
+	}
+}
 
+func TestPlugin(t *testing.T) {
 	t.Log("do Plugin")
 	if envCheck(t) {
 		return
 	}
-	wd_log.VerboseJsonf(p, "print plugin info")
 	if envMustArgsCheck(t) {
 		return
 	}
+	t.Log("mock Plugin")
+	p := mockPluginWithStatus(t, wd_info.BuildStatusSuccess)
+	//wd_log.VerboseJsonf(p, "print plugin info")
 
-	t.Log("mock woodpecker info")
-
-	// use env:PLUGIN_DEBUG
-	p.Config.Debug = valEnvPluginDebug
-	p.Config.TimeoutSecond = envTimeoutSecond
-	p.Config.RootPath = testGoldenKit.GetTestDataFolderFullPath()
-	p.Config.StepsTransferPath = wd_steps_transfer.DefaultKitStepsFileName
+	t.Log("mock plugin config")
 
 	// remove or change this code
 	p.Config.PaddingLeftMax = envPaddingLeftMax
 	p.Config.EnvPrintKeys = envPrinterPrintKeys
-
-	// mock woodpecker info
-	woodpeckerInfo := wd_mock.NewWoodpeckerInfo(
-		wd_mock.WithCurrentPipelineStatus(wd_info.BuildStatusCreated),
-	)
-	p.WoodpeckerInfo = woodpeckerInfo
 
 	// statusSuccess
 	var statusSuccess plugin.Plugin
@@ -96,6 +123,27 @@ func TestPlugin(t *testing.T) {
 			}
 		})
 	}
+}
+
+func mockPluginWithStatus(t *testing.T, status string) plugin.Plugin {
+	p := plugin.Plugin{
+		Name:    mockName,
+		Version: mockVersion,
+	}
+	// use env:PLUGIN_DEBUG
+	p.Config.Debug = valEnvPluginDebug
+	p.Config.TimeoutSecond = envTimeoutSecond
+	p.Config.RootPath = testGoldenKit.GetTestDataFolderFullPath()
+	p.Config.StepsTransferPath = wd_steps_transfer.DefaultKitStepsFileName
+
+	// mock woodpecker info
+	//t.Log("mockPluginWithStatus")
+	woodpeckerInfo := wd_mock.NewWoodpeckerInfo(
+		wd_mock.WithCurrentPipelineStatus(status),
+	)
+	p.WoodpeckerInfo = woodpeckerInfo
+
+	return p
 }
 
 func deepCopyByPlugin(src, dst *plugin.Plugin) {

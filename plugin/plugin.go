@@ -70,10 +70,18 @@ func (p *Plugin) loadStepsTransfer() error {
 
 func (p *Plugin) checkArgs() error {
 
-	if !(string_tools.StringInArr(p.WoodpeckerInfo.CurrentInfo.CurrentPipelineInfo.CiPipelineStatus, pluginBuildStateSupport)) {
-		return fmt.Errorf("not support build status: %s, must in %v", p.WoodpeckerInfo.CurrentInfo.CurrentPipelineInfo.CiPipelineStatus, pluginBuildStateSupport)
+	errCheck := argCheckInArr("build status", p.WoodpeckerInfo.CurrentInfo.CurrentPipelineInfo.CiPipelineStatus, pluginBuildStateSupport)
+	if errCheck != nil {
+		return errCheck
 	}
 
+	return nil
+}
+
+func argCheckInArr(mark string, target string, checkArr []string) error {
+	if !(string_tools.StringInArr(target, checkArr)) {
+		return fmt.Errorf("not support %s now [ %s ], must in %v", mark, target, checkArr)
+	}
 	return nil
 }
 
