@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 #temple url
-temple_version='1.2.0'
+temple_version='1.3.0'
 temple_url="https://github.com/woodpecker-kit/woodpecker-plugin-env.git"
 temple_repo_host="github.com"
 temple_group="woodpecker-kit"
 temple_name="woodpecker-plugin-env"
 temple_branch="main"
 
-new_version_for_dev='0.1.1'
+new_version_for_dev='1.0.0'
 new_repo_host=${temple_repo_host}
 new_repo_group=${temple_group}
 new_project=

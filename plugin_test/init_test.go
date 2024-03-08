@@ -88,13 +88,7 @@ func envCheck(t *testing.T) bool {
 		return false
 	}
 	t.Logf("check env for CI system")
-	for _, item := range mustSetInCiEnvList {
-		if os.Getenv(item) == "" {
-			t.Logf("plasee set env: %s, than run test\nfull need set env %v", item, mustSetInCiEnvList)
-			return true
-		}
-	}
-	return false
+	return env_kit.MustHasEnvSetByArray(t, mustSetInCiEnvList)
 }
 
 func envMustArgsCheck(t *testing.T) bool {

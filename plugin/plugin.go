@@ -2,6 +2,7 @@ package plugin
 
 import (
 	"fmt"
+	"github.com/sinlov-go/go-common-lib/pkg/string_tools"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_flag"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_info"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
@@ -68,6 +69,11 @@ func (p *Plugin) loadStepsTransfer() error {
 }
 
 func (p *Plugin) checkArgs() error {
+
+	if !(string_tools.StringInArr(p.WoodpeckerInfo.CurrentInfo.CurrentPipelineInfo.CiPipelineStatus, pluginBuildStateSupport)) {
+		return fmt.Errorf("not support build status: %s, must in %v", p.WoodpeckerInfo.CurrentInfo.CurrentPipelineInfo.CiPipelineStatus, pluginBuildStateSupport)
+	}
+
 	return nil
 }
 
