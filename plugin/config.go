@@ -26,6 +26,7 @@ type (
 		Debug             bool
 		TimeoutSecond     uint
 		StepsTransferPath string
+		StepsOutDisable   bool
 		RootPath          string
 
 		DryRun bool

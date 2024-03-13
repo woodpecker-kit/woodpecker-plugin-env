@@ -95,6 +95,11 @@ steps:
       steps_transfer_demo: false # open this show steps transfer demo
 ```
 
+### settings.debug
+
+- if open `settings.debug` will try file browser use `override` for debug.
+- if open `settings.woodpecker_kit_steps_transfer_disable_out` will disable out of `wd_steps_transfer`
+
 ---
 
 - want dev this project, see [doc](doc/README.md)

@@ -102,6 +102,12 @@ func (p *Plugin) doBiz() error {
 
 func (p *Plugin) saveStepsTransfer() error {
 	// remove or change this code
+
+	if p.Config.StepsOutDisable {
+		wd_log.Debugf("steps out disable by flag [ %v ], skip save steps transfer", p.Config.StepsOutDisable)
+		return nil
+	}
+
 	if p.Config.StepsTransferDemo {
 		transferAppendObj, errSave := wd_steps_transfer.Out(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, StepsTransferMarkDemoConfig, p.Config)
 		if errSave != nil {
