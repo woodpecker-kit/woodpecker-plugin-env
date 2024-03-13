@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.5.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.4.0...v1.5.0) (2024-03-13)
+
+### ✨ Features
+
+* add flag settings.woodpecker_kit_steps_transfer_disable_out and base usage ([6dc24e69](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/6dc24e69a673f877a4797ffe30d28eda8d4a132d))
+
+* github.com/woodpecker-kit/woodpecker-tools v1.17.0 and update test template ([a89d28f7](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a89d28f7ee9ac08ba11269894deb4f093a0fe772))
+
+### 📝 Documentation
+
+* update temp-woodpecker-golang-plugin version ([2cd6e875](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/2cd6e8752d0f855ffc5e8fa099200d6035813024))
+
 ## [1.4.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.3.0...v1.4.0) (2024-03-08)
 
 ### ✨ Features
