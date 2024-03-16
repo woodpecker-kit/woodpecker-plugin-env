@@ -32,6 +32,7 @@ type (
 		DryRun bool
 
 		// remove or change this config
+		NotEmptyEnvKeys   []string
 		EnvPrintKeys      []string
 		PaddingLeftMax    int
 		StepsTransferDemo bool

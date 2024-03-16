@@ -56,6 +56,8 @@ steps:
     pull: false
     settings:
       # debug: true
+      # not_empty_envs: # check env not empty v1.7.+ support
+        # - WOODPECKER_AGENT_USER_HOME
       env_printer_print_keys: # print env keys
         - GOPATH
         - GOPRIVATE
@@ -87,6 +89,8 @@ steps:
     image: woodpecker-plugin-env
     settings:
       # debug: false
+      # not_empty_envs: # check env not empty v1.7.+ support
+      # - WOODPECKER_AGENT_USER_HOME
       env_printer_print_keys: # print env keys
         - GOPATH
         - GOPRIVATE

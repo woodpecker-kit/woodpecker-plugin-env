@@ -97,6 +97,21 @@ func (p *Plugin) doBiz() error {
 
 	// remove or change this code
 	printBasicEnv(p)
+	if len(p.Config.NotEmptyEnvKeys) > 0 {
+		errCheck := checkEnvNotEmpty(p.Config.EnvPrintKeys)
+		if errCheck != nil {
+			return errCheck
+		}
+	}
+	return nil
+}
+
+func checkEnvNotEmpty(keys []string) error {
+	for _, env := range keys {
+		if os.Getenv(env) == "" {
+			return fmt.Errorf("check env [ %s ] must set, now is empty", env)
+		}
+	}
 	return nil
 }
 

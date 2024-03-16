@@ -10,6 +10,9 @@ import (
 const (
 	// remove or change this code
 
+	CliNameNotEmptyEnvs = "settings.not_empty_envs"
+	EnvNotEmptyEnvs     = "PLUGIN_NOT_EMPTY_ENVS"
+
 	CliNamePrinterPrintKeys = "settings.env_printer_print_keys"
 	EnvPrinterPrintKeys     = "PLUGIN_ENV_PRINTER_PRINT_KEYS"
 
@@ -25,6 +28,11 @@ const (
 func GlobalFlag() []cli.Flag {
 	return []cli.Flag{
 		// new flag string template if no use, please replace this
+		&cli.StringSliceFlag{
+			Name:    CliNameNotEmptyEnvs,
+			Usage:   "if use this args, will check envs must not empty, fail will exit not 0",
+			EnvVars: []string{EnvNotEmptyEnvs},
+		},
 		&cli.StringSliceFlag{
 			Name:    CliNamePrinterPrintKeys,
 			Usage:   "if use this args, will print env by keys",
@@ -65,6 +73,7 @@ func BindCliFlags(c *cli.Context, cliName, cliVersion string, wdInfo *wd_info.Wo
 		RootPath:          rootPath,
 
 		// remove or change this code
+		NotEmptyEnvKeys:   c.StringSlice(CliNameNotEmptyEnvs),
 		EnvPrintKeys:      c.StringSlice(CliNamePrinterPrintKeys),
 		PaddingLeftMax:    c.Int(CliNamePrinterPaddingLeftMax),
 		StepsTransferDemo: c.Bool(CliNameStepsTransferDemo),
