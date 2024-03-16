@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #temple url
-temple_version='1.5.0'
+temple_version='1.6.0'
 temple_url="https://github.com/woodpecker-kit/woodpecker-plugin-env.git"
 temple_repo_host="github.com"
 temple_group="woodpecker-kit"

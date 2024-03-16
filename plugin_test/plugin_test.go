@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/plugin"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_info"
-	"github.com/woodpecker-kit/woodpecker-tools/wd_info_shot"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_mock"
+	"github.com/woodpecker-kit/woodpecker-tools/wd_short_info"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_steps_transfer"
 	"testing"
 )
@@ -48,7 +48,7 @@ func TestCheckArgsPlugin(t *testing.T) {
 			errPluginRun := tc.p.Exec()
 			if tc.wantArgFlagNotErr {
 				if errPluginRun != nil {
-					wdShotInfo := wd_info_shot.ParseWoodpeckerInfo2Shot(*tc.p.WoodpeckerInfo)
+					wdShotInfo := wd_short_info.ParseWoodpeckerInfo2Short(*tc.p.WoodpeckerInfo)
 					wd_log.VerboseJsonf(wdShotInfo, "print WoodpeckerInfoShort")
 					wd_log.VerboseJsonf(tc.p.Config, "print Config")
 					t.Fatalf("wantArgFlagNotErr %v\np.Exec() error:\n%v", tc.wantArgFlagNotErr, errPluginRun)
