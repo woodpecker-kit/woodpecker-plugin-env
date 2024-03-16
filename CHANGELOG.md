@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.7.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.6.0...v1.7.0) (2024-03-16)
+
+### ✨ Features
+
+* add settings.not_empty_envs for support empty env check ([07356c76](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/07356c76b8d1f192938158babb93530d6350a4a0))
+
 ## [1.6.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.5.0...v1.6.0) (2024-03-16)
 
 ### ✨ Features
