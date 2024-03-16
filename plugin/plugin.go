@@ -98,7 +98,7 @@ func (p *Plugin) doBiz() error {
 	// remove or change this code
 	printBasicEnv(p)
 	if len(p.Config.NotEmptyEnvKeys) > 0 {
-		errCheck := checkEnvNotEmpty(p.Config.EnvPrintKeys)
+		errCheck := checkEnvNotEmpty(p.Config.NotEmptyEnvKeys)
 		if errCheck != nil {
 			return errCheck
 		}
