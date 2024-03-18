@@ -101,36 +101,39 @@ $ make helpDocker
 ```
 .
 ├── Dockerfile                     # ci docker build
-├── Dockerfile.s6                  # local docker build
+├── build.dockerfile               # local docker build
 ├── Makefile                       # make entry
 ├── README.md
-├── build                          # build output
+├── build                          # build output folder
+├── dist                           # dist output folder
 ├── cmd
-│     └── woodpecker-plugin-env     # command line main package install and dev entrance
+│     ├── cli
+│     │     ├── app.go             # cli entry
+│     │     ├── cli_aciton_test.go # cli action test
+│     │     └── cli_action.go      # cli action
+│     └── woodpecker-plugin-env    # command line main package install and dev entrance
 │         ├── main.go                   # command line entry
 │         └── main_test.go              # integrated test entry
-├── command                        # command line package
-│         ├── TestMain.go             # common entry in unit test package
-│         ├── flag.go                 # global flag
-│         ├── global.go               # global command
-│         ├── global_test.go          # global command unit test
-│         ├── golder_data_test.go     # unit test test data case
-│         ├── init_test.go            # unit test initialization tool
-│         └── subcommand_new          # subcommandPackage new
-├── constant                       # constant package 
-│         └── env.go                  # constant environment variable
+├── constant                       # constant package
+│         ├── common_flag.go         # common environment variable
+│         ├── platform_flag.go       # platform environment variable
+│         └── version.go             # semver version constraint set
 ├── doc                            # command line tools documentation
 │         └── cmd.md
 ├── go.mod
 ├── go.sum
-├── package.json                   # command line profile information
-├── resource.go                    # embed resource 
-├── utils                          # toolkit package
-│         ├── env_kit                 # environment variables toolkit
-│         ├── log                     # log toolkit
+├── package.json                   # command line profile information for embed
+├── resource.go                    # embed resource
+├── internal                          # toolkit package
 │         ├── pkgJson                 # package.json toolkit
-│         └── urfave_cli              # urfave/cli toolkit
-├── vendor
+│         └── version_check           # version check by semver
+├── plugin                         # plugin package
+│         ├── flag.go                 # plugin flag
+│         ├── plugin.go               # plugin entry
+│         └── settings.go             # plugin settings
+├── plugin_test                    # plugin test
+│         ├── init_test.go            # eacg test init
+│         └── plugin_test.go          # plugin test
 └── z-MakefileUtils                # make toolkit
 
 ```
