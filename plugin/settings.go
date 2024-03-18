@@ -21,8 +21,8 @@ var (
 )
 
 type (
-	// Config plugin private config
-	Config struct {
+	// Settings plugin private config
+	Settings struct {
 		Debug             bool
 		TimeoutSecond     uint
 		StepsTransferPath string

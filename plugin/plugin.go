@@ -18,7 +18,7 @@ type (
 		Name           string
 		Version        string
 		WoodpeckerInfo *wd_info.WoodpeckerInfo
-		Config         Config
+		Config         Settings
 
 		FuncPlugin FuncPlugin `json:"-"`
 	}
@@ -58,7 +58,7 @@ func (p *Plugin) Exec() error {
 func (p *Plugin) loadStepsTransfer() error {
 	// remove or change this code
 	if p.Config.StepsTransferDemo {
-		var readConfigData Config
+		var readConfigData Settings
 		errLoad := wd_steps_transfer.In(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, StepsTransferMarkDemoConfig, &readConfigData)
 		if errLoad != nil {
 			return nil
@@ -85,6 +85,15 @@ func argCheckInArr(mark string, target string, checkArr []string) error {
 	return nil
 }
 
+func checkEnvNotEmpty(keys []string) error {
+	for _, env := range keys {
+		if os.Getenv(env) == "" {
+			return fmt.Errorf("check env [ %s ] must set, now is empty", env)
+		}
+	}
+	return nil
+}
+
 // doBiz
 //
 //	replace this code with your plugin implementation
@@ -101,15 +110,6 @@ func (p *Plugin) doBiz() error {
 		errCheck := checkEnvNotEmpty(p.Config.NotEmptyEnvKeys)
 		if errCheck != nil {
 			return errCheck
-		}
-	}
-	return nil
-}
-
-func checkEnvNotEmpty(keys []string) error {
-	for _, env := range keys {
-		if os.Getenv(env) == "" {
-			return fmt.Errorf("check env [ %s ] must set, now is empty", env)
 		}
 	}
 	return nil

@@ -50,7 +50,7 @@ func TestCheckArgsPlugin(t *testing.T) {
 				if errPluginRun != nil {
 					wdShotInfo := wd_short_info.ParseWoodpeckerInfo2Short(*tc.p.WoodpeckerInfo)
 					wd_log.VerboseJsonf(wdShotInfo, "print WoodpeckerInfoShort")
-					wd_log.VerboseJsonf(tc.p.Config, "print Config")
+					wd_log.VerboseJsonf(tc.p.Config, "print Settings")
 					t.Fatalf("wantArgFlagNotErr %v\np.Exec() error:\n%v", tc.wantArgFlagNotErr, errPluginRun)
 					return
 				}

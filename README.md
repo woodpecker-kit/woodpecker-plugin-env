@@ -56,16 +56,16 @@ steps:
     pull: false
     settings:
       # debug: true
-      # not_empty_envs: # check env not empty v1.7.+ support
+      # not-empty-envs: # check env not empty v1.7.+ support
         # - WOODPECKER_AGENT_USER_HOME
-      env_printer_print_keys: # print env keys
+      env-printer-print-keys: # print env keys
         - GOPATH
         - GOPRIVATE
         - GOBIN
-      # env_printer_padding_left_max: # padding left max
+      # env-printer-padding-left-max: # padding left max
         ## https://woodpecker-ci.org/docs/usage/secrets
         # from_secret: secret_printer_padding_left_max
-      steps_transfer_demo: false # open this show steps transfer demo
+      steps-transfer-demo: false # open this show steps transfer demo
 ```
 
 - workflow with backend `local`, must install at local and effective at evn `PATH`
@@ -89,14 +89,14 @@ steps:
     image: woodpecker-plugin-env
     settings:
       # debug: false
-      # not_empty_envs: # check env not empty v1.7.+ support
+      # not-empty-envs: # check env not empty v1.7.+ support
       # - WOODPECKER_AGENT_USER_HOME
-      env_printer_print_keys: # print env keys
+      env-printer-print-keys: # print env keys
         - GOPATH
         - GOPRIVATE
         - GOBIN
-      env_printer_padding_left_max: 36 # padding left max
-      steps_transfer_demo: false # open this show steps transfer demo
+      env-printer-padding-left-max: 36 # padding left max
+      steps-transfer-demo: false # open this show steps transfer demo
 ```
 
 ### settings.debug

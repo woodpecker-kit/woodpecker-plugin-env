@@ -10,16 +10,16 @@ import (
 const (
 	// remove or change this code
 
-	CliNameNotEmptyEnvs = "settings.not_empty_envs"
+	CliNameNotEmptyEnvs = "settings.not-empty-envs"
 	EnvNotEmptyEnvs     = "PLUGIN_NOT_EMPTY_ENVS"
 
-	CliNamePrinterPrintKeys = "settings.env_printer_print_keys"
+	CliNamePrinterPrintKeys = "settings.env-printer-print-keys"
 	EnvPrinterPrintKeys     = "PLUGIN_ENV_PRINTER_PRINT_KEYS"
 
-	CliNamePrinterPaddingLeftMax = "settings.env_printer_padding_left_max"
+	CliNamePrinterPaddingLeftMax = "settings.env-printer-padding-left-max"
 	EnvPrinterPaddingLeftMax     = "PLUGIN_ENV_PRINTER_PADDING_LEFT_MAX"
 
-	CliNameStepsTransferDemo = "settings.steps_transfer_demo"
+	CliNameStepsTransferDemo = "settings.steps-transfer-demo"
 	EnvStepsTransferDemo     = "PLUGIN_STEPS_TRANSFER_DEMO"
 )
 
@@ -65,7 +65,7 @@ func HideGlobalFlag() []cli.Flag {
 func BindCliFlags(c *cli.Context, cliName, cliVersion string, wdInfo *wd_info.WoodpeckerInfo, rootPath, stepsTransferPath string, stepsOutDisable bool) (*Plugin, error) {
 	debug := isBuildDebugOpen(c)
 
-	config := Config{
+	config := Settings{
 		Debug:             debug,
 		TimeoutSecond:     c.Uint(wd_flag.NameCliPluginTimeoutSecond),
 		StepsTransferPath: stepsTransferPath,
