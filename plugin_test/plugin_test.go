@@ -45,12 +45,13 @@ func TestCheckArgsPlugin(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
+			tc.p.OnlyArgsCheck()
 			errPluginRun := tc.p.Exec()
 			if tc.wantArgFlagNotErr {
 				if errPluginRun != nil {
 					wdShotInfo := wd_short_info.ParseWoodpeckerInfo2Short(*tc.p.WoodpeckerInfo)
 					wd_log.VerboseJsonf(wdShotInfo, "print WoodpeckerInfoShort")
-					wd_log.VerboseJsonf(tc.p.Config, "print Settings")
+					wd_log.VerboseJsonf(tc.p.Settings, "print Settings")
 					t.Fatalf("wantArgFlagNotErr %v\np.Exec() error:\n%v", tc.wantArgFlagNotErr, errPluginRun)
 					return
 				}
@@ -79,8 +80,8 @@ func TestPlugin(t *testing.T) {
 	t.Log("mock plugin config")
 
 	// remove or change this code
-	p.Config.PaddingLeftMax = envPaddingLeftMax
-	p.Config.EnvPrintKeys = envPrinterPrintKeys
+	p.Settings.PaddingLeftMax = envPaddingLeftMax
+	p.Settings.EnvPrintKeys = envPrinterPrintKeys
 
 	// statusSuccess
 	var statusSuccess plugin.Plugin
@@ -138,9 +139,9 @@ func TestPlugin(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			tc.p.Config.DryRun = tc.isDryRun
+			tc.p.Settings.DryRun = tc.isDryRun
 			if tc.workRoot != "" {
-				tc.p.Config.RootPath = tc.workRoot
+				tc.p.Settings.RootPath = tc.workRoot
 				errGenTransferData := generateTransferStepsOut(
 					tc.p,
 					tc.ossTransferKey,
@@ -165,10 +166,10 @@ func mockPluginWithStatus(t *testing.T, status string) plugin.Plugin {
 		Version: mockVersion,
 	}
 	// use env:PLUGIN_DEBUG
-	p.Config.Debug = valEnvPluginDebug
-	p.Config.TimeoutSecond = envTimeoutSecond
-	p.Config.RootPath = testGoldenKit.GetTestDataFolderFullPath()
-	p.Config.StepsTransferPath = wd_steps_transfer.DefaultKitStepsFileName
+	p.Settings.Debug = valEnvPluginDebug
+	p.Settings.TimeoutSecond = envTimeoutSecond
+	p.Settings.RootPath = testGoldenKit.GetTestDataFolderFullPath()
+	p.Settings.StepsTransferPath = wd_steps_transfer.DefaultKitStepsFileName
 
 	// mock woodpecker info
 	//t.Log("mockPluginWithStatus")
@@ -192,6 +193,6 @@ func deepCopyByPlugin(src, dst *plugin.Plugin) {
 }
 
 func generateTransferStepsOut(plugin plugin.Plugin, mark string, data interface{}) error {
-	_, err := wd_steps_transfer.Out(plugin.Config.RootPath, plugin.Config.StepsTransferPath, *plugin.WoodpeckerInfo, mark, data)
+	_, err := wd_steps_transfer.Out(plugin.Settings.RootPath, plugin.Settings.StepsTransferPath, *plugin.WoodpeckerInfo, mark, data)
 	return err
 }

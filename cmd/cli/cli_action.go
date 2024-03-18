@@ -24,17 +24,17 @@ func GlobalBeforeAction(c *cli.Context) error {
 
 	isDebug := wd_urfave_cli_v2.IsBuildDebugOpen(c)
 	if isDebug {
-		wd_log.OpenDebug()
 		// print global debug info
 		allEnvPrintStr := env_kit.FindAllEnv4PrintAsSortJust(36)
-		wd_log.Debugf("==> plugin start with all env:\n%s", allEnvPrintStr)
+		wd_log.Verbosef("==> plugin start with all env:\n%s", allEnvPrintStr)
 		currentUser, err := user.Current()
 		if err == nil {
-			wd_log.Debugf("==> current Username : %s\n", currentUser.Username)
-			wd_log.Debugf("==> current user name: %s\n", currentUser.Name)
-			wd_log.Debugf("==> current gid: %s, uid: %s\n", currentUser.Gid, currentUser.Uid)
-			wd_log.Debugf("==> current user home: %s\n", currentUser.HomeDir)
+			wd_log.Verbosef("==> current Username : %s\n", currentUser.Username)
+			wd_log.Verbosef("==> current user name: %s\n", currentUser.Name)
+			wd_log.Verbosef("==> current gid: %s, uid: %s\n", currentUser.Gid, currentUser.Uid)
+			wd_log.Verbosef("==> current user home: %s\n", currentUser.HomeDir)
 		}
+		wd_log.OpenDebug()
 	}
 
 	namePlugin := pkgJson.GetPackageJsonName()

@@ -18,18 +18,24 @@ type (
 		Name           string
 		Version        string
 		WoodpeckerInfo *wd_info.WoodpeckerInfo
-		Config         Settings
+		onlyArgsCheck  bool
+		Settings       Settings
 
 		FuncPlugin FuncPlugin `json:"-"`
 	}
 )
 
 type FuncPlugin interface {
+	OnlyArgsCheck()
 	Exec() error
 
 	loadStepsTransfer() error
 	checkArgs() error
 	saveStepsTransfer() error
+}
+
+func (p *Plugin) OnlyArgsCheck() {
+	p.onlyArgsCheck = true
 }
 
 func (p *Plugin) Exec() error {
@@ -41,6 +47,11 @@ func (p *Plugin) Exec() error {
 	errCheckArgs := p.checkArgs()
 	if errCheckArgs != nil {
 		return fmt.Errorf("check args err: %v", errCheckArgs)
+	}
+
+	if p.onlyArgsCheck {
+		wd_log.Info("only check args, skip do doBiz")
+		return nil
 	}
 
 	err := p.doBiz()
@@ -57,9 +68,9 @@ func (p *Plugin) Exec() error {
 
 func (p *Plugin) loadStepsTransfer() error {
 	// remove or change this code
-	if p.Config.StepsTransferDemo {
+	if p.Settings.StepsTransferDemo {
 		var readConfigData Settings
-		errLoad := wd_steps_transfer.In(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, StepsTransferMarkDemoConfig, &readConfigData)
+		errLoad := wd_steps_transfer.In(p.Settings.RootPath, p.Settings.StepsTransferPath, *p.WoodpeckerInfo, StepsTransferMarkDemoConfig, &readConfigData)
 		if errLoad != nil {
 			return nil
 		}
@@ -99,15 +110,15 @@ func checkEnvNotEmpty(keys []string) error {
 //	replace this code with your plugin implementation
 func (p *Plugin) doBiz() error {
 
-	if p.Config.DryRun {
+	if p.Settings.DryRun {
 		wd_log.Verbosef("dry run, skip some biz code, more info can open debug by flag [ %s ]", wd_flag.EnvKeyPluginDebug)
 		return nil
 	}
 
 	// remove or change this code
 	printBasicEnv(p)
-	if len(p.Config.NotEmptyEnvKeys) > 0 {
-		errCheck := checkEnvNotEmpty(p.Config.NotEmptyEnvKeys)
+	if len(p.Settings.NotEmptyEnvKeys) > 0 {
+		errCheck := checkEnvNotEmpty(p.Settings.NotEmptyEnvKeys)
 		if errCheck != nil {
 			return errCheck
 		}
@@ -118,13 +129,13 @@ func (p *Plugin) doBiz() error {
 func (p *Plugin) saveStepsTransfer() error {
 	// remove or change this code
 
-	if p.Config.StepsOutDisable {
-		wd_log.Debugf("steps out disable by flag [ %v ], skip save steps transfer", p.Config.StepsOutDisable)
+	if p.Settings.StepsOutDisable {
+		wd_log.Debugf("steps out disable by flag [ %v ], skip save steps transfer", p.Settings.StepsOutDisable)
 		return nil
 	}
 
-	if p.Config.StepsTransferDemo {
-		transferAppendObj, errSave := wd_steps_transfer.Out(p.Config.RootPath, p.Config.StepsTransferPath, *p.WoodpeckerInfo, StepsTransferMarkDemoConfig, p.Config)
+	if p.Settings.StepsTransferDemo {
+		transferAppendObj, errSave := wd_steps_transfer.Out(p.Settings.RootPath, p.Settings.StepsTransferPath, *p.WoodpeckerInfo, StepsTransferMarkDemoConfig, p.Settings)
 		if errSave != nil {
 			return errSave
 		}
@@ -136,7 +147,7 @@ func (p *Plugin) saveStepsTransfer() error {
 func printBasicEnv(p *Plugin) {
 	var sb strings.Builder
 	_, _ = fmt.Fprint(&sb, "-> just print basic env:\n")
-	paddingMax := strconv.Itoa(p.Config.PaddingLeftMax)
+	paddingMax := strconv.Itoa(p.Settings.PaddingLeftMax)
 
 	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyCurrentCiWorkflowName, p.WoodpeckerInfo.CurrentInfo.CurrentWorkflowInfo.CiWorkflowName)
 	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyWoodpeckerBackend, p.WoodpeckerInfo.CiSystemInfo.WoodpeckerBackend)
@@ -182,10 +193,10 @@ func printBasicEnv(p *Plugin) {
 	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyPreviousCiPipelineStatus, p.WoodpeckerInfo.PreviousInfo.PreviousPipelineInfo.CiPreviousPipelineStatus)
 	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyPreviousCiPipelineUrl, p.WoodpeckerInfo.PreviousInfo.PreviousPipelineInfo.CiPreviousPipelineUrl)
 
-	if len(p.Config.EnvPrintKeys) > 0 {
+	if len(p.Settings.EnvPrintKeys) > 0 {
 		appendStrBuilderNewLine(&sb)
 		_, _ = fmt.Fprint(&sb, "-> start print keys env:\n")
-		for _, key := range p.Config.EnvPrintKeys {
+		for _, key := range p.Settings.EnvPrintKeys {
 			appendEnvStrBuilder(&sb, paddingMax, key, os.Getenv(key))
 		}
 		_, _ = fmt.Fprint(&sb, "-> end print keys env\n")

@@ -94,7 +94,7 @@ func BindCliFlags(c *cli.Context, cliName, cliVersion string, wdInfo *wd_info.Wo
 		Name:           cliName,
 		Version:        cliVersion,
 		WoodpeckerInfo: wdInfo,
-		Config:         config,
+		Settings:       config,
 	}
 
 	return &p, nil
