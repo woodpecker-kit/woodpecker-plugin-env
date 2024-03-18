@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.9.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.8.0...v1.9.0) (2024-03-18)
+
+### ✨ Features
+
+* add OnlyArgsCheck for Plugin unit test, and let less print at global debug info ([ac624b05](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/ac624b05614383e3eadc6cc089586edcc92c35e3))
+
 ## [1.8.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.7.1...v1.8.0) (2024-03-18)
 
 ### ✨ Features
