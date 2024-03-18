@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.8.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.7.1...v1.8.0) (2024-03-18)
+
+### ✨ Features
+
+* print global debug info try print current user info ([01c7f832](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/01c7f832e9bc7a98b63ba64cd24328b1e4ee4f41))
+
+* change default flag name and change Config to Settings let code more clear ([c5f43303](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/c5f43303000a2afa72efcb1e261a0299114a26d4))
+
 ## [1.7.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.7.0...v1.7.1) (2024-03-16)
 
 ### 🐛 Bug Fixes
