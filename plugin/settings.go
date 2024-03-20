@@ -8,18 +8,6 @@ const (
 	StepsTransferMarkDemoConfig = "demo_config"
 )
 
-var (
-	// pluginBuildStateSupport
-	pluginBuildStateSupport = []string{
-		wd_info.BuildStatusCreated,
-		wd_info.BuildStatusRunning,
-		wd_info.BuildStatusSuccess,
-		wd_info.BuildStatusFailure,
-		wd_info.BuildStatusError,
-		wd_info.BuildStatusKilled,
-	}
-)
-
 type (
 	// Settings plugin private config
 	Settings struct {
@@ -36,5 +24,17 @@ type (
 		EnvPrintKeys      []string
 		PaddingLeftMax    int
 		StepsTransferDemo bool
+	}
+)
+
+var (
+	// pluginBuildStateSupport
+	pluginBuildStateSupport = []string{
+		wd_info.BuildStatusCreated,
+		wd_info.BuildStatusRunning,
+		wd_info.BuildStatusSuccess,
+		wd_info.BuildStatusFailure,
+		wd_info.BuildStatusError,
+		wd_info.BuildStatusKilled,
 	}
 )

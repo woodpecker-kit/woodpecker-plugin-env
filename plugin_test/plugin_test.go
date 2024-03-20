@@ -1,60 +1,65 @@
 package plugin_test
 
 import (
-	"encoding/json"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/plugin"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_info"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_mock"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_short_info"
-	"github.com/woodpecker-kit/woodpecker-tools/wd_steps_transfer"
 	"testing"
 )
 
 func TestCheckArgsPlugin(t *testing.T) {
 	t.Log("mock Plugin")
-	p := mockPluginWithStatus(t, wd_info.BuildStatusSuccess)
+	// successArgs
+	successArgsWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
+		wd_mock.WithCurrentPipelineStatus(wd_info.BuildStatusSuccess),
+	)
+	successArgsSettings := mockPluginSettings()
 
-	// statusSuccess
-	var statusSuccess plugin.Plugin
-	deepCopyByPlugin(&p, &statusSuccess)
-
-	// statusNotSupport
-	var statusNotSupport plugin.Plugin
-	deepCopyByPlugin(&p, &statusNotSupport)
-	statusNotSupport.WoodpeckerInfo = wd_mock.NewWoodpeckerInfo(
+	// notSupport
+	notSupportWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
 		wd_mock.WithCurrentPipelineStatus("not_support"),
 	)
+	notSupportSettings := mockPluginSettings()
 
 	tests := []struct {
-		name              string
-		p                 plugin.Plugin
+		name           string
+		woodpeckerInfo wd_info.WoodpeckerInfo
+		settings       plugin.Settings
+		workRoot       string
+
 		isDryRun          bool
-		workRoot          string
 		wantArgFlagNotErr bool
 	}{
 		{
-			name:              "statusSuccess",
-			p:                 statusSuccess,
+			name:              "successArgs",
+			woodpeckerInfo:    successArgsWoodpeckerInfo,
+			settings:          successArgsSettings,
 			wantArgFlagNotErr: true,
 		},
 		{
-			name: "statusNotSupport",
-			p:    statusNotSupport,
+			name:           "notSupport",
+			woodpeckerInfo: notSupportWoodpeckerInfo,
+			settings:       notSupportSettings,
 		},
 	}
+
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			tc.p.OnlyArgsCheck()
-			errPluginRun := tc.p.Exec()
+			p := mockPluginWithSettings(t, tc.woodpeckerInfo, tc.settings)
+			p.OnlyArgsCheck()
+			errPluginRun := p.Exec()
 			if tc.wantArgFlagNotErr {
 				if errPluginRun != nil {
-					wdShotInfo := wd_short_info.ParseWoodpeckerInfo2Short(*tc.p.WoodpeckerInfo)
+					wdShotInfo := wd_short_info.ParseWoodpeckerInfo2Short(p.GetWoodPeckerInfo())
 					wd_log.VerboseJsonf(wdShotInfo, "print WoodpeckerInfoShort")
-					wd_log.VerboseJsonf(tc.p.Settings, "print Settings")
+					wd_log.VerboseJsonf(p.Settings, "print Settings")
 					t.Fatalf("wantArgFlagNotErr %v\np.Exec() error:\n%v", tc.wantArgFlagNotErr, errPluginRun)
 					return
 				}
+				infoShot := p.ShortInfo()
+				wd_log.VerboseJsonf(infoShot, "print WoodpeckerInfoShort")
 			} else {
 				if errPluginRun == nil {
 					t.Fatalf("test case [ %s ], wantArgFlagNotErr %v, but p.Exec() not error", tc.name, tc.wantArgFlagNotErr)
@@ -74,76 +79,77 @@ func TestPlugin(t *testing.T) {
 		return
 	}
 	t.Log("mock Plugin")
-	p := mockPluginWithStatus(t, wd_info.BuildStatusSuccess)
-	//wd_log.VerboseJsonf(p, "print plugin info")
 
 	t.Log("mock plugin config")
 
-	// remove or change this code
-	p.Settings.PaddingLeftMax = envPaddingLeftMax
-	p.Settings.EnvPrintKeys = envPrinterPrintKeys
-
 	// statusSuccess
-	var statusSuccess plugin.Plugin
-	deepCopyByPlugin(&p, &statusSuccess)
+	statusSuccessWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
+		wd_mock.WithCurrentPipelineStatus(wd_info.BuildStatusSuccess),
+	)
+	statusSuccessSettings := mockPluginSettings()
 
 	// statusFailure
-	var statusFailure plugin.Plugin
-	deepCopyByPlugin(&p, &statusFailure)
-	statusFailure.WoodpeckerInfo = wd_mock.NewWoodpeckerInfo(
+	statusFailureWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
 		wd_mock.WithCurrentPipelineStatus(wd_info.BuildStatusFailure),
 	)
+	statusFailureSettings := mockPluginSettings()
 
 	// tagPipeline
-	var tagPipeline plugin.Plugin
-	deepCopyByPlugin(&p, &tagPipeline)
-	tagPipeline.WoodpeckerInfo = wd_mock.NewWoodpeckerInfo(
+	tagPipelineWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
 		wd_mock.WithFastMockTag("v1.0.0", "new tag"),
 	)
+	tagPipelineSettings := mockPluginSettings()
 
 	// pullRequestPipeline
-	var pullRequestPipeline plugin.Plugin
-	deepCopyByPlugin(&p, &pullRequestPipeline)
-	pullRequestPipeline.WoodpeckerInfo = wd_mock.NewWoodpeckerInfo(
+	pullRequestPipelineWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
 		wd_mock.WithFastMockPullRequest("1", "new pr", "feature-support", "main", "main"),
 	)
+	pullRequestPipelineSettings := mockPluginSettings()
 
 	tests := []struct {
-		name            string
-		p               plugin.Plugin
-		isDryRun        bool
-		workRoot        string
+		name           string
+		woodpeckerInfo wd_info.WoodpeckerInfo
+		settings       plugin.Settings
+		workRoot       string
+
 		ossTransferKey  string
 		ossTransferData interface{}
-		wantErr         bool
+
+		isDryRun bool
+		wantErr  bool
 	}{
 		{
-			name: "statusSuccess",
-			p:    statusSuccess,
+			name:           "statusSuccess",
+			woodpeckerInfo: statusSuccessWoodpeckerInfo,
+			settings:       statusSuccessSettings,
 		},
 		{
-			name:     "statusFailure",
-			p:        statusFailure,
-			isDryRun: true,
+			name:           "statusFailure",
+			woodpeckerInfo: statusFailureWoodpeckerInfo,
+			settings:       statusFailureSettings,
+			isDryRun:       true,
 		},
 		{
-			name:     "tagPipeline",
-			p:        tagPipeline,
-			isDryRun: true,
+			name:           "tagPipeline",
+			woodpeckerInfo: tagPipelineWoodpeckerInfo,
+			settings:       tagPipelineSettings,
+			isDryRun:       true,
 		},
 		{
-			name:     "pullRequestPipeline",
-			p:        pullRequestPipeline,
-			isDryRun: true,
+			name:           "pullRequestPipeline",
+			woodpeckerInfo: pullRequestPipelineWoodpeckerInfo,
+			settings:       pullRequestPipelineSettings,
+			isDryRun:       true,
 		},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			tc.p.Settings.DryRun = tc.isDryRun
+			p := mockPluginWithSettings(t, tc.woodpeckerInfo, tc.settings)
+			p.Settings.DryRun = tc.isDryRun
 			if tc.workRoot != "" {
-				tc.p.Settings.RootPath = tc.workRoot
+				p.Settings.RootPath = tc.workRoot
 				errGenTransferData := generateTransferStepsOut(
-					tc.p,
+					p,
 					tc.ossTransferKey,
 					tc.ossTransferData,
 				)
@@ -151,48 +157,11 @@ func TestPlugin(t *testing.T) {
 					t.Fatal(errGenTransferData)
 				}
 			}
-			err := tc.p.Exec()
+			err := p.Exec()
 			if (err != nil) != tc.wantErr {
 				t.Errorf("FeishuPlugin.Exec() error = %v, wantErr %v", err, tc.wantErr)
 				return
 			}
 		})
 	}
-}
-
-func mockPluginWithStatus(t *testing.T, status string) plugin.Plugin {
-	p := plugin.Plugin{
-		Name:    mockName,
-		Version: mockVersion,
-	}
-	// use env:PLUGIN_DEBUG
-	p.Settings.Debug = valEnvPluginDebug
-	p.Settings.TimeoutSecond = envTimeoutSecond
-	p.Settings.RootPath = testGoldenKit.GetTestDataFolderFullPath()
-	p.Settings.StepsTransferPath = wd_steps_transfer.DefaultKitStepsFileName
-
-	// mock woodpecker info
-	//t.Log("mockPluginWithStatus")
-	woodpeckerInfo := wd_mock.NewWoodpeckerInfo(
-		wd_mock.WithCurrentPipelineStatus(status),
-	)
-	p.WoodpeckerInfo = woodpeckerInfo
-
-	// mock all config at here
-
-	return p
-}
-
-func deepCopyByPlugin(src, dst *plugin.Plugin) {
-	if tmp, err := json.Marshal(&src); err != nil {
-		return
-	} else {
-		err = json.Unmarshal(tmp, dst)
-		return
-	}
-}
-
-func generateTransferStepsOut(plugin plugin.Plugin, mark string, data interface{}) error {
-	_, err := wd_steps_transfer.Out(plugin.Settings.RootPath, plugin.Settings.StepsTransferPath, *plugin.WoodpeckerInfo, mark, data)
-	return err
 }

@@ -45,65 +45,8 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 
 ### workflow usage
 
-- workflow with backend `docker`
+- see [doc](doc/docs.md)
 
-```yml
-labels:
-  backend: docker
-steps:
-  woodpecker-plugin-env:
-    image: sinlov/woodpecker-plugin-env:latest
-    pull: false
-    settings:
-      # debug: true
-      # not-empty-envs: # check env not empty v1.7.+ support
-        # - WOODPECKER_AGENT_USER_HOME
-      env-printer-print-keys: # print env keys
-        - GOPATH
-        - GOPRIVATE
-        - GOBIN
-      # env-printer-padding-left-max: # padding left max
-        ## https://woodpecker-ci.org/docs/usage/secrets
-        # from_secret: secret_printer_padding_left_max
-      steps-transfer-demo: false # open this show steps transfer demo
-```
-
-- workflow with backend `local`, must install at local and effective at evn `PATH`
-- install at ${GOPATH}/bin, latest
-
-```bash
-go install -a github.com/woodpecker-kit/woodpecker-plugin-env/cmd/woodpecker-plugin-env@latest
-```
-
-- install at ${GOPATH}/bin, v1.0.0
-
-```bash
-go install -v github.com/woodpecker-kit/woodpecker-plugin-env/cmd/woodpecker-plugin-env@v1.0.0
-```
-
-```yml
-labels:
-  backend: local
-steps:
-  woodpecker-plugin-env:
-    image: woodpecker-plugin-env
-    settings:
-      # debug: false
-      # not-empty-envs: # check env not empty v1.7.+ support
-      # - WOODPECKER_AGENT_USER_HOME
-      env-printer-print-keys: # print env keys
-        - GOPATH
-        - GOPRIVATE
-        - GOBIN
-      env-printer-padding-left-max: 36 # padding left max
-      steps-transfer-demo: false # open this show steps transfer demo
-```
-
-### settings.debug
-
-- if open `settings.debug` will try file browser use `override` for debug.
-- if open `settings.woodpecker_kit_steps_transfer_disable_out` will disable out of `wd_steps_transfer`
-
----
+## Notice
 
 - want dev this project, see [doc](doc/README.md)
