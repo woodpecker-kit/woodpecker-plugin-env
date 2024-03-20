@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.10.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.9.0...v1.10.0) (2024-03-20)
+
+### BREAKING CHANGE:
+
+* update Engineering Structure and add doc/docs.md for maintain
+
+### ✨ Features
+
+* refactor plugin as impl.go and update full unit test case ([7dacec4c](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/7dacec4c217c1e0219ee370e8931fb7da62e29a2))
+
+### 📝 Documentation
+
+* update basic doc for plugin ([a2c7ac69](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a2c7ac6957d60b17c40e8e61a3daca7e8e0d8731))
+
 ## [1.9.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.8.0...v1.9.0) (2024-03-18)
 
 ### ✨ Features
