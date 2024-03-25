@@ -4,6 +4,7 @@ package main
 
 import (
 	"github.com/gookit/color"
+	"github.com/joho/godotenv"
 	"github.com/woodpecker-kit/woodpecker-plugin-env"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/cmd/cli"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/pkgJson"
@@ -19,6 +20,14 @@ func main() {
 	//wd_template.RegisterSettings(wd_template.DefaultHelpers)
 
 	app := cli.NewCliApp()
+
+	// kubernetes runner patch
+	if _, err := os.Stat("/run/drone/env"); err == nil {
+		errDotEnv := godotenv.Overload("/run/drone/env")
+		if errDotEnv != nil {
+			wd_log.Fatalf("load /run/drone/env err: %v", errDotEnv)
+		}
+	}
 
 	args := os.Args
 	if err := app.Run(args); nil != err {
