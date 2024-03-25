@@ -29,6 +29,14 @@ func main() {
 		}
 	}
 
+	// load env file by env `PLUGIN_ENV_FILE`
+	if envFile, set := os.LookupEnv("PLUGIN_ENV_FILE"); set {
+		errLoadEnvFile := godotenv.Overload(envFile)
+		if errLoadEnvFile != nil {
+			wd_log.Fatalf("load env file %s err: %v", envFile, errLoadEnvFile)
+		}
+	}
+
 	args := os.Args
 	if err := app.Run(args); nil != err {
 		color.Redf("cli err at %v\n", err)
