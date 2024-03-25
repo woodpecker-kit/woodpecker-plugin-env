@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.11.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.11.0...v1.11.1) (2024-03-25)
+
+### 🐛 Bug Fixes
+
+* change load drone env or PLUGIN_ENV_FILE time ([37a7f6d4](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/37a7f6d44a8766d6804f5ce1ce63601b85d5b0d6))
+
 ## [1.11.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.10.0...v1.11.0) (2024-03-25)
 
 ### ✨ Features
