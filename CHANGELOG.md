@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.12.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.11.1...v1.12.0) (2024-03-25)
+
+### ✨ Features
+
+* add basic env to print CiSystemInfo for history management ([b4ade637](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/b4ade6378257e0cf6ce1f31aad0d73fe9dae1bf3))
+
 ## [1.11.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.11.0...v1.11.1) (2024-03-25)
 
 ### 🐛 Bug Fixes
