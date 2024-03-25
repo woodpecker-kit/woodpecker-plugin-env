@@ -19,8 +19,6 @@ func main() {
 	// register helpers once
 	//wd_template.RegisterSettings(wd_template.DefaultHelpers)
 
-	app := cli.NewCliApp()
-
 	// kubernetes runner patch
 	if _, err := os.Stat("/run/drone/env"); err == nil {
 		errDotEnv := godotenv.Overload("/run/drone/env")
@@ -36,6 +34,8 @@ func main() {
 			wd_log.Fatalf("load env file %s err: %v", envFile, errLoadEnvFile)
 		}
 	}
+
+	app := cli.NewCliApp()
 
 	args := os.Args
 	if err := app.Run(args); nil != err {
