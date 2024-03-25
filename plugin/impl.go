@@ -151,6 +151,14 @@ func printBasicEnv(p *Plugin) {
 	_, _ = fmt.Fprint(&sb, "-> just print basic env:\n")
 	paddingMax := strconv.Itoa(p.Settings.PaddingLeftMax)
 
+	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyCiSystemUrl, p.woodpeckerInfo.CiSystemInfo.CiSystemUrl)
+	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyCiSystemHost, p.woodpeckerInfo.CiSystemInfo.CiSystemHost)
+	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyCiMachine, p.woodpeckerInfo.CiSystemInfo.CiMachine)
+	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyCiSystemPlatform, p.woodpeckerInfo.CiSystemInfo.CiSystemPlatform)
+	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyCiSystemVersion, p.woodpeckerInfo.CiSystemInfo.CiSystemVersion)
+
+	appendStrBuilderNewLine(&sb)
+
 	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyCurrentCiWorkflowName, p.woodpeckerInfo.CurrentInfo.CurrentWorkflowInfo.CiWorkflowName)
 	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyWoodpeckerBackend, p.woodpeckerInfo.CiSystemInfo.WoodpeckerBackend)
 	appendEnvStrBuilder(&sb, paddingMax, wd_flag.EnvKeyCiMachine, p.woodpeckerInfo.CiSystemInfo.CiMachine)
