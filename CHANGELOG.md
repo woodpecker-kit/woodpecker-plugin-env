@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.11.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.10.0...v1.11.0) (2024-03-25)
+
+### ✨ Features
+
+* add and env file by `PLUGIN_ENV_FILE` ([176bf1a1](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/176bf1a1e7a8fb500559dc204179a45094315007))
+
+* add kubernetes runner patch and env file by `PLUGIN_ENV_FILE` ([293597ad](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/293597ad05456d17e0f8a9c2f4b8208afcc917a7))
+
+### 📝 Documentation
+
+* update usage of doc ([706167fa](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/706167fabff854f585d4ebf2f8fd43618e7be419))
+
 ## [1.10.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.9.0...v1.10.0) (2024-03-20)
 
 ### BREAKING CHANGE:
