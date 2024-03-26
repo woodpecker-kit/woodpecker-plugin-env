@@ -5,7 +5,7 @@ import (
 	"github.com/sinlov-go/unittest-kit/env_kit"
 	"github.com/urfave/cli/v2"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/constant"
-	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/pkgJson"
+	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/pkg_kit"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/version_check"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/plugin"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_info"
@@ -37,8 +37,8 @@ func GlobalBeforeAction(c *cli.Context) error {
 		wd_log.OpenDebug()
 	}
 
-	namePlugin := pkgJson.GetPackageJsonName()
-	cliVersion := pkgJson.GetPackageJsonVersionGoStyle(true)
+	namePlugin := pkg_kit.GetPackageJsonName()
+	cliVersion := pkg_kit.GetPackageJsonVersionGoStyle(true)
 
 	// bind woodpeckerInfo
 	woodpeckerInfo := wd_urfave_cli_v2.UrfaveCliBindInfo(c)

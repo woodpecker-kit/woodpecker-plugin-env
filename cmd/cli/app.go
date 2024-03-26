@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/urfave/cli/v2"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/constant"
-	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/pkgJson"
+	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/pkg_kit"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/plugin"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/zymosis"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_urfave_cli_v2"
@@ -21,19 +21,19 @@ const (
 func NewCliApp() *cli.App {
 	cli_exit_urfave.ChangeDefaultExitCode(defaultExitCode)
 
-	namePlugin := pkgJson.GetPackageJsonName()
-	versionPlugin := pkgJson.GetPackageJsonVersionGoStyle(false)
-	jsonAuthor := pkgJson.GetPackageJsonAuthor()
+	namePlugin := pkg_kit.GetPackageJsonName()
+	versionPlugin := pkg_kit.GetPackageJsonVersionGoStyle(false)
+	jsonAuthor := pkg_kit.GetPackageJsonAuthor()
 	year := time.Now().Year()
 
 	app := cli.NewApp()
 	app.EnableBashCompletion = true
 	app.Version = versionPlugin
 	app.Name = namePlugin
-	if pkgJson.GetPackageJsonHomepage() != "" {
-		app.Usage = fmt.Sprintf("see: %s", pkgJson.GetPackageJsonHomepage())
+	if pkg_kit.GetPackageJsonHomepage() != "" {
+		app.Usage = fmt.Sprintf("see: %s", pkg_kit.GetPackageJsonHomepage())
 	}
-	app.Description = pkgJson.GetPackageJsonDescription()
+	app.Description = pkg_kit.GetPackageJsonDescription()
 
 	var pkgBundlerInfo string
 	pkgBundlerResourceCode := zymosis.MainProgramRes()
