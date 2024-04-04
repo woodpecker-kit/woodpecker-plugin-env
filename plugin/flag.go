@@ -67,8 +67,8 @@ func BindCliFlags(c *cli.Context,
 	debug bool,
 	cliName, cliVersion string,
 	wdInfo *wd_info.WoodpeckerInfo,
-	rootPath, stepsTransferPath string,
-	stepsOutDisable bool,
+	rootPath,
+	stepsTransferPath string, stepsOutDisable bool,
 ) (*Plugin, error) {
 
 	config := Settings{

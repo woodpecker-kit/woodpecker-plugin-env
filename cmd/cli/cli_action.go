@@ -72,10 +72,11 @@ func GlobalBeforeAction(c *cli.Context) error {
 	stepsOutDisable := c.Bool(constant.NameCliPluginStepsTransferDisableOut)
 
 	pluginBind, errBindPlugin := plugin.BindCliFlags(c,
-		isDebug, namePlugin, cliVersion,
+		isDebug,
+		namePlugin, cliVersion,
 		&woodpeckerInfo,
-		rootPath, stepsTransferFilePath,
-		stepsOutDisable,
+		rootPath,
+		stepsTransferFilePath, stepsOutDisable,
 	)
 
 	if errBindPlugin != nil {
