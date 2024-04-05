@@ -6,7 +6,7 @@ tags: [ environment, woodpecker-plugin-env ]
 containerImage: woodpecker-kit/woodpecker-plugin-env
 containerImageUrl: https://hub.docker.com/r/woodpecker-kit/woodpecker-plugin-env
 url: https://github.com/woodpecker-kit/woodpecker-plugin-env
-icon: https://woodpecker-ci.org/img/logo.svg
+icon: https://raw.githubusercontent.com/woodpecker-kit/woodpecker-plugin-env/main/doc/icon.png
 ---
 
 woodpecker plugin template
