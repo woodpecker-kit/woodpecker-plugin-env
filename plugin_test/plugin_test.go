@@ -13,13 +13,13 @@ func TestCheckArgsPlugin(t *testing.T) {
 	t.Log("mock Plugin")
 	// successArgs
 	successArgsWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
-		wd_mock.WithCurrentPipelineStatus(wd_info.BuildStatusSuccess),
+		wd_mock.FastCurrentStatus(wd_info.BuildStatusSuccess),
 	)
 	successArgsSettings := mockPluginSettings()
 
 	// notSupport
 	notSupportWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
-		wd_mock.WithCurrentPipelineStatus("not_support"),
+		wd_mock.FastCurrentStatus("not_support"),
 	)
 	notSupportSettings := mockPluginSettings()
 
@@ -84,25 +84,25 @@ func TestPlugin(t *testing.T) {
 
 	// statusSuccess
 	statusSuccessWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
-		wd_mock.WithCurrentPipelineStatus(wd_info.BuildStatusSuccess),
+		wd_mock.FastCurrentStatus(wd_info.BuildStatusSuccess),
 	)
 	statusSuccessSettings := mockPluginSettings()
 
 	// statusFailure
 	statusFailureWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
-		wd_mock.WithCurrentPipelineStatus(wd_info.BuildStatusFailure),
+		wd_mock.FastCurrentStatus(wd_info.BuildStatusFailure),
 	)
 	statusFailureSettings := mockPluginSettings()
 
 	// tagPipeline
 	tagPipelineWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
-		wd_mock.WithFastMockTag("v1.0.0", "new tag"),
+		wd_mock.FastTag("v1.0.0", "new tag"),
 	)
 	tagPipelineSettings := mockPluginSettings()
 
 	// pullRequestPipeline
 	pullRequestPipelineWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
-		wd_mock.WithFastMockPullRequest("1", "new pr", "feature-support", "main", "main"),
+		wd_mock.FastPullRequest("1", "new pr", "feature-support", "main", "main"),
 	)
 	pullRequestPipelineSettings := mockPluginSettings()
 
