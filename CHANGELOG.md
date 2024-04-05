@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.13.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.12.0...v1.13.0) (2024-04-05)
+
+### ✨ Features
+
+* github.com/woodpecker-kit/woodpecker-tools v1.19.0 and update unit test ([1e088eca](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/1e088ecab1b140ada4f05ef996c6b750971816b4))
+
+* change flat name of common_flag this not change ENV ([741ff13d](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/741ff13d0d3c9f130af7a97134065805d2bb45bf))
+
+### 📝 Documentation
+
+* format docs.md ([db35514b](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/db35514baf9001256376dd6682f72311e5a59807))
+
 ## [1.12.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.11.1...v1.12.0) (2024-03-25)
 
 ### ✨ Features
