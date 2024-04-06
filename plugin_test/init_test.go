@@ -138,6 +138,10 @@ func mockPluginWithSettings(t *testing.T, woodpeckerInfo wd_info.WoodpeckerInfo,
 	//t.Log("mockPluginWithStatus")
 	p.SetWoodpeckerInfo(woodpeckerInfo)
 
+	if p.ShortInfo().Build.WorkSpace != "" {
+		settings.RootPath = p.ShortInfo().Build.WorkSpace
+	}
+
 	p.Settings = settings
 	return p
 }

@@ -146,8 +146,7 @@ func TestPlugin(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			p := mockPluginWithSettings(t, tc.woodpeckerInfo, tc.settings)
 			p.Settings.DryRun = tc.isDryRun
-			if tc.workRoot != "" {
-				p.Settings.RootPath = tc.workRoot
+			if tc.ossTransferKey != "" {
 				errGenTransferData := generateTransferStepsOut(
 					p,
 					tc.ossTransferKey,
