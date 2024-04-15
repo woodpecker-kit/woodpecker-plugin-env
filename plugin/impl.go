@@ -69,7 +69,7 @@ func (p *Plugin) Exec() error {
 }
 
 func (p *Plugin) loadStepsTransfer() error {
-	// remove or change this code
+	// change or remove or this code start
 	if p.Settings.StepsTransferDemo {
 		var readConfigData Settings
 		errLoad := wd_steps_transfer.In(p.Settings.RootPath, p.Settings.StepsTransferPath, *p.woodpeckerInfo, StepsTransferMarkDemoConfig, &readConfigData)
@@ -78,6 +78,7 @@ func (p *Plugin) loadStepsTransfer() error {
 		}
 		wd_log.VerboseJsonf(readConfigData, "load steps transfer config mark [ %s ]", StepsTransferMarkDemoConfig)
 	}
+	// change or remove or this code end
 	return nil
 }
 
@@ -117,7 +118,7 @@ func (p *Plugin) doBiz() error {
 		return nil
 	}
 
-	// remove or change this code
+	// change or remove or this code start
 	printBasicEnv(p)
 	if len(p.Settings.NotEmptyEnvKeys) > 0 {
 		errCheck := checkEnvNotEmpty(p.Settings.NotEmptyEnvKeys)
@@ -125,17 +126,19 @@ func (p *Plugin) doBiz() error {
 			return errCheck
 		}
 	}
+	// change or remove or this code end
 	return nil
 }
 
 func (p *Plugin) saveStepsTransfer() error {
-	// remove or change this code
+	// change or remove this code
 
 	if p.Settings.StepsOutDisable {
 		wd_log.Debugf("steps out disable by flag [ %v ], skip save steps transfer", p.Settings.StepsOutDisable)
 		return nil
 	}
 
+	// change or remove or this code start
 	if p.Settings.StepsTransferDemo {
 		transferAppendObj, errSave := wd_steps_transfer.Out(p.Settings.RootPath, p.Settings.StepsTransferPath, *p.woodpeckerInfo, StepsTransferMarkDemoConfig, p.Settings)
 		if errSave != nil {
@@ -143,8 +146,11 @@ func (p *Plugin) saveStepsTransfer() error {
 		}
 		wd_log.VerboseJsonf(transferAppendObj, "save steps transfer config mark [ %s ]", StepsTransferMarkDemoConfig)
 	}
+	// change or remove or this code end
 	return nil
 }
+
+// change or remove or method start
 
 func printBasicEnv(p *Plugin) {
 	var sb strings.Builder
@@ -222,3 +228,5 @@ func appendStrBuilderNewLine(sb *strings.Builder) {
 func appendEnvStrBuilder(sb *strings.Builder, paddingMax string, key string, value string) {
 	_, _ = fmt.Fprintf(sb, "%-"+paddingMax+"s %s\n", key, value)
 }
+
+// change or remove or method end

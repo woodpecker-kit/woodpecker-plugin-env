@@ -31,22 +31,28 @@ var (
 	testBaseFolderPath = ""
 	testGoldenKit      *unittest_file_kit.TestGoldenKit
 
-	envTimeoutSecond    uint
-	envPaddingLeftMax   = 0
-	envPrinterPrintKeys []string
-
 	// mustSetInCiEnvList
 	//  for check set in CI env not empty
 	mustSetInCiEnvList = []string{
 		wd_flag.EnvKeyCiSystemPlatform,
 		wd_flag.EnvKeyCiSystemVersion,
 	}
+
 	// mustSetArgsAsEnvList
 	mustSetArgsAsEnvList = []string{
 		//plugin.EnvStepsTransferDemo,
 	}
 
-	valEnvPluginDebug = false
+	valEnvTimeoutSecond uint
+	valEnvPluginDebug   = false
+
+	// change or remove test case if valForm env start
+
+	valEnvPaddingLeftMax   = 0
+	valEnvPrinterPrintKeys []string
+
+	// change or remove test case if valForm env end
+
 )
 
 func init() {
@@ -55,14 +61,15 @@ func init() {
 	// if open wd_template please open this
 	//wd_template.RegisterSettings(wd_template.DefaultHelpers)
 
-	envTimeoutSecond = uint(env_kit.FetchOsEnvInt(wd_flag.EnvKeyPluginTimeoutSecond, 10))
-
-	envPaddingLeftMax = env_kit.FetchOsEnvInt(plugin.EnvPrinterPaddingLeftMax, 24)
-	envPrinterPrintKeys = env_kit.FetchOsEnvStringSlice(plugin.EnvPrinterPrintKeys)
-
 	testGoldenKit = unittest_file_kit.NewTestGoldenKit(testBaseFolderPath)
 
+	valEnvTimeoutSecond = uint(env_kit.FetchOsEnvInt(wd_flag.EnvKeyPluginTimeoutSecond, 10))
 	valEnvPluginDebug = env_kit.FetchOsEnvBool(wd_flag.EnvKeyPluginDebug, false)
+
+	// change or remove test case if valForm env start
+	valEnvPaddingLeftMax = env_kit.FetchOsEnvInt(plugin.EnvPrinterPaddingLeftMax, 24)
+	valEnvPrinterPrintKeys = env_kit.FetchOsEnvStringSlice(plugin.EnvPrinterPrintKeys)
+	// change or remove test case if valForm env end
 }
 
 // test case basic tools start
@@ -115,15 +122,17 @@ func mockPluginSettings() plugin.Settings {
 	settings := plugin.Settings{
 		// use env:PLUGIN_DEBUG
 		Debug:             valEnvPluginDebug,
-		TimeoutSecond:     envTimeoutSecond,
+		TimeoutSecond:     valEnvTimeoutSecond,
 		RootPath:          testGoldenKit.GetTestDataFolderFullPath(),
 		StepsTransferPath: wd_steps_transfer.DefaultKitStepsFileName,
 	}
 
-	// remove or change this code
-	settings.PaddingLeftMax = envPaddingLeftMax
-	settings.EnvPrintKeys = envPrinterPrintKeys
+	// change or remove this code for each test case start
 
+	settings.PaddingLeftMax = valEnvPaddingLeftMax
+	settings.EnvPrintKeys = valEnvPrinterPrintKeys
+
+	// change or remove this code for each test case end
 	return settings
 
 }

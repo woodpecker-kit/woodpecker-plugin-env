@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	// remove or change this code
+	// change or remove this code start
 
 	CliNameNotEmptyEnvs = "settings.not-empty-envs"
 	EnvNotEmptyEnvs     = "PLUGIN_NOT_EMPTY_ENVS"
@@ -22,13 +22,18 @@ const (
 
 	CliNameStepsTransferDemo = "settings.steps-transfer-demo"
 	EnvStepsTransferDemo     = "PLUGIN_STEPS_TRANSFER_DEMO"
+
+	// change or remove this code end
 )
 
 // GlobalFlag
 // Other modules also have flags
 func GlobalFlag() []cli.Flag {
 	return []cli.Flag{
-		// new flag string template if no use, please replace this
+
+		// change or remove start
+
+		// new flag string template if no use, please replace this start
 		&cli.StringSliceFlag{
 			Name:    CliNameNotEmptyEnvs,
 			Usage:   "if use this args, will check envs must not empty, fail will exit not 0",
@@ -56,6 +61,9 @@ func GlobalFlag() []cli.Flag {
 		//	Usage:   "",
 		//	EnvVars: []string{"PLUGIN_new_arg"},
 		//},
+		// new flag string template if no use, please replace this end
+
+		// change or remove end
 	}
 }
 
@@ -78,21 +86,26 @@ func BindCliFlags(c *cli.Context,
 		StepsOutDisable:   stepsOutDisable,
 		RootPath:          rootPath,
 
-		// remove or change this code
+		// change or remove this code start
 		NotEmptyEnvKeys:   c.StringSlice(CliNameNotEmptyEnvs),
 		EnvPrintKeys:      c.StringSlice(CliNamePrinterPrintKeys),
 		PaddingLeftMax:    c.Int(CliNamePrinterPaddingLeftMax),
 		StepsTransferDemo: c.Bool(CliNameStepsTransferDemo),
+		// change or remove this code end
 	}
 
 	// set default TimeoutSecond
 	if config.TimeoutSecond == 0 {
 		config.TimeoutSecond = 10
 	}
+
+	// change or remove start
+
 	// set default PaddingLeftMax
 	if config.PaddingLeftMax < 24 {
 		config.PaddingLeftMax = 24
 	}
+	// change or remove start
 
 	wd_log.Debugf("args %s: %v", wd_flag.NameCliPluginTimeoutSecond, config.TimeoutSecond)
 
