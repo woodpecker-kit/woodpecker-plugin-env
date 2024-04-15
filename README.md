@@ -50,4 +50,4 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
 
 ## Notice
 
-- want dev this project, see [doc](doc/README.md)
+- want dev this project, see [dev doc](doc/README.md)
