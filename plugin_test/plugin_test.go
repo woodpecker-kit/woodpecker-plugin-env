@@ -6,19 +6,28 @@ import (
 	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_mock"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_short_info"
+	"path/filepath"
 	"testing"
 )
 
 func TestCheckArgsPlugin(t *testing.T) {
 	t.Log("mock Plugin")
+
+	testDataPathRoot, errTestDataPathRoot := testGoldenKit.GetOrCreateTestDataFullPath("args_plugin_test")
+	if errTestDataPathRoot != nil {
+		t.Fatal(errTestDataPathRoot)
+	}
+
 	// successArgs
 	successArgsWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
+		wd_mock.FastWorkSpace(filepath.Join(testDataPathRoot, "successArgs")),
 		wd_mock.FastCurrentStatus(wd_info.BuildStatusSuccess),
 	)
 	successArgsSettings := mockPluginSettings()
 
 	// notSupport
 	notSupportWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
+		wd_mock.FastWorkSpace(filepath.Join(testDataPathRoot, "notSupport")),
 		wd_mock.FastCurrentStatus("not_support"),
 	)
 	notSupportSettings := mockPluginSettings()
@@ -78,30 +87,37 @@ func TestPlugin(t *testing.T) {
 	if envMustArgsCheck(t) {
 		return
 	}
-	t.Log("mock Plugin")
+	t.Log("mock Plugin args")
 
-	t.Log("mock plugin config")
+	testDataPathRoot, errTestDataPathRoot := testGoldenKit.GetOrCreateTestDataFullPath("plugin_test")
+	if errTestDataPathRoot != nil {
+		t.Fatal(errTestDataPathRoot)
+	}
 
 	// statusSuccess
 	statusSuccessWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
+		wd_mock.FastWorkSpace(filepath.Join(testDataPathRoot, "statusSuccess")),
 		wd_mock.FastCurrentStatus(wd_info.BuildStatusSuccess),
 	)
 	statusSuccessSettings := mockPluginSettings()
 
 	// statusFailure
 	statusFailureWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
+		wd_mock.FastWorkSpace(filepath.Join(testDataPathRoot, "statusFailure")),
 		wd_mock.FastCurrentStatus(wd_info.BuildStatusFailure),
 	)
 	statusFailureSettings := mockPluginSettings()
 
 	// tagPipeline
 	tagPipelineWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
+		wd_mock.FastWorkSpace(filepath.Join(testDataPathRoot, "tagPipeline")),
 		wd_mock.FastTag("v1.0.0", "new tag"),
 	)
 	tagPipelineSettings := mockPluginSettings()
 
 	// pullRequestPipeline
 	pullRequestPipelineWoodpeckerInfo := *wd_mock.NewWoodpeckerInfo(
+		wd_mock.FastWorkSpace(filepath.Join(testDataPathRoot, "pullRequestPipeline")),
 		wd_mock.FastPullRequest("1", "new pr", "feature-support", "main", "main"),
 	)
 	pullRequestPipelineSettings := mockPluginSettings()
