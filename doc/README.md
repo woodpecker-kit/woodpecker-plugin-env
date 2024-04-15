@@ -11,11 +11,12 @@ how to dev
 
 | lib                                                | version |
 |:---------------------------------------------------|:--------|
-| https://github.com/stretchr/testify                | v1.8.4  |
-| https://github.com/sebdah/goldie                   | v2.5.3  |
-| https://github.com/gookit/color                    | v1.5.3  |
-| https://github.com/urfave/cli/                     | v2.23.7 |
-| https://github.com/woodpecker-kit/woodpecker-tools | v1.5.0  |
+| https://github.com/stretchr/testify                | v1.9.0  |
+| https://github.com/gookit/color                    | v1.5.4  |
+| https://github.com/Masterminds/semver              | v3.2.1  |
+| https://github.com/urfave/cli/                     | v2.27.1 |
+| https://github.com/sinlov-go/unittest-kit          | v1.1.0  |
+| https://github.com/woodpecker-kit/woodpecker-tools | v1.19.0 |
 
 - more libs see [go.mod](https://github.com/woodpecker-kit/woodpecker-plugin-env/blob/main/go.mod)
 
@@ -185,11 +186,13 @@ func GlobalBeforeAction(c *cli.Context) error {
 
 ```go
 package main
+
 func main() {
 	// register helpers once
 	wd_template.RegisterSettings(wd_template.DefaultHelpers)
 }
 ```
+
 - and open at test `init_test.go`
 
 ```go
