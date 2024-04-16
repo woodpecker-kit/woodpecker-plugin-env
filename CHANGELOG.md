@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.14.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.13.0...v1.14.0) (2024-04-17)
+
+### 🐛 Bug Fixes
+
+* ERROR: failed to solve: failed to push ghcr.io ([96b8fe6d](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/96b8fe6db224356ae30ca44781b833d157263169))
+
+### ✨ Features
+
+* use docker buildx bake to management images ([a7dce2f3](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a7dce2f34d1d2ffd4f60ae9c88c42c020268a7e2))
+
+* add test `wd_mock.FastWorkSpace` for fast mock code ([41841dc9](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/41841dc9aba993379118546e1a6b6e6f3457a64f))
+
+### 📝 Documentation
+
+* update LICENSE and docker for template ([76488950](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/764889508c65c09440c17b6db0a0450272b183a9))
+
+* update doc/README.md log url ([7e8756a2](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/7e8756a2ee0562b35ea244c2d83c056c4c6447fb))
+
+* change icon postfix ([e4d5110c](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/e4d5110c91c72b959e6209a315c30abc1ff7745c))
+
+* add docs.md icon config ([354cc99e](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/354cc99e8f2d1196ab10bdf7809cc25448dc7137))
+
+### ♻ Refactor
+
+* add // change or remove to mark changes ([346170f0](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/346170f0b33d5404ed17aa8f33dda7fcf2ed5fde))
+
 ## [1.13.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.12.0...v1.13.0) (2024-04-05)
 
 ### ✨ Features
