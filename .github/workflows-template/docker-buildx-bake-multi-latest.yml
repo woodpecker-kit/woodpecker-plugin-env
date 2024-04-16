@@ -5,11 +5,11 @@
 # - DOCKERHUB_TOKEN
 # most use as github.event.pull_request.merged == true
 
-name: docker-buildx-bake-latest
+name: docker-buildx-bake-multi-latest
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-docker-buildx-bake-latest
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}-docker-buildx-bake-multi-latest
+  cancel-in-progress: false
 
 on:
   workflow_call: # https://docs.github.com/actions/using-workflows/reusing-workflows#using-inputs-and-secrets-in-a-reusable-workflow
