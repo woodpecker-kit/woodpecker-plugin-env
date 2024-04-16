@@ -45,12 +45,13 @@ jobs:
       - version
     uses: ./.github/workflows/golang-ci.yml
     secrets: inherit
+    if: ${{ github.event.pull_request.merged == true }}
 
-  docker-buildx-bake:
-    name: docker-buildx-bake
+  docker-buildx-bake-latest:
+    name: docker-buildx-bake-latest
     needs:
       - version
-    uses: ./.github/workflows/docker-buildx-bake.yml
+    uses: ./.github/workflows/docker-buildx-bake-latest.yml
     secrets:
       DOCKERHUB_OWNER: "${{ secrets.DOCKERHUB_OWNER }}"
       DOCKERHUB_REPO_NAME: "${{ secrets.DOCKERHUB_REPO_NAME }}"
