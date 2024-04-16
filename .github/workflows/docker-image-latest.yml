@@ -30,9 +30,8 @@ on:
         required: false
 
 env:
-  DOCKER_IMAGE_PLATFORMS: linux/amd64 # change to your platforms for release
-  # DOCKER_IMAGE_PLATFORMS: linux/amd64,linux/arm64/v8 # change to your platforms for release
-  #  DOCKER_IMAGE_PLATFORMS: linux/amd64,linux/386,linux/arm64/v8,linux/arm/v7
+  DOCKER_IMAGE_PLATFORMS: linux/amd64,linux/arm64/v8 # change to your platforms for release
+  # DOCKER_IMAGE_PLATFORMS: linux/amd64,linux/386,linux/arm64/v8,linux/arm/v7
 
 jobs:
   docker-image-buildx:
@@ -42,7 +41,7 @@ jobs:
         docker_image: # change this for build dry-run
           - platform: linux/amd64
           # - platform: linux/386
-          # - platform: linux/arm64/v8
+          - platform: linux/arm64/v8
           # - platform: linux/arm/v7
     runs-on: ${{ matrix.os }}
     steps:
@@ -65,7 +64,7 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
-          driver: docker # `docker-container` is default
+          driver: docker-container # `docker-container` is default
       -
         name: Build dry
         uses: docker/build-push-action@v5 # https://github.com/marketplace/actions/build-and-push-docker-images
@@ -75,9 +74,8 @@ jobs:
           platforms: ${{ matrix.docker_image.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          no-cache: true
+          no-cache: false
           pull: true
-          load: true # driver with `docker` open `load`
           push: false
 
   docker-image-push:
@@ -122,9 +120,6 @@ jobs:
           platforms: ${{ env.DOCKER_IMAGE_PLATFORMS }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          no-cache: true
-          load: false # driver with `docker` open `load`, `docker-container` close `load`
-          provenance: mode=max
-          sbom: true
+          no-cache: false
           pull: true
           push: true

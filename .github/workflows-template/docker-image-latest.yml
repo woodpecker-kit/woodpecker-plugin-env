@@ -31,7 +31,7 @@ on:
 
 env:
   DOCKER_IMAGE_PLATFORMS: linux/amd64,linux/arm64/v8 # change to your platforms for release
-#  DOCKER_IMAGE_PLATFORMS: linux/amd64,linux/386,linux/arm64/v8,linux/arm/v7
+  # DOCKER_IMAGE_PLATFORMS: linux/amd64,linux/386,linux/arm64/v8,linux/arm/v7
 
 jobs:
   docker-image-buildx:
@@ -63,6 +63,8 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          driver: docker-container # `docker-container` is default
       -
         name: Build dry
         uses: docker/build-push-action@v5 # https://github.com/marketplace/actions/build-and-push-docker-images
@@ -106,6 +108,8 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          driver: docker-container # `docker-container` is default
       -
         name: Build and push
         id: docker_push
