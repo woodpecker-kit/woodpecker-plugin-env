@@ -30,7 +30,7 @@ on:
     #   - 'DOC-*'
     #   - 'hotfix-*'
 
-permissions: # https://docs.github.com/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token
+permissions: # https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#permissions
   contents: write
   discussions: write
   packages: write
@@ -57,6 +57,8 @@ jobs:
       DOCKERHUB_OWNER: "${{ secrets.DOCKERHUB_OWNER }}"
       DOCKERHUB_REPO_NAME: "${{ secrets.DOCKERHUB_REPO_NAME }}"
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
+    permissions:
+      packages: write
     with:
       # push_remote_flag: ${{ github.event.pull_request.merged == true }}
       push_remote_flag: true
