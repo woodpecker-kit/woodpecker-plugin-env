@@ -1,7 +1,8 @@
-# this is a workflow must has secrets
-# - DOCKERHUB_OWNER
-# - DOCKERHUB_REPO_NAME
-# - DOCKERHUB_TOKEN
+# this is a workflow must add
+# - variables `ENV_DOCKERHUB_OWNER` user of docker hub
+# - variables `ENV_DOCKERHUB_REPO_NAME` repo name of docker hub
+# - secrets `DOCKERHUB_TOKEN` token of docker hub user from [hub.docker](https://hub.docker.com/settings/security)
+
 name: docker-image-tag
 
 on:
@@ -13,12 +14,6 @@ on:
         required: false
         type: boolean
     secrets:
-      DOCKERHUB_OWNER:
-        description: 'docker hub owner'
-        required: true
-      DOCKERHUB_REPO_NAME:
-        description: 'docker hub registry name'
-        required: true
       DOCKERHUB_TOKEN:
         description: 'docker hub token'
         required: false
@@ -46,7 +41,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}
+          images: ${{ vars.ENV_DOCKERHUB_OWNER }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}
           tags: |
             # type semver https://github.com/docker/metadata-action#typesemver
             type=semver,pattern={{version}}
@@ -85,7 +80,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}
+          images: ${{ vars.ENV_DOCKERHUB_OWNER }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}
           tags: |
             # type semver https://github.com/docker/metadata-action#typesemver
             type=semver,pattern={{version}}
@@ -96,7 +91,7 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_OWNER }}
+          username: ${{ vars.ENV_DOCKERHUB_OWNER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Set up Docker Buildx

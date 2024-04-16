@@ -1,12 +1,17 @@
-## will push to dockerhub and GHCR
-# this is a workflow must has secrets
-# - DOCKERHUB_OWNER
-# - DOCKERHUB_REPO_NAME
-# - DOCKERHUB_TOKEN
+## will push to dockerhub and ghcr.io
+# this is a workflow must add
+# - variables `ENV_DOCKERHUB_OWNER` user of docker hub
+# - variables `ENV_DOCKERHUB_REPO_NAME` repo name of docker hub
+# - secrets `DOCKERHUB_TOKEN` token of docker hub user from [hub.docker](https://hub.docker.com/settings/security)
 # add config file at `./docker-bake.hcl` or change input `docker_bake_config_file_path`
 # most use as github.event.pull_request.merged == true
 
-name: docker-buildx-bake-multi-tag
+name: docker-buildx-bake-multi-latest
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-docker-buildx-bake-multi-latest
+  # cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  cancel-in-progress: false
 
 on:
   workflow_call: # https://docs.github.com/actions/using-workflows/reusing-workflows#using-inputs-and-secrets-in-a-reusable-workflow
@@ -26,12 +31,6 @@ on:
         required: false
         type: string
     secrets:
-      DOCKERHUB_OWNER:
-        description: 'docker hub owner'
-        required: true
-      DOCKERHUB_REPO_NAME:
-        description: 'docker hub registry name'
-        required: true
       DOCKERHUB_TOKEN:
         description: 'docker hub token'
         required: false
@@ -84,11 +83,11 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}
-            ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ secrets.DOCKERHUB_REPO_NAME }}
+            ${{ vars.ENV_DOCKERHUB_OWNER }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}
+            ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}
           tags: |
-            # type semver https://github.com/docker/metadata-action#typesemver
-            type=semver,pattern={{version}}
+            # set latest tag for main branch https://github.com/docker/metadata-action#latest-tag
+            type=raw,value=latest,enable=true
       -
         name: Rename meta bake definition file
         run: |
@@ -120,7 +119,7 @@ jobs:
         uses: docker/login-action@v3
         if: ${{ inputs.push_remote_flag }}
         with:
-          username: ${{ secrets.DOCKERHUB_OWNER }}
+          username: ${{ vars.ENV_DOCKERHUB_OWNER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       -
@@ -147,7 +146,7 @@ jobs:
             *.platform=${{ matrix.platform }}
             *.cache-from=type=gha,scope=build-${{ env.PLATFORM_PAIR }}
             *.cache-to=type=gha,scope=build-${{ env.PLATFORM_PAIR }}
-            *.output=type=image,"name=${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }},ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ secrets.DOCKERHUB_REPO_NAME }}",push-by-digest=true,name-canonical=true,push=${{ inputs.push_remote_flag }}
+            *.output=type=image,"name=${{ vars.ENV_DOCKERHUB_OWNER }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }},ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}",push-by-digest=true,name-canonical=true,push=${{ inputs.push_remote_flag }}
 
       -
         name: Export digest
@@ -200,7 +199,7 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_OWNER }}
+          username: ${{ vars.ENV_DOCKERHUB_OWNER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       -
@@ -215,13 +214,13 @@ jobs:
         name: Create manifest list and push
         working-directory: /tmp/digests
         run: |
-          docker buildx imagetools create $(jq -cr '.target."docker-metadata-action".tags | map(select(startswith("${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}")) | "-t " + .) | join(" ")' /tmp/bake-meta.json) \
-            $(printf '${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}@sha256:%s ' *)
-          docker buildx imagetools create $(jq -cr '.target."docker-metadata-action".tags | map(select(startswith("ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ secrets.DOCKERHUB_REPO_NAME }}")) | "-t " + .) | join(" ")' /tmp/bake-meta.json) \
-            $(printf 'ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ secrets.DOCKERHUB_REPO_NAME }}@sha256:%s ' *)
+          docker buildx imagetools create $(jq -cr '.target."docker-metadata-action".tags | map(select(startswith("${{ vars.ENV_DOCKERHUB_OWNER }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}")) | "-t " + .) | join(" ")' /tmp/bake-meta.json) \
+            $(printf '${{ vars.ENV_DOCKERHUB_OWNER }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}@sha256:%s ' *)
+          docker buildx imagetools create $(jq -cr '.target."docker-metadata-action".tags | map(select(startswith("ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}")) | "-t " + .) | join(" ")' /tmp/bake-meta.json) \
+            $(printf 'ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}@sha256:%s ' *)
       -
         name: Inspect image
         run: |
           tag=$(jq -r '.target."docker-metadata-action".args.DOCKER_META_VERSION' /tmp/bake-meta.json)
-          docker buildx imagetools inspect ${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}:${tag}
-          docker buildx imagetools inspect ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ secrets.DOCKERHUB_REPO_NAME }}:${tag}
+          docker buildx imagetools inspect ${{ vars.ENV_DOCKERHUB_OWNER }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}:${tag}
+          docker buildx imagetools inspect ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}:${tag}

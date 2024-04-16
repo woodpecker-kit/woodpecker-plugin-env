@@ -1,6 +1,6 @@
 ## need `New repository secret`
 
-- file `docker-image-latest.yml`
+- file `docker-buildx-bake-multi-tag.yml`
 - variables `ENV_DOCKERHUB_OWNER` for docker hub user
 - variables `ENV_DOCKERHUB_REPO_NAME` for docker hub repo name
 - secrets `DOCKERHUB_TOKEN` from [hub.docker](https://hub.docker.com/settings/security)
@@ -9,23 +9,26 @@
 ## usage at github action
 
 ```yml
+
+permissions: # https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions#permissions
+  contents: write
+  discussions: write
+  packages: write
+
 jobs:
   version:
     name: version
     uses: ./.github/workflows/version.yml
 
-  docker-image-latest:
-    name: docker-image-latest
+  docker-buildx-bake-multi-tag:
+    name: docker-buildx-bake-multi-tag
     needs:
       - version
-      - golang-ci
-      - go-build-check-main
-    uses: ./.github/workflows/docker-image-latest.yml
-    if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || ( github.base_ref == 'main' && github.event.pull_request.merged == true ) }}
-            # with:
-            # build_branch_name: 'main'
-            # push_remote_flag: ${{ github.event.pull_request.merged == true }}
-    # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
+    uses: ./.github/workflows/docker-buildx-bake-multi-tag.yml
+    if: startsWith(github.ref, 'refs/tags/')
+    with:
+      ghcr_package_owner_name: ${{ github.repository_owner }} # required for ghcr.io
+      # push_remote_flag: true # default is true
     secrets:
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
 ```

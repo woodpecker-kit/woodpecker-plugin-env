@@ -59,22 +59,19 @@ jobs:
     with:
       version_name: latest
 
-  docker-buildx-bake-multi-latest:
-    name: docker-buildx-bake-multi-latest
+  docker-buildx-bake-hubdocker-latest:
+    name: docker-buildx-bake-hubdocker-latest
     needs:
       - version
       - golang-ci
       - go-build-check-main
-    uses: ./.github/workflows/docker-buildx-bake-multi-latest.yml
-    if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || ( github.base_ref == 'main' && github.event.pull_request.merged == true ) }}
-    secrets:
-      DOCKERHUB_OWNER: "${{ secrets.DOCKERHUB_OWNER }}"
-      DOCKERHUB_REPO_NAME: "${{ secrets.DOCKERHUB_REPO_NAME }}"
-      DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
+    uses: ./.github/workflows/docker-buildx-bake-hubdocker-latest.yml
+    # if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || github.base_ref == 'main' }}
     with:
-      ghcr_package_owner_name: ${{ github.repository_owner }} # required for ghcr.io
-      # push_remote_flag: ${{ github.event.pull_request.merged == true }}
-      push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
+      # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
+      push_remote_flag: ${{ github.event.pull_request.merged == true }}
+    secrets:
+      DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
 
   go-release-platform:
     name: go-release-platform
@@ -88,26 +85,25 @@ jobs:
       version_name: ${{ needs.version.outputs.tag_name }}
       upload_artifact_name: go-release
 
-  docker-buildx-bake-multi-tag:
-    name: docker-buildx-bake-multi-tag
+  docker-buildx-bake-hubdocker-tag:
+    name: docker-buildx-bake-hubdocker-tag
     needs:
       - version
-    uses: ./.github/workflows/docker-buildx-bake-multi-tag.yml
+      - golang-ci
+      - go-release-platform
+    uses: ./.github/workflows/docker-buildx-bake-hubdocker-tag.yml
     if: startsWith(github.ref, 'refs/tags/')
+    # with:
+      # push_remote_flag: true # default is true
     secrets:
-      DOCKERHUB_OWNER: "${{ secrets.DOCKERHUB_OWNER }}"
-      DOCKERHUB_REPO_NAME: "${{ secrets.DOCKERHUB_REPO_NAME }}"
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
-    with:
-      push_remote_flag: true # set true to push, default false
-      ghcr_package_owner_name: ${{ github.repository_owner }} # required for ghcr.io
 
   deploy-tag:
     needs:
       - version
       - golang-ci
       - go-release-platform
-      - docker-buildx-bake-multi-tag
+      - docker-buildx-bake-hubdocker-tag
     name: deploy-tag
     uses: ./.github/workflows/deploy-tag.yml
     if: startsWith(github.ref, 'refs/tags/')
