@@ -73,7 +73,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: true
-          pull: true
+          pull: false
           push: false
 
   docker-image-push:
@@ -117,5 +117,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: true
-          pull: true
+          pull: false
           push: true
