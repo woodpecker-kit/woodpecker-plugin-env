@@ -21,11 +21,10 @@ jobs:
       - golang-ci
       - go-build-check-main
     uses: ./.github/workflows/docker-image-latest.yml
-    if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || ( github.base_ref == 'main' && github.event.pull_request.merged == true ) }}
-            # with:
-            # build_branch_name: 'main'
-            # push_remote_flag: ${{ github.event.pull_request.merged == true }}
-    # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
+    if: startsWith(github.ref, 'refs/tags/')
+    with:
+      # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
+      push_remote_flag: ${{ github.event.pull_request.merged == true }}
     secrets:
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
 ```
