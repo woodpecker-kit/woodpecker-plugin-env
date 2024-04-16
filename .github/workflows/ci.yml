@@ -57,8 +57,6 @@ jobs:
       DOCKERHUB_OWNER: "${{ secrets.DOCKERHUB_OWNER }}"
       DOCKERHUB_REPO_NAME: "${{ secrets.DOCKERHUB_REPO_NAME }}"
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
-    permissions:
-      packages: write
     with:
       # push_remote_flag: ${{ github.event.pull_request.merged == true }}
       push_remote_flag: true
