@@ -111,7 +111,7 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
-          driver: docker # `docker-container` is default
+          driver: docker-container # `docker-container` is default
       -
         name: Build and push
         id: docker_push
@@ -123,6 +123,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: true
-          load: true # driver with `docker` open `load`
+          load: false # driver with `docker` open `load`, `docker-container` close `load`
+          provenance: mode=max
+          sbom: true
           pull: true
           push: true
