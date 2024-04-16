@@ -1,0 +1,58 @@
+name: docker-buildx-bake
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    paths-ignore:
+      - '**/README.md'
+    branches:
+      - 'main'
+      - 'release-*'
+      - 'FE-*'
+      - '*-feature-*'
+      - 'BF-*'
+      - '*-bug-*'
+      - 'PU-*'
+      - 'DOC-*'
+      - '*-documentation-*'
+      - '*-hotfix-*'
+    tags:
+      - '*' # Push events to matching *, i.e. 1.0.0 v1.0, v20.15.10
+  pull_request:
+    paths-ignore:
+      - '**/README.md'
+    types: # https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#pull_request
+      - opened
+      - reopened
+      - closed
+    # branches:
+    #   - 'main'
+    #   - 'release-*'
+    #   - 'DOC-*'
+    #   - 'hotfix-*'
+
+permissions:
+  contents: write
+  discussions: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.platforms.outputs.matrix }}
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Create matrix
+        id: platforms
+        run: |
+          echo "matrix=$(docker buildx bake image-all --print | jq -cr '.target."image-all".platforms')" >>${GITHUB_OUTPUT}
+      -
+        name: Show matrix
+        run: |
+          echo ${{ steps.platforms.outputs.matrix }}
