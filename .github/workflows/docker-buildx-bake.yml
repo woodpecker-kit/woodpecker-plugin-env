@@ -84,6 +84,7 @@ jobs:
         with:
           name: bake-meta
           path: /tmp/bake-meta.json
+          overwrite: true
           if-no-files-found: error
           retention-days: 1
 
@@ -135,6 +136,7 @@ jobs:
         with:
           name: digests
           path: /tmp/digests/*
+          overwrite: true
           if-no-files-found: error
           retention-days: 1
 
@@ -150,6 +152,7 @@ jobs:
         with:
           name: bake-meta
           path: /tmp
+          merge-multiple: true
 
       -
         name: Download digests
@@ -157,6 +160,7 @@ jobs:
         with:
           name: digests
           path: /tmp/digests
+          merge-multiple: true
 
       -
         name: Set up Docker Buildx
