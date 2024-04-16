@@ -82,7 +82,7 @@ jobs:
         name: Upload meta bake definition
         uses: actions/upload-artifact@v4
         with:
-          name: bake-meta
+          name: bake-meta-${{ env.PLATFORM_PAIR }}
           path: /tmp/bake-meta.json
           overwrite: true
           if-no-files-found: error
@@ -134,7 +134,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ inputs.push_remote_flag }}
         with:
-          name: digests
+          name: digests-${{ env.PLATFORM_PAIR }}
           path: /tmp/digests/*
           overwrite: true
           if-no-files-found: error
@@ -150,7 +150,9 @@ jobs:
         name: Download meta bake definition
         uses: actions/download-artifact@v4
         with:
-          name: bake-meta
+          # name: bake-meta
+          ## https://github.com/actions/download-artifact/tree/v4?tab=readme-ov-file#breaking-changes
+          pattern: bake-meta-*
           path: /tmp
           merge-multiple: true
 
@@ -158,7 +160,9 @@ jobs:
         name: Download digests
         uses: actions/download-artifact@v4
         with:
-          name: digests
+          # name: digests
+          ## https://github.com/actions/download-artifact/tree/v4?tab=readme-ov-file#breaking-changes
+          pattern: digests-*
           path: /tmp/digests
           merge-multiple: true
 
