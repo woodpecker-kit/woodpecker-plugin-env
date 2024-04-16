@@ -58,6 +58,7 @@ jobs:
       DOCKERHUB_REPO_NAME: "${{ secrets.DOCKERHUB_REPO_NAME }}"
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
     with:
+      ghcr_package_owner_name: ${{ github.repository_owner }} # required
       # push_remote_flag: ${{ github.event.pull_request.merged == true }}
       push_remote_flag: true
 
