@@ -4,10 +4,6 @@
 # - DOCKERHUB_TOKEN
 name: docker-image-tag
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.action }}-docker-image-tag
-  cancel-in-progress: true
-
 on:
   workflow_call: # https://docs.github.com/actions/using-workflows/reusing-workflows#using-inputs-and-secrets-in-a-reusable-workflow
     inputs:
