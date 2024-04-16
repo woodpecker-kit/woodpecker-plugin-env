@@ -1,6 +1,6 @@
 ## need `New repository secret`
 
-- file `docker-image-latest.yml`
+- file `docker-buildx-bake-multi-tag.yml`
 - `DOCKERHUB_TOKEN` from [hub.docker](https://hub.docker.com/settings/security)
     - if close push remote can pass `DOCKERHUB_TOKEN` setting
 - `DOCKERHUB_OWNER` for docker hub user
@@ -9,20 +9,17 @@
 ## usage at github action
 
 ```yml
-  docker-buildx-bake-multi-latest:
-    name: docker-buildx-bake-multi-latest
+  docker-buildx-bake-multi-tag:
+    name: docker-buildx-bake-multi-tag
     needs:
       - version
-      - golang-ci
-      - go-build-check-main
-    uses: ./.github/workflows/docker-buildx-bake-multi-latest.yml
-    if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || ( github.base_ref == 'main' && github.event.pull_request.merged == true ) }}
+    uses: ./.github/workflows/docker-buildx-bake-multi-tag.yml
+    if: startsWith(github.ref, 'refs/tags/')
     secrets:
       DOCKERHUB_OWNER: "${{ secrets.DOCKERHUB_OWNER }}"
       DOCKERHUB_REPO_NAME: "${{ secrets.DOCKERHUB_REPO_NAME }}"
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
     with:
+      push_remote_flag: true # set true to push, default false
       ghcr_package_owner_name: ${{ github.repository_owner }} # required for ghcr.io
-      # push_remote_flag: ${{ github.event.pull_request.merged == true }}
-      push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
 ```

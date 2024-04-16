@@ -6,11 +6,7 @@
 # add config file at `./docker-bake.hcl` or change input `docker_bake_config_file_path`
 # most use as github.event.pull_request.merged == true
 
-name: docker-buildx-bake-multi-latest
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-docker-buildx-bake-multi-latest
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+name: docker-buildx-bake-multi-tag
 
 on:
   workflow_call: # https://docs.github.com/actions/using-workflows/reusing-workflows#using-inputs-and-secrets-in-a-reusable-workflow
@@ -91,8 +87,8 @@ jobs:
             ${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}
             ghcr.io/${{ inputs.ghcr_package_owner_name }}/${{ secrets.DOCKERHUB_REPO_NAME }}
           tags: |
-            # set latest tag for main branch https://github.com/docker/metadata-action#latest-tag
-            type=raw,value=latest,enable=true
+            # type semver https://github.com/docker/metadata-action#typesemver
+            type=semver,pattern={{version}}
       -
         name: Rename meta bake definition file
         run: |
