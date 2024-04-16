@@ -8,7 +8,7 @@
 name: docker-buildx-bake-latest
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.action }}
+  group: ${{ github.workflow }}-${{ github.ref }}-docker-buildx-bake-latest
   cancel-in-progress: true
 
 on:

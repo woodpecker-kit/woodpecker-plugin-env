@@ -1,7 +1,7 @@
 name: go-release-platform
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.action }}
+  group: ${{ github.workflow }}-${{ github.ref }}-go-release-platform
   cancel-in-progress: true
 
 on:

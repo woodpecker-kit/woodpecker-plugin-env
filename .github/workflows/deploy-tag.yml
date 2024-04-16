@@ -1,7 +1,7 @@
 name: deploy-tag
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.action }}
+  group: ${{ github.workflow }}-${{ github.ref }}-deploy-tag
   cancel-in-progress: true
 
 on:
