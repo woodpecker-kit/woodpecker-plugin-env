@@ -33,6 +33,7 @@ on:
 permissions:
   contents: write
   discussions: write
+  packages: write
 
 jobs:
   prepare:
