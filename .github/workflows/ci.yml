@@ -85,8 +85,8 @@ jobs:
     if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || ( github.base_ref == 'main' && github.event.pull_request.merged == true ) }}
     with:
       # build_branch_name: 'main'
-      push_remote_flag: ${{ github.event.pull_request.merged == true }}
-      # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
+      # push_remote_flag: ${{ github.event.pull_request.merged == true }}
+      push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
     secrets:
       DOCKERHUB_OWNER: "${{ secrets.DOCKERHUB_OWNER }}"
       DOCKERHUB_REPO_NAME: "${{ secrets.DOCKERHUB_REPO_NAME }}"
