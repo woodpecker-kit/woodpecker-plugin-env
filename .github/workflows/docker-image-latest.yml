@@ -77,7 +77,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: true
           pull: true
-          load: true # show out
+          load: true # driver with `docker` open `load`
           push: false
 
   docker-image-push:
@@ -110,6 +110,8 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          driver: docker # `docker-container` is default
       -
         name: Build and push
         id: docker_push
@@ -121,5 +123,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: true
+          load: true # driver with `docker` open `load`
           pull: true
           push: true
