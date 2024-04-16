@@ -73,7 +73,7 @@ jobs:
           platforms: ${{ matrix.docker_image.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          no-cache: false
+          no-cache: true
           pull: true
           push: false
 
@@ -117,6 +117,6 @@ jobs:
           platforms: ${{ env.DOCKER_IMAGE_PLATFORMS }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          no-cache: false
+          no-cache: true
           pull: true
           push: true
