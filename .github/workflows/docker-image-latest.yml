@@ -75,8 +75,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: false
           pull: true
-          push: false
           load: true
+          push: false
 
   docker-image-push:
     runs-on: ubuntu-latest
@@ -120,4 +120,5 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: false
           pull: true
+          load: true
           push: true
