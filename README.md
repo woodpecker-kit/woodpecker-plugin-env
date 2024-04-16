@@ -41,6 +41,8 @@ Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for mo
     - `DOCKERHUB_REPO_NAME` repo name of docker hub
     - `DOCKERHUB_TOKEN` token of docker hub user
 
+- check `docker-bake.hcl` config, change to your docker image
+
 - if you use `wd_steps_transfer` just add `.woodpecker_kit.steps.transfer` at git ignore
 - change code start with `// change or remove`
 

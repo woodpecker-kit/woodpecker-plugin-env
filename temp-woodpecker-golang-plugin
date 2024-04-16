@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #temple url
-temple_version='1.13.0'
+temple_version='1.14.0'
 temple_url="https://github.com/woodpecker-kit/woodpecker-plugin-env.git"
 temple_repo_host="github.com"
 temple_group="woodpecker-kit"
@@ -275,8 +275,8 @@ replaceFileByRegular ${new_project}/**/*.mk ${temple_group} ${new_repo_group}
  replaceFileByRegular ${new_project}/package.json ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
  replaceFileByRegular ${new_project}/package.json ${temple_group} ${new_repo_group}
  replaceFileByRegular ${new_project}/package.json ${temple_name} ${new_project}
- replaceFileByRegular ${new_project}/package.json ${temple_name} ${new_project}
  replaceFileByRegular ${new_project}/package.json ${temple_version} ${new_version_for_dev}
+ replaceFileByRegular ${new_project}/docker-bake.hcl ${temple_name} ${new_project}
 # replace code at folder
 findFileReplaceByRegular ${new_project} "*.go" ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
 findFileReplaceByRegular ${new_project} "*.go" ${temple_group} ${new_repo_group}
