@@ -6,7 +6,7 @@
 name: docker-image-latest
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.action }}
   cancel-in-progress: true
 
 on:
