@@ -79,6 +79,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: false
+          provenance: false
           pull: true
           push: false
 
@@ -125,5 +126,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: false
+          provenance: false
           pull: true
           push: true

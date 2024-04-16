@@ -53,7 +53,7 @@ jobs:
     needs:
       - version
     uses: ./.github/workflows/docker-buildx-bake-latest.yml
-    if: ${{ github.event.pull_request.merged == true }}
+    # if: ${{ github.event.pull_request.merged == true }}
     secrets:
       DOCKERHUB_OWNER: "${{ secrets.DOCKERHUB_OWNER }}"
       DOCKERHUB_REPO_NAME: "${{ secrets.DOCKERHUB_REPO_NAME }}"
@@ -82,7 +82,8 @@ jobs:
       - golang-ci
       - go-build-check-main
     uses: ./.github/workflows/docker-image-latest.yml
-    if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || ( github.base_ref == 'main' && github.event.pull_request.merged == true ) }}
+    if: ${{ github.event.pull_request.merged == true }}
+    # if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || ( github.base_ref == 'main' && github.event.pull_request.merged == true ) }}
     with:
       # build_branch_name: 'main'
       # push_remote_flag: ${{ github.event.pull_request.merged == true }}
