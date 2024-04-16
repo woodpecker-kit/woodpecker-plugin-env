@@ -76,58 +76,5 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           no-cache: false
           pull: true
-          push: false
+          push: ${{ inputs.push_remote_flag }}
 
-  docker-image-push:
-    needs:
-      - docker-image-buildx
-    if: ${{ inputs.push_remote_flag }}
-    strategy:
-      matrix:
-        os: [ ubuntu-latest ]
-        docker_image: # change this for build dry-run
-          - platform: linux/amd64
-          # - platform: linux/386
-          - platform: linux/arm64/v8
-          # - platform: linux/arm/v7
-    runs-on: ${{ matrix.os }}
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v4
-      -
-        name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ secrets.DOCKERHUB_OWNER }}/${{ secrets.DOCKERHUB_REPO_NAME }}
-          tags: |
-            # type semver https://github.com/docker/metadata-action#typesemver
-            type=raw,value=latest,enable=true
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      -
-        name: "Login into registry as user"
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_OWNER }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          driver: docker-container # `docker-container` is default
-      -
-        name: Build and push
-        id: docker_push
-        uses: docker/build-push-action@v5 # https://github.com/marketplace/actions/build-and-push-docker-images
-        with:
-          context: .
-          file: Dockerfile
-          platforms: ${{ matrix.docker_image.platform }}
-          labels: ${{ steps.meta.outputs.labels }}
-          tags: ${{ steps.meta.outputs.tags }}
-          no-cache: false
-          pull: true
-          push: true
