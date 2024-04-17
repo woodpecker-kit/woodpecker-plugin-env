@@ -21,7 +21,7 @@ target "image-local" {
   output = ["type=docker"]
 }
 
-// must check by parent image suport
+// must check by parent image support multi-platform
 // doc: https://docs.docker.com/reference/cli/docker/buildx/build/#platform
 // most of can as: linux/amd64 linux/386 linux/arm64/v8 linux/arm/v7 linux/arm/v6 linux/ppc64le linux/s390x
 target "image-all" {
