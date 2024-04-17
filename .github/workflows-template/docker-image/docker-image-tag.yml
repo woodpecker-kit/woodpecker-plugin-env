@@ -106,7 +106,8 @@ jobs:
           platforms: ${{ env.DOCKER_IMAGE_PLATFORMS }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          no-cache: false
+          no-cache: true
           provenance: false
+          sbom: false
           pull: true
           push: true
