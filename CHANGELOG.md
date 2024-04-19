@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.15.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.14.1...v1.15.0) (2024-04-19)
+
+### ✨ Features
+
+* platform linux/amd64 linux/386 linux/arm64/v8 linux/arm/v7 linux/ppc64le linux/s390x ([28a84aa1](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/28a84aa199e1f013da8005f99cb03555f916020d))
+
 ## [1.14.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.14.0...v1.14.1) (2024-04-17)
 
 ## [1.14.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.13.0...v1.14.0) (2024-04-17)
