@@ -70,7 +70,7 @@ checkFuncBack() {
 }
 
 checkBinary() {
-  evn_checker=$(which $1)
+  local evn_checker=$(which $1)
   checkFuncBack "which $1"
   if [ ! -n "$evn_checker" ]; then
     echo -e "\033[;31mCheck event [ $1 ] error exit\033[0m"
@@ -115,9 +115,9 @@ check_sys
 # $3 regular to
 # Error will return 1
 replaceFileByRegular() {
-  target_file=$1
-  word_from=$2
-  word_to=$3
+  local target_file=$1
+  local word_from=$2
+  local word_to=$3
   if [[ -z "${word_from}" ]]; then
     pW "replaceFileByRegular word_from is empty"
     return 1
@@ -142,10 +142,10 @@ replaceFileByRegular() {
 # $4 word_regular_to
 # Error will return 1
 findFileReplaceByRegular() {
-  target_file_root=$1
-  target_file_regular=$2
-  word_regular_from=$3
-  word_regular_to=$4
+  local target_file_root=$1
+  local target_file_regular=$2
+  local word_regular_from=$3
+  local word_regular_to=$4
   if [[ -z "${target_file_root}" ]]; then
     pW "findFileReplaceByRegular target_file_regular is empty"
     return 1
@@ -173,7 +173,7 @@ findFileReplaceByRegular() {
 
 
 removeFileExist() {
-  target_file_path=$1
+  local target_file_path=$1
   if [[ -z "${target_file_path}" ]]; then
     pW "removeFileByRegular target_file_path is empty"
     return 1
@@ -191,7 +191,7 @@ removeFileExist() {
 # $1 target_file_regular
 # Error will return 1
 removeFileByRegular() {
-  target_file_regular=$1
+  local target_file_regular=$1
   if [[ -z "${target_file_regular}" ]]; then
     pW "removeFileByRegular target_file_regular is empty"
     return 1
