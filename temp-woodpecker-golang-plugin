@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-#temple url
 temple_version='1.16.0'
+new_version_for_dev='1.0.0'
+#temple url
 temple_url="https://github.com/woodpecker-kit/woodpecker-plugin-env.git"
 temple_repo_host="github.com"
 temple_group="woodpecker-kit"
 temple_name="woodpecker-plugin-env"
-temple_branch="main"
+temple_branch="v${temple_version}"
 
-new_version_for_dev='1.0.0'
 new_repo_host=${temple_repo_host}
 new_repo_group=${temple_group}
 new_project=
@@ -22,7 +22,8 @@ shell_run_path=$(
 function Usage() {
   cat <<HELP
 ${shell_run_name} can use fast init golang lib project with github
-  now temple is ${temple_url}
+  now temple url is:  ${temple_url}
+  now templa version: ${temple_branch}
 
 default repo setting
   group/user: ${temple_group}
