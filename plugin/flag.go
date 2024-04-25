@@ -94,19 +94,6 @@ func BindCliFlags(c *cli.Context,
 		// change or remove this code end
 	}
 
-	// set default TimeoutSecond
-	if config.TimeoutSecond == 0 {
-		config.TimeoutSecond = 10
-	}
-
-	// change or remove start
-
-	// set default PaddingLeftMax
-	if config.PaddingLeftMax < 24 {
-		config.PaddingLeftMax = 24
-	}
-	// change or remove start
-
 	wd_log.Debugf("args %s: %v", wd_flag.NameCliPluginTimeoutSecond, config.TimeoutSecond)
 
 	infoShort := wd_short_info.ParseWoodpeckerInfo2Short(*wdInfo)

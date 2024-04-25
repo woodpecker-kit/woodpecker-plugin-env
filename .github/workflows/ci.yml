@@ -73,24 +73,11 @@ jobs:
     secrets:
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
 
-  go-release-platform:
-    name: go-release-platform
-    needs:
-      - version
-      - golang-ci
-    if: startsWith(github.ref, 'refs/tags/')
-    uses: ./.github/workflows/go-release-platform.yml
-    secrets: inherit
-    with:
-      version_name: ${{ needs.version.outputs.tag_name }}
-      upload_artifact_name: go-release
-
   docker-buildx-bake-hubdocker-tag:
     name: docker-buildx-bake-hubdocker-tag
     needs:
       - version
       - golang-ci
-      - go-release-platform
     uses: ./.github/workflows/docker-buildx-bake-hubdocker-tag.yml
     if: startsWith(github.ref, 'refs/tags/')
     # with:
@@ -98,12 +85,25 @@ jobs:
     secrets:
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
 
+  go-release-platform:
+    name: go-release-platform
+    needs:
+      - version
+      - golang-ci
+      - docker-buildx-bake-hubdocker-tag
+    if: startsWith(github.ref, 'refs/tags/')
+    uses: ./.github/workflows/go-release-platform.yml
+    secrets: inherit
+    with:
+      version_name: ${{ needs.version.outputs.tag_name }}
+      upload_artifact_name: go-release
+
   deploy-tag:
     needs:
       - version
       - golang-ci
-      - go-release-platform
       - docker-buildx-bake-hubdocker-tag
+      - go-release-platform
     name: deploy-tag
     uses: ./.github/workflows/deploy-tag.yml
     if: startsWith(github.ref, 'refs/tags/')

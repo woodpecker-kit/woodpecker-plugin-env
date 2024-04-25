@@ -3,7 +3,11 @@ package plugin
 import "github.com/woodpecker-kit/woodpecker-tools/wd_info"
 
 const (
+	TimeoutSecondMinimum = 10
+
 	// change or remove settings config const start
+
+	PaddingLeftMaxMinimum = 24
 
 	// StepsTransferMarkDemoConfig
 	// steps transfer key

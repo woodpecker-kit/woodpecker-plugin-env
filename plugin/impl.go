@@ -89,6 +89,19 @@ func (p *Plugin) checkArgs() error {
 		return errCheck
 	}
 
+	// set default TimeoutSecond
+	if p.Settings.TimeoutSecond < TimeoutSecondMinimum {
+		p.Settings.TimeoutSecond = TimeoutSecondMinimum
+	}
+
+	// change or remove start
+
+	// set default PaddingLeftMax
+	if p.Settings.PaddingLeftMax < PaddingLeftMaxMinimum {
+		p.Settings.PaddingLeftMax = PaddingLeftMaxMinimum
+	}
+	// change or remove start
+
 	return nil
 }
 
