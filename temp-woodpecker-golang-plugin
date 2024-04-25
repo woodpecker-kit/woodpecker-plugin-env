@@ -22,8 +22,8 @@ shell_run_path=$(
 function Usage() {
   cat <<HELP
 ${shell_run_name} can use fast init golang lib project with github
-  now temple url is:  ${temple_url}
-  now templa version: ${temple_branch}
+  now template url is:  ${temple_url}
+  now template version: ${temple_branch}
 
 default repo setting
   group/user: ${temple_group}
