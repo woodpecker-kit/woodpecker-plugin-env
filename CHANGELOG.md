@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.17.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.16.0...v1.17.0) (2024-04-25)
+
+### ✨ Features
+
+* update `checkArgs` template ([36cd6dd2](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/36cd6dd2382f76056ac487cb0a8d894c657d42a1)), feat [#11](https://github.com/woodpecker-kit/woodpecker-plugin-env/issues/11)
+
 ## [1.16.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.15.0...v1.16.0) (2024-04-21)
 
 ### 👷‍ Build System
