@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.18.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.17.0...v1.18.0) (2024-05-03)
+
+### ✨ Features
+
+* action docker build pipeline add `docker-build-no-cache` and update docker bake config ([d0516a46](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/d0516a46c23194626a9bc746e7947e648cfb06fd)), feat [#16](https://github.com/woodpecker-kit/woodpecker-plugin-env/issues/16)
+
+### 👷‍ Build System
+
+* bump convention-change/conventional-version-check ([9980c6ad](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/9980c6ad62c97934c343546288cd5ccd7350a54c))
+
+* bump golangci/golangci-lint-action from 4 to 5 ([ec1e5bb1](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/ec1e5bb1db16e6f9815e7fe042d6d953f0f1137d))
+
+* bump github.com/urfave/cli/v2 from 2.27.1 to 2.27.2 ([b9d74e65](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/b9d74e652eab7f9e2bb8c0d89027b88554dedb09))
+
 ## [1.17.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.16.0...v1.17.0) (2024-04-25)
 
 ### ✨ Features
