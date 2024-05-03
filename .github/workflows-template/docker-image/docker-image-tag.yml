@@ -13,6 +13,11 @@ on:
         default: true
         required: false
         type: boolean
+      docker-build-no-cache:
+        description: 'docker build no cache'
+        default: false
+        required: false
+        type: boolean
     secrets:
       DOCKERHUB_TOKEN:
         description: 'docker hub token'
@@ -61,7 +66,7 @@ jobs:
           platforms: ${{ matrix.docker_image.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          no-cache: false
+          no-cache: ${{ inputs.docker-build-no-cache }}
           provenance: false
           pull: true
           push: false
@@ -106,7 +111,7 @@ jobs:
           platforms: ${{ env.DOCKER_IMAGE_PLATFORMS }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          no-cache: true
+          no-cache: ${{ inputs.docker-build-no-cache }}
           provenance: false
           sbom: false
           pull: true

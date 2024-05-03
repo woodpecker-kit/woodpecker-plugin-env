@@ -12,8 +12,12 @@ group "default" {
   targets = ["image-local"]
 }
 
+// https://docs.docker.com/build/bake/reference/#target
+// show config as: docker buildx bake --print image
 target "image" {
   inherits = ["docker-metadata-action"]
+  context = "."
+  dockerfile = "Dockerfile"
 }
 
 target "image-local" {
@@ -24,6 +28,7 @@ target "image-local" {
 // // must check by parent image support multi-platform
 // // doc: https://docs.docker.com/reference/cli/docker/buildx/build/#platform
 // // most of can as: linux/amd64 linux/386 linux/arm64/v8 linux/arm/v7 linux/arm/v6 linux/ppc64le linux/s390x
+// // show config as: docker buildx bake --print image-all
 // target "image-all" {
 //   inherits = ["image"]
 //   platforms = [
@@ -35,6 +40,7 @@ target "image-local" {
 // must check by parent image support multi-platform
 // doc: https://docs.docker.com/reference/cli/docker/buildx/build/#platform
 // golang with alpine can use as: linux/amd64 linux/386 linux/arm64/v8 linux/arm/v7 linux/ppc64le linux/s390x
+// show config as: docker buildx bake --print image-all
 target "image-all" {
   inherits = ["image"]
   platforms = [
