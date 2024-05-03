@@ -25,6 +25,11 @@ on:
         default: './docker-bake.hcl'
         required: false
         type: string
+      docker-build-no-cache:
+        description: 'docker build no cache'
+        default: false
+        required: false
+        type: boolean
     secrets:
       DOCKERHUB_TOKEN:
         description: 'docker hub token'
@@ -127,7 +132,7 @@ jobs:
             ${{ inputs.docker_bake_config_file_path }}
             ${{ runner.temp }}/bake-meta.json
           targets: image
-          no-cache: true
+          no-cache: ${{ inputs.docker-build-no-cache }}
           provenance: false
           sbom: false
           push: ${{ inputs.push_remote_flag }}
