@@ -93,7 +93,6 @@ jobs:
     name: go-release-platform
     needs:
       - version
-      - golang-ci
       - docker-bake-basic-all-tag
     if: startsWith(github.ref, 'refs/tags/')
     uses: ./.github/workflows/go-release-platform.yml
@@ -105,7 +104,6 @@ jobs:
   deploy-tag:
     needs:
       - version
-      - golang-ci
       - go-release-platform
     name: deploy-tag
     uses: ./.github/workflows/deploy-tag.yml
