@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.19.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.18.0...v1.19.0) (2024-05-04)
+
+### BREAKING CHANGE:
+
+* must update config of docker-bake.hcl
+
+### ✨ Features
+
+* docker bake pipeline support `flavor` ([da03aeb9](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/da03aeb9c2f5ba1641ed7039986d78ea417fd4f1)), feat [#18](https://github.com/woodpecker-kit/woodpecker-plugin-env/issues/18)
+
 ## [1.18.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.17.0...v1.18.0) (2024-05-03)
 
 ### ✨ Features
