@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.20.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.19.0...v1.20.0) (2024-05-12)
+
+### ✨ Features
+
+* update test case and template code, let action CI not run at push `main` ([67395cd7](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/67395cd72b8509485a5817cf3ac9866dbc72dcc4))
+
+### 👷‍ Build System
+
+* update z-MakefileUtils/MakeBasicEnv.mk ([47a8f6e7](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/47a8f6e7ddb6ffc6ed6a5feef3db216bb383c3ee))
+
 ## [1.19.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.18.0...v1.19.0) (2024-05-04)
 
 ### BREAKING CHANGE:
