@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-temple_version='1.19.0'
+temple_version='1.20.0'
 new_version_for_dev='1.0.0'
 #temple url
 temple_url="https://github.com/woodpecker-kit/woodpecker-plugin-env.git"
@@ -273,11 +273,10 @@ replaceFileByRegular ${new_project}/Makefile ${temple_group} ${new_repo_group}
 replaceFileByRegular ${new_project}/Makefile ${temple_name} ${new_project}
 replaceFileByRegular ${new_project}/**/*.mk ${temple_name} ${new_project}
 replaceFileByRegular ${new_project}/**/*.mk ${temple_group} ${new_repo_group}
- replaceFileByRegular ${new_project}/package.json ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
  replaceFileByRegular ${new_project}/package.json ${temple_group} ${new_repo_group}
  replaceFileByRegular ${new_project}/package.json ${temple_name} ${new_project}
- replaceFileByRegular ${new_project}/package.json ${temple_version} ${new_version_for_dev}
- replaceFileByRegular ${new_project}/docker-bake.hcl ${temple_name} ${new_project}
+ replaceFileByRegular ${new_project}/package.json ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
+ replaceFileByRegular ${new_project}/package.json "\"version\": \"${temple_version}\"," "\"version\": \"${new_version_for_dev}\","
 # replace code at folder
 findFileReplaceByRegular ${new_project} "*.go" ${temple_repo_host}\/${temple_group}\/${temple_name} ${new_repo_host}\/${new_repo_group}\/${new_project}
 findFileReplaceByRegular ${new_project} "*.go" ${temple_group} ${new_repo_group}
@@ -289,6 +288,7 @@ findFileReplaceByRegular ${new_project} "*.md" ${temple_group} ${new_repo_group}
 findFileReplaceByRegular ${new_project} "*.md" ${temple_name} ${new_project}
 findFileReplaceByRegular ${new_project} "*.yml" ${temple_group} ${new_repo_group}
 findFileReplaceByRegular ${new_project} "*.yml" ${temple_name} ${new_project}
+findFileReplaceByRegular ${new_project} "*.hcl" ${temple_name} ${new_project}
 # replace go code at root
 replaceFileByRegular ${new_project}/resource.go ${temple_name_go_package} ${new_project_go_package}
 replaceFileByRegular ${new_project}/cmd/${temple_name}/main.go ${temple_name_go_package}.PackageJson ${new_project_go_package}.PackageJson
