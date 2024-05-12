@@ -32,7 +32,8 @@ var (
 	testGoldenKit      *unittest_file_kit.TestGoldenKit
 
 	// mustSetInCiEnvList
-	//  for check set in CI env not empty
+	//  do not forget set in `CI` env like CI=true or CI=1
+	//  for check set in CI env not empty,
 	mustSetInCiEnvList = []string{
 		wd_flag.EnvKeyCiSystemPlatform,
 		wd_flag.EnvKeyCiSystemVersion,

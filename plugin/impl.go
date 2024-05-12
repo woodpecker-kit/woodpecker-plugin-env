@@ -112,15 +112,6 @@ func argCheckInArr(mark string, target string, checkArr []string) error {
 	return nil
 }
 
-func checkEnvNotEmpty(keys []string) error {
-	for _, env := range keys {
-		if os.Getenv(env) == "" {
-			return fmt.Errorf("check env [ %s ] must set, now is empty", env)
-		}
-	}
-	return nil
-}
-
 // doBiz
 //
 //	replace this code with your plugin implementation
@@ -164,6 +155,15 @@ func (p *Plugin) saveStepsTransfer() error {
 }
 
 // change or remove or method start
+
+func checkEnvNotEmpty(keys []string) error {
+	for _, env := range keys {
+		if os.Getenv(env) == "" {
+			return fmt.Errorf("check env [ %s ] must set, now is empty", env)
+		}
+	}
+	return nil
+}
 
 func printBasicEnv(p *Plugin) {
 	var sb strings.Builder
