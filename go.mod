@@ -2,7 +2,7 @@ module github.com/woodpecker-kit/woodpecker-plugin-env
 
 go 1.21
 
-toolchain go1.23.4
+toolchain go1.21.13
 
 require (
 	github.com/Masterminds/semver/v3 v3.3.1
@@ -12,7 +12,7 @@ require (
 	github.com/sinlov-go/unittest-kit v1.2.1
 	github.com/stretchr/testify v1.10.0
 	github.com/urfave/cli/v2 v2.27.5
-	github.com/woodpecker-kit/woodpecker-tools v1.20.0
+	github.com/woodpecker-kit/woodpecker-tools v1.21.0
 )
 
 require (
