@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.21.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.20.0...v1.21.0) (2024-12-21)
+
+### ✨ Features
+
+* update Go version to 1.21 ([95dd5377](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/95dd53775ba74dd03fc6d94c6b25f5eccb2d6730))
+
+* update Go version to 1.20 ([a46a171b](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a46a171b437a6e585d067851101e1978bb339e17)), re [#31](https://github.com/woodpecker-kit/woodpecker-plugin-env/issues/31)
+
+### 👷‍ Build System
+
+* update GitHub release action to v2 ([1310cc1e](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/1310cc1e2337ee5822a5ac6b6853dbb8f3f6e178))
+
+* bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1 ([25992220](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/2599222017ee837fcafe586180b958eb343af81e))
+
+* bump github.com/stretchr/testify from 1.9.0 to 1.10.0 ([9df8e053](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/9df8e0539f6a1dc01e7fde7336234734d6f943c1))
+
+* bump github.com/urfave/cli/v2 from 2.27.4 to 2.27.5 ([a8ccc326](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a8ccc3269600e5f6b95755da99b8d0b42410d2f1))
+
+* bump github.com/sinlov-go/unittest-kit from 1.1.1 to 1.2.1 ([a90bbbcb](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a90bbbcb7e1b3ca03976d0613ee8f7b44042395b))
+
+* bump github.com/sinlov-go/go-common-lib from 1.7.0 to 1.7.1 ([48ac6a83](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/48ac6a83fd2529e24e14eb19e98b62e4e85c24ea))
+
+* bump github.com/Masterminds/semver/v3 from 3.2.1 to 3.3.0 ([5fad947c](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/5fad947c79c12537b8334db3f5dce1eb5ffedeb4))
+
+* bump github.com/urfave/cli/v2 from 2.27.3 to 2.27.4 ([90bf409a](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/90bf409aacdb023c6f4ad3072563a89a40784122))
+
+* bump github.com/urfave/cli/v2 from 2.27.2 to 2.27.3 ([ba458b21](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/ba458b21a7f7d6313ef208c9c6d437c4b14c79ce))
+
+* bump docker/bake-action from 4 to 5 ([752a25b4](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/752a25b46032e62c6649c5955a0601fa649e8165))
+
+* bump golangci/golangci-lint-action from 5 to 6 ([59cb416f](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/59cb416f09f2b0b567a66534b7961fdfa8792d02))
+
 ## [1.20.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.19.0...v1.20.0) (2024-05-12)
 
 ### ✨ Features
