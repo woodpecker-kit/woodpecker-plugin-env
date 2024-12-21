@@ -3,7 +3,7 @@
 # Author: woodpecker-kit
 # dockerfile offical document https://docs.docker.com/engine/reference/builder/
 # https://hub.docker.com/_/golang
-FROM golang:1.19.13 as builder
+FROM golang:1.21.13 as builder
 
 ARG GO_ENV_PACKAGE_NAME=github.com/woodpecker-kit/woodpecker-plugin-env
 ARG GO_ENV_ROOT_BUILD_BIN_NAME=woodpecker-plugin-env
