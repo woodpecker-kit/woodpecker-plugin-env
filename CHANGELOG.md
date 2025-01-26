@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.21.5](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.4...v1.21.5) (2025-01-27)
+
+### 👷‍ Build System
+
+* comment out zymosis installation and execution at Dockerfile ([22c7498a](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/22c7498a9c41afa542d656eef10ba315ec48d057))
+
 ## [1.21.4](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.3...v1.21.4) (2025-01-27)
 
 ### 👷‍ Build System
