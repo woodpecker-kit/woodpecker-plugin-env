@@ -84,7 +84,7 @@ func (p *Plugin) loadStepsTransfer() error {
 
 func (p *Plugin) checkArgs() error {
 
-	errCheck := argCheckInArr("build status", p.woodpeckerInfo.CurrentInfo.CurrentPipelineInfo.CiPipelineStatus, pluginBuildStateSupport)
+	errCheck := argCheckInArr("build status", p.wdShortInfo.Build.Status, pluginBuildStateSupport)
 	if errCheck != nil {
 		return errCheck
 	}
