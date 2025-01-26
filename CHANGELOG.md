@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.21.6](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.5...v1.21.6) (2025-01-27)
+
+### 🐛 Bug Fixes
+
+* build status check source to use wd_short_info.WoodpeckerInfoShort ([14527ef2](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/14527ef24da733f00bc1003d1ed52637845d6170))
+
 ## [1.21.5](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.4...v1.21.5) (2025-01-27)
 
 ### 👷‍ Build System
