@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.22.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.6...v1.22.0) (2025-02-03)
+
+### ✨ Features
+
+* enhance functionality and improve template version ([b904de39](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/b904de39709d8c9d80998c3d39293bb1b4b7d1dd))
+
+### 👷‍ Build System
+
+* update docker bake action to v6 and add build timeout ([6382fdc3](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/6382fdc3a491e6a9f093187b81cc770851c41971)), feat [#36](https://github.com/woodpecker-kit/woodpecker-plugin-env/issues/36)
+
+* bump github.com/woodpecker-kit/woodpecker-tools ([df78470a](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/df78470af7a652e76d25edfde7c48b160c1ff3ac))
+
 ## [1.21.6](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.5...v1.21.6) (2025-01-27)
 
 ### 🐛 Bug Fixes
