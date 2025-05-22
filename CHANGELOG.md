@@ -48,7 +48,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 * update Go release process and add Docker build comments ([4e7a0428](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/4e7a0428f4affa707c43a773c0dc4bbd0f3aa913))
 
-## [1.22.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.6...v1.22.0) (2025-02-03)
+## [1.22.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.21.6...v1.22.0) (2025-02-03)
 
 ### ✨ Features
 
@@ -60,37 +60,37 @@ All notable changes to this project will be documented in this file. See [conven
 
 * bump github.com/woodpecker-kit/woodpecker-tools ([df78470a](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/df78470af7a652e76d25edfde7c48b160c1ff3ac))
 
-## [1.21.6](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.5...v1.21.6) (2025-01-27)
+## [1.21.6](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.21.5...v1.21.6) (2025-01-27)
 
 ### 🐛 Bug Fixes
 
 * build status check source to use wd_short_info.WoodpeckerInfoShort ([14527ef2](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/14527ef24da733f00bc1003d1ed52637845d6170))
 
-## [1.21.5](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.4...v1.21.5) (2025-01-27)
+## [1.21.5](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.21.4...v1.21.5) (2025-01-27)
 
 ### 👷‍ Build System
 
 * comment out zymosis installation and execution at Dockerfile ([22c7498a](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/22c7498a9c41afa542d656eef10ba315ec48d057))
 
-## [1.21.4](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.3...v1.21.4) (2025-01-27)
+## [1.21.4](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.21.3...v1.21.4) (2025-01-27)
 
 ### 👷‍ Build System
 
 * pin zymosis version to v1.1.3 ([0fffef78](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/0fffef78a0704b91155f6f18cd82f16db7732244))
 
-## [1.21.3](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.2...v1.21.3) (2025-01-27)
+## [1.21.3](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.21.2...v1.21.3) (2025-01-27)
 
 ### 👷‍ Build System
 
 * bump github.com/woodpecker-kit/woodpecker-tools ([490c92a4](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/490c92a4e01e944b1e2bce8ee36d8400ef7a6030))
 
-## [1.21.2](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.1...v1.21.2) (2024-12-21)
+## [1.21.2](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.21.1...v1.21.2) (2024-12-21)
 
 ### 👷‍ Build System
 
 * update dependabot config and temple version ([d66f7f0b](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/d66f7f0b7aaf85477ffc386abb9047a9e76ff4d9))
 
-## [1.21.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.0...v1.21.1) (2024-12-21)
+## [1.21.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.21.0...v1.21.1) (2024-12-21)
 
 ### 📝 Documentation
 
@@ -100,7 +100,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 * update Go toolchain and woodpecker-tools ([4a307283](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/4a3072834648d4b37418ebf1eaab59ef5667e8f6))
 
-## [1.21.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.20.0...v1.21.0) (2024-12-21)
+## [1.21.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.20.0...v1.21.0) (2024-12-21)
 
 ### ✨ Features
 
@@ -132,7 +132,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 * bump golangci/golangci-lint-action from 5 to 6 ([59cb416f](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/59cb416f09f2b0b567a66534b7961fdfa8792d02))
 
-## [1.20.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.19.0...v1.20.0) (2024-05-12)
+## [1.20.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.19.0...v1.20.0) (2024-05-12)
 
 ### ✨ Features
 
@@ -142,7 +142,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 * update z-MakefileUtils/MakeBasicEnv.mk ([47a8f6e7](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/47a8f6e7ddb6ffc6ed6a5feef3db216bb383c3ee))
 
-## [1.19.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.18.0...v1.19.0) (2024-05-04)
+## [1.19.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.18.0...v1.19.0) (2024-05-04)
 
 ### BREAKING CHANGE:
 
@@ -152,7 +152,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 * docker bake pipeline support `flavor` ([da03aeb9](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/da03aeb9c2f5ba1641ed7039986d78ea417fd4f1)), feat [#18](https://github.com/woodpecker-kit/woodpecker-plugin-env/issues/18)
 
-## [1.18.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.17.0...v1.18.0) (2024-05-03)
+## [1.18.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.17.0...v1.18.0) (2024-05-03)
 
 ### ✨ Features
 
@@ -166,27 +166,27 @@ All notable changes to this project will be documented in this file. See [conven
 
 * bump github.com/urfave/cli/v2 from 2.27.1 to 2.27.2 ([b9d74e65](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/b9d74e652eab7f9e2bb8c0d89027b88554dedb09))
 
-## [1.17.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.16.0...v1.17.0) (2024-04-25)
+## [1.17.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.16.0...v1.17.0) (2024-04-25)
 
 ### ✨ Features
 
 * update `checkArgs` template ([36cd6dd2](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/36cd6dd2382f76056ac487cb0a8d894c657d42a1)), feat [#11](https://github.com/woodpecker-kit/woodpecker-plugin-env/issues/11)
 
-## [1.16.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.15.0...v1.16.0) (2024-04-21)
+## [1.16.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.15.0...v1.16.0) (2024-04-21)
 
 ### 👷‍ Build System
 
 * deps github.com/woodpecker-kit/woodpecker-tools@v1.20.0 ([f3b2d6ee](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/f3b2d6ee784889d8b0cf4bfd308fa58abe622c06)), deps [#9](https://github.com/woodpecker-kit/woodpecker-plugin-env/issues/9)
 
-## [1.15.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.14.1...v1.15.0) (2024-04-19)
+## [1.15.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.14.1...v1.15.0) (2024-04-19)
 
 ### ✨ Features
 
 * platform linux/amd64 linux/386 linux/arm64/v8 linux/arm/v7 linux/ppc64le linux/s390x ([28a84aa1](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/28a84aa199e1f013da8005f99cb03555f916020d))
 
-## [1.14.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.14.0...v1.14.1) (2024-04-17)
+## [1.14.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.14.0...v1.14.1) (2024-04-17)
 
-## [1.14.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.13.0...v1.14.0) (2024-04-17)
+## [1.14.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.13.0...v1.14.0) (2024-04-17)
 
 ### 🐛 Bug Fixes
 
@@ -212,7 +212,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 * add // change or remove to mark changes ([346170f0](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/346170f0b33d5404ed17aa8f33dda7fcf2ed5fde))
 
-## [1.13.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.12.0...v1.13.0) (2024-04-05)
+## [1.13.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.12.0...v1.13.0) (2024-04-05)
 
 ### ✨ Features
 
@@ -224,19 +224,19 @@ All notable changes to this project will be documented in this file. See [conven
 
 * format docs.md ([db35514b](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/db35514baf9001256376dd6682f72311e5a59807))
 
-## [1.12.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.11.1...v1.12.0) (2024-03-25)
+## [1.12.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.11.1...v1.12.0) (2024-03-25)
 
 ### ✨ Features
 
 * add basic env to print CiSystemInfo for history management ([b4ade637](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/b4ade6378257e0cf6ce1f31aad0d73fe9dae1bf3))
 
-## [1.11.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.11.0...v1.11.1) (2024-03-25)
+## [1.11.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.11.0...v1.11.1) (2024-03-25)
 
 ### 🐛 Bug Fixes
 
 * change load drone env or PLUGIN_ENV_FILE time ([37a7f6d4](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/37a7f6d44a8766d6804f5ce1ce63601b85d5b0d6))
 
-## [1.11.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.10.0...v1.11.0) (2024-03-25)
+## [1.11.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.10.0...v1.11.0) (2024-03-25)
 
 ### ✨ Features
 
@@ -248,7 +248,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 * update usage of doc ([706167fa](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/706167fabff854f585d4ebf2f8fd43618e7be419))
 
-## [1.10.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.9.0...v1.10.0) (2024-03-20)
+## [1.10.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.9.0...v1.10.0) (2024-03-20)
 
 ### BREAKING CHANGE:
 
@@ -262,13 +262,13 @@ All notable changes to this project will be documented in this file. See [conven
 
 * update basic doc for plugin ([a2c7ac69](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a2c7ac6957d60b17c40e8e61a3daca7e8e0d8731))
 
-## [1.9.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.8.0...v1.9.0) (2024-03-18)
+## [1.9.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.8.0...v1.9.0) (2024-03-18)
 
 ### ✨ Features
 
 * add OnlyArgsCheck for Plugin unit test, and let less print at global debug info ([ac624b05](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/ac624b05614383e3eadc6cc089586edcc92c35e3))
 
-## [1.8.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.7.1...v1.8.0) (2024-03-18)
+## [1.8.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.7.1...v1.8.0) (2024-03-18)
 
 ### ✨ Features
 
@@ -276,25 +276,25 @@ All notable changes to this project will be documented in this file. See [conven
 
 * change default flag name and change Config to Settings let code more clear ([c5f43303](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/c5f43303000a2afa72efcb1e261a0299114a26d4))
 
-## [1.7.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.7.0...v1.7.1) (2024-03-16)
+## [1.7.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.7.0...v1.7.1) (2024-03-16)
 
 ### 🐛 Bug Fixes
 
 * fix check env not use settings.not_empty_envs error ([2dab047e](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/2dab047e0f67cb7df728ec1935b6128c2a1a1898))
 
-## [1.7.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.6.0...v1.7.0) (2024-03-16)
+## [1.7.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.6.0...v1.7.0) (2024-03-16)
 
 ### ✨ Features
 
 * add settings.not_empty_envs for support empty env check ([07356c76](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/07356c76b8d1f192938158babb93530d6350a4a0))
 
-## [1.6.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.5.0...v1.6.0) (2024-03-16)
+## [1.6.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.5.0...v1.6.0) (2024-03-16)
 
 ### ✨ Features
 
 * github.com/woodpecker-kit/woodpecker-tools v1.18.0 and change metod ([f605a742](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/f605a742a6db35dbe85c8b4571f7216b5c6a0ee3))
 
-## [1.5.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.4.0...v1.5.0) (2024-03-13)
+## [1.5.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.4.0...v1.5.0) (2024-03-13)
 
 ### ✨ Features
 
@@ -306,13 +306,13 @@ All notable changes to this project will be documented in this file. See [conven
 
 * update temp-woodpecker-golang-plugin version ([2cd6e875](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/2cd6e8752d0f855ffc5e8fa099200d6035813024))
 
-## [1.4.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.3.0...v1.4.0) (2024-03-08)
+## [1.4.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.3.0...v1.4.0) (2024-03-08)
 
 ### ✨ Features
 
 * github.com/woodpecker-kit/woodpecker-tools v1.15.0 ([a1f37c65](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a1f37c655b74a59231621e934bf9fd755cf67f02))
 
-## [1.3.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.2.0...v1.3.0) (2024-03-08)
+## [1.3.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.2.0...v1.3.0) (2024-03-08)
 
 ### ✨ Features
 
@@ -320,13 +320,13 @@ All notable changes to this project will be documented in this file. See [conven
 
 * add github.com/sinlov-go/go-common-lib v1.7.0 ([7698d6f2](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/7698d6f2133198e30e7e814a97e8aab743c805f8))
 
-## [1.2.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.1.1...v1.2.0) (2024-03-06)
+## [1.2.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.1.1...v1.2.0) (2024-03-06)
 
 ### ✨ Features
 
 * github.com/woodpecker-kit/woodpecker-tools v1.14.0 ([58df6e4f](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/58df6e4fd721485eea734d2d3b7627df83aecd95))
 
-## [1.1.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.1.0...v1.1.1) (2024-03-06)
+## [1.1.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.1.0...v1.1.1) (2024-03-06)
 
 ### 👷‍ Build System
 
@@ -334,7 +334,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 * github.com/woodpecker-kit/woodpecker-tools v1.13.0 ([81933a7d](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/81933a7d6cbee229f33193f49ad32781635a54f1))
 
-## [1.1.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.0.1...v1.1.0) (2024-03-06)
+## [1.1.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.0.1...v1.1.0) (2024-03-06)
 
 ### ✨ Features
 
@@ -358,7 +358,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 * github.com/woodpecker-kit/woodpecker-tools v1.11.0 ([54130037](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/541300374bfbae7f74812c434640ce6468055ddf))
 
-## [1.0.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.0.0...v1.0.1) (2024-02-28)
+## [1.0.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.0.0...v1.0.1) (2024-02-28)
 
 ### 🐛 Bug Fixes
 
