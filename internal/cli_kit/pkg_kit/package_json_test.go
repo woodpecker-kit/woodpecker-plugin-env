@@ -13,7 +13,7 @@ const (
   "author": {
     "name": "foo-code",
     "email": "foo-codegmppt@gmail.com",
-    "url": "https://gitea.sinlov.cn/foo-code/template-gitea-sinlov-cn-golang-cli"
+    "url": "https://github.com/woodpecker-kit/woodpecker-plugin-env"
   }
 }
 `
@@ -24,10 +24,10 @@ const (
   "author": {
     "name": "foo-code",
     "email": "foo-codegmppt@gmail.com",
-    "url": "https://gitea.sinlov.cn/foo-code/template-gitea-sinlov-cn-golang-cli"
+    "url": "https://github.com/woodpecker-kit/woodpecker-plugin-env"
   },
   "description": "mock go style",
-  "homepage": "https://gitea.sinlov.cn/foo-code/template-gitea-sinlov-cn-golang-cli#readme"
+  "homepage": "https://github.com/woodpecker-kit/woodpecker-plugin-env#readme"
 }
 `
 )
@@ -198,5 +198,5 @@ func TestGetPackageJsonHomepage(t *testing.T) {
 	assert.Equal(t, "", GetPackageJsonHomepage())
 
 	InitPkgJsonContent(jsonInfoGoStyle)
-	assert.Equal(t, "https://gitea.sinlov.cn/foo-code/template-gitea-sinlov-cn-golang-cli#readme", GetPackageJsonHomepage())
+	assert.Equal(t, "https://github.com/woodpecker-kit/woodpecker-plugin-env#readme", GetPackageJsonHomepage())
 }
