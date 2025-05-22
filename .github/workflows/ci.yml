@@ -115,6 +115,7 @@ jobs:
     name: docker-bake-basic-all-tag
     needs:
       - version
+      - golang-ci
     uses: ./.github/workflows/docker-buildx-bake-hubdocker-tag.yml
     if: startsWith(github.ref, 'refs/tags/')
     with:
@@ -128,6 +129,7 @@ jobs:
   #   name: docker-bake-multi-basic-all-tag
   #   needs:
   #     - version
+  #     - golang-ci
   #   uses: ./.github/workflows/docker-buildx-bake-multi-tag.yml
   #   if: startsWith(github.ref, 'refs/tags/')
   #   with:
