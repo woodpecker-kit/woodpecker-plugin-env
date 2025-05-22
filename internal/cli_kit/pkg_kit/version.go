@@ -10,18 +10,36 @@ import (
 
 var buildInfo *BuildInfo
 
+func SaveBuildInfo(bdInfo *BuildInfo) {
+	buildInfo = bdInfo
+}
+
 func GetNewBuildInfo() BuildInfo {
 	checkPackageJsonLoad()
 
 	if buildInfo == nil {
-		panic("buildInfo is nil, please init by method NewBuildInfo()")
+		panic("buildInfo is nil, please init by method SaveBuildInfo()")
 	}
 
 	return *buildInfo
 }
 
+func FetchNowPkgName() string {
+	checkPackageJsonLoad()
+
+	if buildInfo == nil {
+		panic("buildInfo is nil, please init by method SaveBuildInfo()")
+	}
+
+	return buildInfo.PkgName
+}
+
 func FetchNowVersion() string {
 	checkPackageJsonLoad()
+
+	if buildInfo == nil {
+		panic("buildInfo is nil, please init by method SaveBuildInfo()")
+	}
 
 	return buildInfo.Version
 }
@@ -29,8 +47,12 @@ func FetchNowVersion() string {
 func FetchNowBuildId() string {
 	checkPackageJsonLoad()
 
+	if buildInfo == nil {
+		panic("buildInfo is nil, please init by method SaveBuildInfo()")
+	}
+
 	if buildInfo.BuildId == "" {
-		panic("nowBuildId is empty, please init by method NewBuildInfo()")
+		panic("nowBuildId is empty, please init by method SaveBuildInfo()")
 	}
 
 	return buildInfo.BuildId
@@ -40,14 +62,14 @@ func FetchNowBuildIdShort() string {
 	checkPackageJsonLoad()
 
 	if buildInfo.BuildIdShort == "" {
-		panic("nowBuildIdShort is empty, please init by method NewBuildInfo()")
+		panic("nowBuildIdShort is empty, please init by method SaveBuildInfo()")
 	}
 
 	return buildInfo.BuildIdShort
 }
 
 func FetchNowBuildCode() string {
-	if FetchNowBuildId() != infoUnknown {
+	if FetchNowBuildId() != InfoUnknown {
 		return FetchNowBuildId()
 	}
 
@@ -55,7 +77,7 @@ func FetchNowBuildCode() string {
 }
 
 const (
-	infoUnknown      = "unknown"
+	InfoUnknown      = "unknown"
 	versionDevel     = "devel"
 	buildIdShortSize = 8
 )
@@ -167,10 +189,10 @@ func NewBuildInfo(
 
 	info.GoVersion = bi.GoVersion
 	if info.GoVersion == "" {
-		info.GoVersion = infoUnknown
+		info.GoVersion = InfoUnknown
 	}
 
-	if info.Version == "" || info.Version == infoUnknown {
+	if info.Version == "" || info.Version == InfoUnknown {
 		info.Version = firstNonEmpty(getGitVersion(bi), versionDevel)
 	}
 
@@ -196,7 +218,7 @@ func NewBuildInfo(
 	}
 
 	if revision == "" {
-		revision = infoUnknown
+		revision = InfoUnknown
 	}
 
 	if modified == "" {
@@ -204,18 +226,16 @@ func NewBuildInfo(
 	}
 
 	if info.Date == "" {
-		info.Date = fmt.Sprintf("(%s)", infoUnknown)
+		info.Date = fmt.Sprintf("(%s)", InfoUnknown)
 	}
 
 	if info.BuildId == "" {
-		info.BuildId = fmt.Sprintf("(%s)", infoUnknown)
+		info.BuildId = fmt.Sprintf("(%s)", InfoUnknown)
 	}
 
 	info.GitCommit = fmt.Sprintf("(%s, modified: %s, mod sum: %q)", revision, modified, bi.Main.Sum)
 
 	info.BuildSum = bi.Main.Sum
-
-	buildInfo = &info
 
 	return info
 }

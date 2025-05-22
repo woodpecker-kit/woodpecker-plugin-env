@@ -45,6 +45,7 @@ func main() {
 		pkg_kit.GetPackageJsonAuthor().Name,
 		constant.CopyrightStartYear,
 	)
+	pkg_kit.SaveBuildInfo(&bdInfo)
 
 	// register helpers once
 	// wd_template.RegisterSettings(wd_template.DefaultHelpers)
