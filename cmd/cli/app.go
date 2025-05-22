@@ -19,7 +19,7 @@ func NewCliApp(bdInfo pkg_kit.BuildInfo) *cli.App {
 	app := cli.NewApp()
 	app.EnableBashCompletion = true
 	app.Name = bdInfo.PgkNameString()
-	app.Version = bdInfo.VersionString()
+	app.Version = pkg_kit.FetchNowVersion()
 
 	if pkg_kit.GetPackageJsonHomepage() != "" {
 		app.Usage = "see: " + pkg_kit.GetPackageJsonHomepage()
