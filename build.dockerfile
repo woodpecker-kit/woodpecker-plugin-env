@@ -1,14 +1,14 @@
 # This dockerfile uses extends image https://hub.docker.com/woodpecker-kit/woodpecker-plugin-env
 # VERSION 1
 # Author: woodpecker-kit
-# dockerfile offical document https://docs.docker.com/engine/reference/builder/
+# dockerfile official document https://docs.docker.com/engine/reference/builder/
 # https://hub.docker.com/_/golang
 FROM golang:1.21.13 as builder
 
 ARG GO_ENV_PACKAGE_NAME=github.com/woodpecker-kit/woodpecker-plugin-env
 ARG GO_ENV_ROOT_BUILD_BIN_NAME=woodpecker-plugin-env
 ARG GO_ENV_ROOT_BUILD_BIN_PATH=build/${GO_ENV_ROOT_BUILD_BIN_NAME}
-ARG GO_ENV_ROOT_BUILD_ENTRANCE=cmd/woodpecker-plugin-env/main.go
+ARG GO_ENV_ROOT_BUILD_ENTRANCE="cmd/woodpecker-plugin-env/main.go"
 
 ARG GO_PATH_SOURCE_DIR=/go/src
 WORKDIR ${GO_PATH_SOURCE_DIR}
@@ -19,10 +19,6 @@ COPY $PWD ${GO_PATH_SOURCE_DIR}/${GO_ENV_PACKAGE_NAME}
 # proxy golang
 RUN go env -w "GOPROXY=https://goproxy.cn,direct"
 RUN go env -w "GOPRIVATE='*.gitlab.com,*.gitee.com"
-
-#RUN go install -v github.com/convention-change/zymosis/cmd/zymosis@v1.1.3
-#RUN cd ${GO_PATH_SOURCE_DIR}/${GO_ENV_PACKAGE_NAME} && \
-#    zymosis -g go
 
 RUN cd ${GO_PATH_SOURCE_DIR}/${GO_ENV_PACKAGE_NAME} && \
     go mod download -x

@@ -8,7 +8,7 @@
     {"type": "perf", "section":"⚡ Performance Improvements", "hidden": false},
     {"type": "test", "section":"✅ Tests", "hidden": true},
     {"type": "build", "section":"👷‍ Build System", "hidden": false},
-    {"type": "ci", "section":"🔧 Continuous Integration", "hidden": true},
+    {"type": "ci", "section":"🔧 Continuous Integration", "hidden": false},
     {"type": "chore", "section":"📦 Chores", "hidden": true},
     {"type": "revert", "section":"⏪ Reverts", "hidden": false}
   ],
