@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.24.2](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.24.1...v1.24.2) (2025-05-22)
+
+### 👷‍ Build System
+
+* add golang-ci dependency to docker-bake-basic-all-tag ([550f4774](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/550f47747e8bfd97817f83389f715d5912269eee))
+
 ## [1.24.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.24.0...v1.24.1) (2025-05-22)
 
 ### 👷‍ Build System
