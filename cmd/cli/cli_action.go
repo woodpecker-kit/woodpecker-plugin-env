@@ -1,19 +1,20 @@
 package cli
 
 import (
-	"fmt"
+	"errors"
+	"os"
+	"os/user"
+
 	"github.com/sinlov-go/unittest-kit/env_kit"
 	"github.com/urfave/cli/v2"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/constant"
-	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/pkg_kit"
-	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/version_check"
+	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/cli_kit/pkg_kit"
+	"github.com/woodpecker-kit/woodpecker-plugin-env/internal/cli_kit/version_check"
 	"github.com/woodpecker-kit/woodpecker-plugin-env/plugin"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_info"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_log"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_urfave_cli_v2"
 	"github.com/woodpecker-kit/woodpecker-tools/wd_urfave_cli_v2/cli_exit_urfave"
-	"os"
-	"os/user"
 )
 
 var wdPlugin *plugin.Plugin
@@ -21,12 +22,12 @@ var wdPlugin *plugin.Plugin
 // GlobalBeforeAction
 // do command Action before flag global.
 func GlobalBeforeAction(c *cli.Context) error {
-
 	isDebug := wd_urfave_cli_v2.IsBuildDebugOpen(c)
 	if isDebug {
 		// print global debug info
 		allEnvPrintStr := env_kit.FindAllEnv4PrintAsSortJust(36)
 		wd_log.Verbosef("==> plugin start with all env:\n%s", allEnvPrintStr)
+
 		currentUser, err := user.Current()
 		if err == nil {
 			wd_log.Verbosef("==> current Username : %s\n", currentUser.Username)
@@ -34,6 +35,7 @@ func GlobalBeforeAction(c *cli.Context) error {
 			wd_log.Verbosef("==> current gid: %s, uid: %s\n", currentUser.Gid, currentUser.Uid)
 			wd_log.Verbosef("==> current user home: %s\n", currentUser.HomeDir)
 		}
+
 		wd_log.OpenDebug()
 	}
 
@@ -51,7 +53,11 @@ func GlobalBeforeAction(c *cli.Context) error {
 		return cli_exit_urfave.ErrMsg("missing version, please set version")
 	}
 
-	errVersionConstraint := version_check.SemverVersionConstraint(cliVersion, constant.VersionSupportMinimum, constant.VersionSupportMaximum)
+	errVersionConstraint := version_check.SemverVersionConstraint(
+		cliVersion,
+		constant.VersionSupportMinimum,
+		constant.VersionSupportMaximum,
+	)
 	if errVersionConstraint != nil {
 		return cli_exit_urfave.Err(errVersionConstraint)
 	}
@@ -62,12 +68,16 @@ func GlobalBeforeAction(c *cli.Context) error {
 	}
 
 	wd_log.Debugf("cli version is %s\n", cliVersion)
-	wd_log.Debugf("load woodpecker finish at repo link: %v\n", woodpeckerInfo.RepositoryInfo.CIRepoURL)
+	wd_log.Debugf(
+		"load woodpecker finish at repo link: %v\n",
+		woodpeckerInfo.RepositoryInfo.CIRepoURL,
+	)
 
 	rootPath, errRootPath := os.Getwd()
 	if errRootPath != nil {
 		return cli_exit_urfave.Err(errRootPath)
 	}
+
 	stepsTransferFilePath := c.String(constant.NameCliPluginStepsTransferFilePath)
 	stepsOutDisable := c.Bool(constant.NameCliPluginStepsTransferDisableOut)
 
@@ -92,7 +102,7 @@ func GlobalBeforeAction(c *cli.Context) error {
 // do cli Action before flag.
 func GlobalAction(c *cli.Context) error {
 	if wdPlugin == nil {
-		panic(fmt.Errorf("must success run GlobalBeforeAction then run GlobalAction"))
+		panic(errors.New("must success run GlobalBeforeAction then run GlobalAction"))
 	}
 
 	err := wdPlugin.Exec()
@@ -112,5 +122,6 @@ func GlobalAfterAction(c *cli.Context) error {
 	if wdPlugin != nil {
 		wd_log.Infof("=> finish run: %s, version: %s\n", wdPlugin.Name, wdPlugin.Version)
 	}
+
 	return nil
 }
