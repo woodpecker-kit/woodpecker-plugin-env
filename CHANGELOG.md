@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.24.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.24.0...v1.24.1) (2025-05-22)
+
+### 👷‍ Build System
+
+* update Dockerfile and build.dockerfile ([3b3e0196](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/3b3e0196e28a84ee79b5343d782ad057a2ea32c4))
+
 ## [1.24.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.23.0...v1.24.0) (2025-05-22)
 
 ### ✨ Features
