@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.23.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.22.0...v1.23.0) (2025-05-22)
+
+### ✨ Features
+
+* update CI/CD workflows and add GoReleaser support ([44eea62d](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/44eea62d8c370c4071a3ff057a0576ae36359585))
+
+### ♻ Refactor
+
+* update Docker Buildx workflow syntax ([db5f3d18](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/db5f3d18a2fed612dd0bf0561f02455ef9a7a5dc))
+
+* format code and rearrange imports ([c4830dbe](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/c4830dbeb833cde82b6250fbbb77204cf8274f06))
+
+### 👷‍ Build System
+
+* bump github.com/sinlov-go/go-common-lib ([303a8e0f](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/303a8e0f3dc07822def9260c1fba9eab0441d737))
+
+* bump github.com/urfave/cli/v2 from 2.27.5 to 2.27.6 ([e4180365](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/e41803653fd9c0d52f38cb2079fe81e4eb6c8f9c))
+
+* bump github.com/woodpecker-kit/woodpecker-tools ([96217018](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/96217018a439e0037520dfd0486d814f483f4958))
+
+### 🔧 Continuous Integration
+
+* add golang codecov workflow ([c8890b8a](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/c8890b8a4922fa74de7f9383bb079235cf1143ad))
+
+* make continuous integration section visible in release notes ([673e3f96](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/673e3f960d9785c9b34ad9850d5247561240465c))
+
+* update Go release process and add Docker build comments ([4e7a0428](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/4e7a0428f4affa707c43a773c0dc4bbd0f3aa913))
+
 ## [1.22.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/1.21.6...v1.22.0) (2025-02-03)
 
 ### ✨ Features
