@@ -6,7 +6,7 @@ toolchain go1.21.13
 
 require (
 	github.com/Masterminds/semver/v3 v3.4.0
-	github.com/gookit/color v1.5.4
+	github.com/gookit/color v1.6.0
 	github.com/joho/godotenv v1.5.1
 	github.com/sinlov-go/go-common-lib v1.9.0
 	github.com/sinlov-go/unittest-kit v1.2.1
@@ -23,6 +23,6 @@ require (
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1 // indirect
-	golang.org/x/sys v0.28.0 // indirect
+	golang.org/x/sys v0.30.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
