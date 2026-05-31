@@ -17,10 +17,9 @@
 
 - change goreleaser
     - from [goreleaser docker tags](https://hub.docker.com/r/goreleaser/goreleaser/tags) to new version
-    - `goreleaser/goreleaser:v2.9.0`
+    - `golangci/golangci-lint-action@v8`
     - from [goreleaser version release](https://github.com/goreleaser/goreleaser/releases) to new version
 
-## depends
 
 in go mod project
 
