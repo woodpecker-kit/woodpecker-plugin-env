@@ -25,7 +25,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v6
     - name: Build Release binary
       run: |
         make dep
@@ -71,7 +71,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v6
     - name: Build Release binary
       run: |
         make dep

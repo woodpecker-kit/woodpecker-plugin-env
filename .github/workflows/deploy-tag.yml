@@ -54,10 +54,10 @@ jobs:
           echo "download_artifact_name: ${{ inputs.download_artifact_name }}"
 
       - name: Download Artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         if: ${{ inputs.download_artifact_name != null }}
         with:
-          path: ${{ github.workspace }}/dist
+          path: ${{ github.workspace }}/disd d dt
           ## https://github.com/actions/download-artifact/tree/v4?tab=readme-ov-file#breaking-changes
           pattern: ${{ inputs.download_artifact_name }}-${{ inputs.tag_name }}*
           merge-multiple: true
