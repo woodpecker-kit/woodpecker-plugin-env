@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.26.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.25.0...v1.26.0) (2026-06-01)
+
+### 🐛 Bug Fixes
+
+* improve error messages in version checks ([b74ecb6d](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/b74ecb6d7aab127546eeac2ce020ad5846590008))
+
+### 📝 Documentation
+
+* update usage instructions in dev and README files ([a170a43f](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a170a43f7ac9772ccef4d9b810785ecda686beb3))
+
+### 👷‍ Build System
+
+* bump github.com/stretchr/testify from 1.10.0 to 1.11.1 ([340d2011](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/340d2011052e8480f6a9ab1424253c11fa76dd5b))
+
+* bump actions/setup-go from 5 to 6 ([8870e0df](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/8870e0dffff28cf280c83436243f1a21c4a8ad81))
+
+* bump dependabot/fetch-metadata from 2 to 3 ([c6b5566c](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/c6b5566c0aeccb30e4b5b45c52a7dcb4326914e6))
+
+* bump softprops/action-gh-release from 2 to 3 ([f5a5bb83](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/f5a5bb83e2fd7e07891932ead223041a6c0366c6))
+
+* bump docker/login-action from 3 to 4 ([ebfcc683](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/ebfcc6831fa208a1bd8846807ad7ace7bef592cf))
+
+* increase open pull requests limit to 20 ([3f3c8d47](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/3f3c8d474c475c09b1ab9d6cf966b70ae1887876))
+
+* bump docker/setup-qemu-action from 3 to 4 ([1b9559f3](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/1b9559f3f944952744203ad0bfd655b79e6d815e))
+
+* update gitHub Actions to release versions ([f8193ac3](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/f8193ac36c62f4288fbcf04e81f0f639b14c0924))
+
+* upgrade actions to v6 ([ed0b4e06](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/ed0b4e0604b8fd96cd9a5e431eba985a8fbc5403))
+
+* bump codecov/codecov-action from 5.5.2 to 6.0.1 ([3e8f57da](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/3e8f57da6cbd5364365688d0d35cc46c6e64c93a))
+
+* bump github.com/gookit/color from 1.6.0 to 1.6.1 ([ac837596](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/ac83759624b514a89cdca1999cc6e49f0711e7ea))
+
+* update actions/checkout and related actions to v6 ([bcd29470](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/bcd294700980878c22d17216ac9bcac1873d4dda))
+
+* bump github.com/Masterminds/semver/v3 from 3.4.0 to 3.5.0 ([c9f1c7d9](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/c9f1c7d9e794db1a9b9b32db51bf54a4ce189c91))
+
+* bump codecov/codecov-action from 5.5.1 to 5.5.2 ([b6416e33](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/b6416e33345ae532b178a63f33eb02ea8614c43b))
+
+* bump codecov/codecov-action from 5.5.0 to 5.5.1 ([cbca1db9](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/cbca1db9c5bd7cb31b4b5c355ee6d16dd90624c6))
+
+* bump codecov/codecov-action from 5.4.3 to 5.5.0 ([5f314d7c](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/5f314d7c1a2c3328653e580f41f7fe62787ddedd))
+
+* bump github.com/gookit/color from 1.5.4 to 1.6.0 ([c9bfbdbe](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/c9bfbdbe0c38be94d9da95f8a6399d2651e26fa8))
+
+* bump github.com/Masterminds/semver/v3 from 3.3.1 to 3.4.0 ([c1ef22d3](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/c1ef22d368180f6e7790f6ee4fc941a4bc69f06b))
+
+* bump github.com/urfave/cli/v2 from 2.27.6 to 2.27.7 ([4df928b4](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/4df928b4e4df1791654bd6c5d478659463142624))
+
 ## [1.25.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.24.2...v1.25.0) (2025-05-23)
 
 ### ✨ Features
