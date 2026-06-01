@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.26.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.26.0...v1.26.1) (2026-06-01)
+
+### 🐛 Bug Fixes
+
+* correct artifact download path ([dfd5a1b3](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/dfd5a1b3733aeab5c8f6d3d693beddead4b9eb7a))
+
 ## [1.26.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.25.0...v1.26.0) (2026-06-01)
 
 ### 🐛 Bug Fixes
