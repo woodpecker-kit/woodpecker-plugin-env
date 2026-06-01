@@ -57,7 +57,7 @@ jobs:
         uses: actions/download-artifact@v8
         if: ${{ inputs.download_artifact_name != null }}
         with:
-          path: ${{ github.workspace }}/disd d dt
+          path: ${{ github.workspace }}/dist
           ## https://github.com/actions/download-artifact/tree/v4?tab=readme-ov-file#breaking-changes
           pattern: ${{ inputs.download_artifact_name }}-${{ inputs.tag_name }}*
           merge-multiple: true
