@@ -40,6 +40,9 @@ jobs:
           - macos-latest
           - windows-latest
           - ubuntu-latest
+        exclude:
+          - go: '1.21.13'
+            os: macos-latest
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
