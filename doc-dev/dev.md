@@ -19,8 +19,8 @@
 
 ## just start dev
 
-- minimum go version: go 1.21
-- change `go 1.21`, `^1.21`, `1.21.13` to new go version
+- minimum go version: go 1.25
+- change `go 1.25`, `^1.25`, `1.25.12` to new go version
 - lint
     - golangci-lint will update to v2
     - change `golangci/golangci-lint:v2.1.6` # https://hub.docker.com/r/golangci/golangci-lint/tags

@@ -3,8 +3,9 @@ name: ci
 on:
   push:
     paths-ignore:
-      - '**/README.md'
-      - '**/doc-dev/*'
+      - './README.md'
+      - './doc-dev/**'
+      - './.opencode/**'
     branches:
       # - 'main'
       - 'release-*'
@@ -22,6 +23,7 @@ on:
   pull_request:
     paths-ignore:
       - '**/README.md'
+      - '**/.opencode/**'
     types: # https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#pull_request
       - opened
       - reopened
