@@ -1,8 +1,8 @@
 module github.com/woodpecker-kit/woodpecker-plugin-env
 
-go 1.21
+go 1.25
 
-toolchain go1.21.13
+toolchain go1.25.12
 
 require (
 	github.com/Masterminds/semver/v3 v3.5.0
