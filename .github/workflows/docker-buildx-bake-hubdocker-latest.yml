@@ -185,7 +185,7 @@ jobs:
             *.tags=
             *.platform=${{ matrix.platform }}
             *.cache-from=type=gha,scope=build-${{ env.PLATFORM_PAIR }}
-            *.cache-to=type=gha,scope=build-${{ env.PLATFORM_PAIR }}
+            *.cache-to=type=gha,scope=build-${{ env.PLATFORM_PAIR }},mode=min,ignore-error=true
             *.output=type=image,"name=${{ vars.ENV_DOCKERHUB_OWNER }}/${{ vars.ENV_DOCKERHUB_REPO_NAME }}",push-by-digest=true,name-canonical=true
 
       - name: Extract container image digest from bake output
