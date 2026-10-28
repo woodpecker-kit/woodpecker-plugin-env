@@ -24,7 +24,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     with:
       # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
-      push_remote_flag: ${{ github.event.pull_request.merged == true }}
+      push_remote_flag: ${{ github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'feat-') }}
     secrets:
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
 ```

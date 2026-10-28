@@ -37,7 +37,7 @@ jobs:
     # if: ${{ ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) || github.base_ref == 'main' }}
     with:
       # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
-      push_remote_flag: ${{ github.event.pull_request.merged == true }}
+      push_remote_flag: ${{ github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'feat-') }}
       docker_bake_targets: 'image-basic'
     secrets:
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"

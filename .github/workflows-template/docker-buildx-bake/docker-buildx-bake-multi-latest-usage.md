@@ -30,7 +30,7 @@ jobs:
     with:
       ghcr_package_owner_name: ${{ github.repository_owner }} # required for ghcr.io
       # push_remote_flag: ${{ github.ref == 'refs/heads/main' }}
-      push_remote_flag: ${{ github.event.pull_request.merged == true }}
+      push_remote_flag: ${{ github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'feat-') }}
       docker_bake_targets: 'image-basic'
     secrets:
       DOCKERHUB_TOKEN: "${{ secrets.DOCKERHUB_TOKEN }}"
