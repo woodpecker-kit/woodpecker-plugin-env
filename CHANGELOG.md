@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.27.0](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.26.1...v1.27.0) (2026-10-29)
+
+### ✨ Features
+
+* update Go version to 1.25 ([3874e95e](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/3874e95eec58e6055a52095da616df1596cef42c))
+
+### 👷‍ Build System
+
+* update push_remote_flag condition in workflows ([33475133](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/3347513373b81b45dc061ccbeff63f89b3d33535))
+
+* update cache-to configuration for Docker workflows ([f1595162](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/f1595162cb1fe95996094e658cd30e21a823a0fc))
+
+* bump codecov/codecov-action from 6.0.1 to 7.1.1 ([ad1a633e](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/ad1a633e0fb83fc01a8dfd6664a80383d012f2c6))
+
+* bump github.com/stretchr/testify from 1.11.1 to 1.12.1 ([5ef57111](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/5ef57111ed260ed871b51350e209886ecb20ff07))
+
+* bump convention-change/conventional-version-check ([a301bfa8](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/a301bfa85913768be09531a67137312c1112e664))
+
+### 🔧 Continuous Integration
+
+* add branch-check configuration to .versionrc ([ae61a81f](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/ae61a81f6477f2049fad4f70b4e4b9c8c385ec02))
+
+* update branches configuration in golang-codecov workflow ([78e6c2df](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/78e6c2df1e4f4e957a49dc4e3f5a2f132c8a2bf3))
+
+* update actions/checkout version to v7 in workflow templates ([bac97ac1](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/bac97ac1b835b39008f85a276d35e8077718987e))
+
+* update Go SDK version in workflow templates ([93215562](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/9321556276eaebed3dbc3841e16039edce2b7634))
+
+* update paths to ignore in CI configuration ([946e856d](https://github.com/woodpecker-kit/woodpecker-plugin-env/commit/946e856dd884678effd0c1b11b6dc394f2a65076))
+
 ## [1.26.1](https://github.com/woodpecker-kit/woodpecker-plugin-env/compare/v1.26.0...v1.26.1) (2026-06-01)
 
 ### 🐛 Bug Fixes
