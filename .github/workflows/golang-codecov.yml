@@ -6,12 +6,14 @@ on:
       - '*' # Push events to matching *, i.e. 1.0.0 v1.0, v20.15.10
     paths-ignore:
       - '**/README.md'
-    branches:
-      # - 'main'
-      - 'release'
+      - 'doc/**'
+    # branches:
+    #   - 'main'
+    #   - 'release'
   pull_request:
     paths-ignore:
       - '**/README.md'
+      - 'doc/**'
     types: # https://docs.github.com/actions/using-workflows/events-that-trigger-workflows#pull_request
       # - opened
       # - reopened
