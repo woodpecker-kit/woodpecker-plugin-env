@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - uses: softprops/action-gh-release@master
         name: Create Prerelease
         if: startsWith(github.ref, 'refs/tags/')
