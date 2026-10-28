@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Set up Go SDK
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v7
         with:
           go-version: '^1.25'
           cache: false
